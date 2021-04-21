@@ -10,9 +10,12 @@ https://trello.com/b/zQe2TRAC/devicafe
 
 ## Tool Used
 
-Microsoft  visual code studio 
+Microsoft visual code studio 
 Node.js
 Express.js
+socket.io
+
+
 
 ## Usage 
 
