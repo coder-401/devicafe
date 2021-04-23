@@ -26,7 +26,7 @@ const signInHandler = (req, res, next) => {
 		};
 
 		res.cookie('access_token', user.token, {
-			maxAge: 36000,
+			maxAge: 360000000,
 			httpOnly: true,
 		});
 
