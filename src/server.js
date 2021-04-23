@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const errorHandler = require('./error-handler/500.js');
 const notFound = require('./error-handler/404.js');
 const authRoutes = require('./auth/authRouter');
+const bearerAuth = require('./auth/middleware/bearer');
 
 // Prepare the express app
 const app = express();
@@ -32,8 +33,13 @@ app.get('/', (req, res) => {
 	res.render('login');
 });
 
-app.get('/:room', (req, res) => {
+app.get('/:room', bearerAuth, (req, res) => {
 	res.render('home', { roomId: req.params.room });
+});
+
+app.post('/signOut', (req, res) => {
+	res.cookie('access_token', { maxAge: 0 });
+	res.redirect('/');
 });
 
 // Catchalls
