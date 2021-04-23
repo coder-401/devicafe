@@ -24,3 +24,6 @@ socket.io
 ## Data model 
 [ER DIAGRAM](https://drive.google.com/file/d/1jPR0BJp7auCNzFhRuiF3g2zHGlz6GtOK/view?usp=sharing)
 
+
+![UML](https://drive.google.com/file/d/1cIRk6yFlEpLKlze4MrGe6AdMSfjf0xBN/view?usp=sharing)
+
