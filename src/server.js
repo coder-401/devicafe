@@ -34,8 +34,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:room', bearerAuth, (req, res) => {
-	res.render('home', { roomId: req.params.room });
+	res.render('categories');
 });
+
+// app.get('/:room', bearerAuth, (req, res) => {
+// 	res.render('home', { roomId: req.params.room });
+// });
 
 app.post('/signOut', (req, res) => {
 	res.cookie('access_token', { maxAge: 0 });
