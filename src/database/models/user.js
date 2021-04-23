@@ -39,6 +39,7 @@ users.virtual('token').get(function () {
 	let tokenObject = {
 		username: this.username,
 	};
+
 	return jwt.sign(tokenObject, process.env.SECRET);
 });
 
