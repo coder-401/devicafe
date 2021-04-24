@@ -31,7 +31,8 @@ const signInHandler = (req, res, next) => {
 		});
 
 		// res.status(200).json(user);
-		res.redirect(`/${user.user._id}`);
+		// res.redirect(`/${user.user._id}`);
+		res.redirect(`/categories`);
 	} catch (e) {
 		res.status(403).json({ error: e.message });
 	}

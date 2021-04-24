@@ -6,6 +6,12 @@ const cors = require('cors');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 
+//database
+
+const Tables = require('./database/controller/data-collection');
+const tablesModel = require('./database/models/table');
+const tables = new Tables(tablesModel);
+
 // Esoteric Resources
 const errorHandler = require('./error-handler/500.js');
 const notFound = require('./error-handler/404.js');
@@ -33,7 +39,7 @@ app.get('/', (req, res) => {
 	res.render('login');
 });
 
-app.get('/:room', bearerAuth, (req, res) => {
+app.get('/categories', bearerAuth, (req, res) => {
 	res.render('categories');
 });
 
@@ -44,6 +50,26 @@ app.get('/:room', bearerAuth, (req, res) => {
 app.post('/signOut', (req, res) => {
 	res.cookie('access_token', { maxAge: 0 });
 	res.redirect('/');
+});
+
+app.post('/tables', async (req, res) => {
+	const tablesObject = req.body;
+	try {
+		const resObj = await tables.create(tablesObject);
+		res.status(201).json(resObj);
+	} catch (error) {
+		throw new Error(error.message);
+	}
+});
+
+app.get('/tables', async (req, res, next) => {
+	try {
+		const resArr = await tables.get();
+
+		res.render('tables', { resArr });
+	} catch (error) {
+		next(error);
+	}
 });
 
 // Catchalls
