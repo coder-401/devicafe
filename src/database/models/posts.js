@@ -7,10 +7,9 @@ let Posts= new Schema({
     description: {type:String, required:true},
     owner:{
         type:Schema.Types.ObjectId,
-        ref:'User'
+        ref:'users'
     },
-    time: {type:String,default: Date.now().toString()}
-
+    time: {type:String,default: Date.now().toString()},
 });
 
 
