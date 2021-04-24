@@ -29,6 +29,10 @@ const signInHandler = (req, res, next) => {
 			maxAge: 360000000,
 			httpOnly: true,
 		});
+		res.cookie("user",user,{
+			maxAge: 360000000,
+			httpOnly: true,
+		});
 
 		// res.status(200).json(user);
 		// res.redirect(`/${user.user._id}`);
