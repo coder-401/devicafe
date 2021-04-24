@@ -11,7 +11,7 @@ let Comments= new Schema({
     },
     owner:{
         type:Schema.Types.ObjectId,
-        ref:'User'
+        ref:'users'
     },
     time:{type:String,default:Date.now().toString()}
 });

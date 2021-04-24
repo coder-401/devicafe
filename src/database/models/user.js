@@ -15,24 +15,24 @@ let users = new Schema({
 		default: 'user',
 		enum: ['user', 'editor', 'admin'],
 	},
-	posts: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: 'Posts',
-		},
-	],
-	favQuestions: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: 'fav',
-		},
-	],
-	comments: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: 'comments',
-		},
-	],
+	// posts: [
+	// 	{
+	// 		type: Schema.Types.ObjectId,
+	// 		ref: 'Posts',
+	// 	},
+	// ],
+	// favQuestions: [
+	// 	{
+	// 		type: Schema.Types.ObjectId,
+	// 		ref: 'fav',
+	// 	},
+	// ],
+	// comments: [
+	// 	{
+	// 		type: Schema.Types.ObjectId,
+	// 		ref: 'comments',
+	// 	},
+	// ],
 });
 
 users.virtual('token').get(function () {

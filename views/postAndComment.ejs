@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="postForm">
+      <textarea name="post" id="post" cols="30" rows="10"></textarea><br />
+      <button type="submit">Post</button>
+    </form>
+
+    <div class="postAndComment">
+
+     <% UsersArr.forEach(element => { %>
+      <%=console.log(element,"___________________________________________________")%>
+     <% }) %>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js"
+      integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+
+
+
+// $('.toggleComments').on('click',function(){
+//   console.log(this.id)
+// })
+
+
+
+
+
+      const socket = io();
+      const postForm = document.querySelector("#postForm");
+      
+      const { userId } = Qs.parse(location.search, {
+        ignoreQueryPrefix: true,
+      });
+
+      postForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const userPost = event.target.post.value;
+
+        socket.emit("post", userPost, userId);
+      });
+
+      socket.on("postpublic", (userPostRecord, postowner) => {
+        // Create Elements ===========================================================
+
+        const postAndComment = document.querySelector(".postAndComment");
+        const postDiv = document.createElement("div");
+        postDiv.className = "postDiv";
+        const thePost = document.createElement("div");
+        thePost.className = "thePost";
+        const postP = document.createElement("p");
+        const timeP = document.createElement("h3");
+        const ownerP = document.createElement("h3");
+        const viewCommentsBtn = document.createElement("button");
+        const commentsDiv = document.createElement("div");
+        const commentForm = document.createElement("form");
+        const commentText = document.createElement("textarea");
+        const commentButton = document.createElement("button");
+
+        const description = userPostRecord.description;
+        const postId = userPostRecord._id;
+        const postTime = new Date(parseInt(userPostRecord.time)).toLocaleString();
+        const postOwner = postowner;
+
+        // Give Text Content ==========================================================
+
+        postP.textContent = description;
+        timeP.textContent = postTime;
+        ownerP.textContent = postOwner;
+        commentButton.textContent = "Comment";
+        commentButton.setAttribute("type", "submit");
+        commentForm.setAttribute("id", postId);
+        viewCommentsBtn.textContent = "Comments";
+        viewCommentsBtn.setAttribute("id", `${postId}btn`);
+        commentsDiv.setAttribute("id", `${postId}com`);
+        commentsDiv.setAttribute("class", "hideComments");
+        commentText.setAttribute("name", "comment");
+
+        // Append Elements ============================================================
+
+        postAndComment.prepend(postDiv);
+        postDiv.appendChild(thePost);
+        postDiv.appendChild(commentsDiv);
+        thePost.appendChild(postP);
+        thePost.appendChild(timeP);
+        thePost.appendChild(ownerP);
+        thePost.appendChild(viewCommentsBtn);
+        commentsDiv.appendChild(commentForm);
+        commentForm.appendChild(commentText);
+        commentForm.appendChild(commentButton);
+
+        // Add Listeners To The Buttons ==================================================
+        $(".hideComments").hide();
+        $(`#${postId}btn`).on("click", () => {
+          $(`#${postId}com`).toggle();
+        });
+
+        $(`#${postId}`).on("submit", (eve) => {
+          eve.preventDefault();
+          const comment = eve.target.comment.value;
+          socket.emit("comment", comment, postId, userId);
+        });
+      
+      });
+      socket.on('commentpublic',(userCommentRecord,commentOwner)=>{
+            $(`#${userCommentRecord.post}com`).prepend(`<p>${userCommentRecord.description}</p><h3>${commentOwner}</h3>`)
+         console.log(userCommentRecord.post,commentOwner)
+     })
+    </script>
+  </body>
+</html>
