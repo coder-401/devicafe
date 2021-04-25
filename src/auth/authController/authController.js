@@ -1,31 +1,20 @@
 'use strict';
 
-const fs = require('fs');
-const questions = JSON.parse(fs.readFileSync('questions.json').toString());
-
 const User = require('./../../database/models/user');
-
 const collection = require('./../../database/controller/data-collection');
-
 const userCollection = new collection(User);
 
-const signUpHandler = async (req, res, next) => {
+const signUpHandler = async (req, res) => {
 	try {
-		let user = new User(req.body);
-		const userRecord = await user.save();
-		const output = {
-			user: userRecord,
-			token: userRecord.token,
-		};
+		await userCollection.create(req.body);
 
-		// res.status(201).json(output);
-		res.render(`/`);
+		res.render('login');
 	} catch (e) {
 		res.status(403).json({ error: e.message });
 	}
 };
 
-const signInHandler = (req, res, next) => {
+const signInHandler = (req, res) => {
 	try {
 		const user = {
 			user: req.user,
@@ -43,61 +32,13 @@ const signInHandler = (req, res, next) => {
 	}
 };
 
-const profileHandler = async (req, res, next) => {
-	try {
-		const id = req.params.id;
-		const user = await userCollection.get(id);
-		res.render('profile', { user });
-	} catch (e) {
-		res.status(403).json({ error: e.message });
-	}
+const signOutHandler = (req, res) => {
+	res.cookie('access_token', { maxAge: 0 });
+	res.redirect('/');
 };
-
-const questionsHandler=  (req,res,next)=>{
-	try {
-		let userId = req.params.id
-		let type = req.query.type
-		let difficulty = req.query.difficulty
-		let newQuestions
-
-		
-		if(type && difficulty) {
-
-			if(type !== "none" && difficulty  !== "none") {
-				 newQuestions = questions.filter(question => {
-					return (question.category === type && question.difficulty === difficulty)
-				})
-				
-			} else if(type  !== "none") {
-				 newQuestions = questions.filter(question => {
-					return question.category === type 
-				})
-				
-			} else if(difficulty  !== "none") {
-				 newQuestions = questions.filter(question => {
-					return question.difficulty === difficulty 
-				})
-				
-			} else {
-				 newQuestions = questions
-				 
-			}
-			res.render('questions',{questions: newQuestions,userId })
-		} else {
-			res.render('questions',{questions,userId })
-		}
-
-		
-		
-	} catch (error) {
-		res.status(403).json({error:error.message});
-	}
-}
-
 
 module.exports = {
 	signUpHandler,
 	signInHandler,
-	profileHandler,
-	questionsHandler
+	signOutHandler,
 };
