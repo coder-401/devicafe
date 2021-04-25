@@ -55,12 +55,12 @@ users.statics.authenticateBasic = async function (username, password) {
 };
 
 // BEARER AUTH
-users.statics.authenticateWithToken = async function (token) {
+users.statics.authenticateWithToken = async function (token, userId) {
 	try {
 		const parsedToken = jwt.verify(token, process.env.SECRET);
-		const user = this.findOne({ username: parsedToken.username });
+		const user = await this.findOne({ username: parsedToken.username });
 		if (user) {
-			return user;
+			if (user._id.toString() === userId.toString()) return user;
 		}
 		throw new Error('User Not Found');
 	} catch (e) {

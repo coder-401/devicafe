@@ -13,6 +13,8 @@ const categoriesRoutes = require('./routes/categoriesRoute');
 const profileRoutes = require('./routes/profileRoute');
 const helpRoutes = require('./routes/helpRoute');
 const questionsRoutes = require('./routes/questionsRoute');
+const cafeRoutes = require('./routes/cafeRoutes');
+
 const errorHandler = require('./error-handler/500.js');
 const notFound = require('./error-handler/404.js');
 
@@ -37,6 +39,8 @@ app.use(categoriesRoutes);
 app.use(profileRoutes);
 app.use(helpRoutes);
 app.use(questionsRoutes);
+app.use(cafeRoutes);
+
 app.use('*', notFound);
 app.use(errorHandler);
 
