@@ -1,0 +1,13 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+#postForm{
+    background-color: #ccc;
+    margin-bottom: 5%;
+    border-bottom: 2px solid black;
+}
+#commentForm{
+    margin-bottom: 5%;
+}
