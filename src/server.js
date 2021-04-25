@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const fs = require('fs');
 
 const questions = JSON.parse(fs.readFileSync('questions.json').toString());
+// console.log('************0',questions);
 
 //database
 

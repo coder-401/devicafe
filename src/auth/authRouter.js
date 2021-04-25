@@ -11,6 +11,7 @@ const {
 	signUpHandler,
 	signInHandler,
 	profileHandler,
+	questionsHandler
 } = require('./authController/authController');
 
 authRouter.post('/signup', signUpHandler);
@@ -18,5 +19,7 @@ authRouter.post('/signup', signUpHandler);
 authRouter.post('/signin', basicAuth, signInHandler);
 
 authRouter.get('/profile/:id', bearerAuth, profileHandler);
+
+authRouter.get('/questions/:id', bearerAuth, questionsHandler);
 
 module.exports = authRouter;
