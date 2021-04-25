@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,36 +8,53 @@
     <link rel="stylesheet" href="/style.css" />
     <title>Document</title>
   </head>
+
   <body>
-    <form id="postForm">
-      <textarea name="post" id="post" cols="30" rows="10"></textarea><br />
+    <form action="/post/<%= userId %>" method="POST">
+      <textarea name="description" id="description" cols="30" rows="10"></textarea><br />
+      <input type="hidden" name="owner" id="owner" value="<%= userId %>">
       <button type="submit">Post</button>
     </form>
 
     <div class="postAndComment">
+      <% posts.forEach(post=> {%>
 
-     <% UsersArr.forEach(element => { %>
-      <%=console.log(element,"___________________________________________________")%>
-     <% }) %>
 
+
+        <div>
+          <p>
+            <%=post.time %>
+              <%=post.description %>
+                <% if(comments) {%>
+                  <% comments.forEach(comment=> {%>
+                    <% if(comment.post._id.toString()===post._id.toString()) {%>
+                      <p>
+                        <%= comment.time%>
+                          <%=comment.description %>
+                      </p>
+                      <%} %>
+                        <%}) %>
+                          <%} %>
+          </p>
+
+          <form action="/comment/<%= userId %>" method="POST">
+            <textarea name="description" id="description" cols="30" rows="10"></textarea><br />
+            <input type="hidden" name="owner" id="owner" value="<%= userId %>">
+            <input type="hidden" name="post" id="post" value="<%= post._id %>">
+            <input type="submit" value="comment">
+          </form>
+        </div>
+
+        <%}) %>
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js"
-      integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ=="
-      crossorigin="anonymous"
-    ></script>
-    <script src="/socket.io/socket.io.js"></script>
 
-    <script>
+
+    <!-- <script>
 
 
 
-// $('.toggleComments').on('click',function(){
-//   console.log(this.id)
-// })
 
 
 
@@ -44,7 +62,7 @@
 
       const socket = io();
       const postForm = document.querySelector("#postForm");
-      
+
       const { userId } = Qs.parse(location.search, {
         ignoreQueryPrefix: true,
       });
@@ -116,12 +134,13 @@
           const comment = eve.target.comment.value;
           socket.emit("comment", comment, postId, userId);
         });
-      
+
       });
-      socket.on('commentpublic',(userCommentRecord,commentOwner)=>{
-            $(`#${userCommentRecord.post}com`).prepend(`<p>${userCommentRecord.description}</p><h3>${commentOwner}</h3>`)
-         console.log(userCommentRecord.post,commentOwner)
-     })
-    </script>
+      socket.on('commentpublic', (userCommentRecord, commentOwner) => {
+        $(`#${userCommentRecord.post}com`).prepend(`<p>${userCommentRecord.description}</p><h3>${commentOwner}</h3>`)
+        console.log(userCommentRecord.post, commentOwner)
+      })
+    </script> -->
   </body>
+
 </html>

@@ -6,6 +6,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
+const moment = require('moment');
 
 const questions = JSON.parse(fs.readFileSync('questions.json').toString());
 
@@ -18,6 +19,12 @@ const userCollection = new collection(UserModel);
 
 const tablesModel = require('./database/models/table');
 const tables = new collection(tablesModel);
+
+const PostModel = require('./database/models/posts');
+const postCollection = new collection(PostModel);
+
+const CommentModel = require('./database/models/comments');
+const commentCollection = new collection(CommentModel);
 
 // Esoteric Resources
 const errorHandler = require('./error-handler/500.js');
@@ -42,10 +49,17 @@ app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
 // Routes
+
+// signIn signOut signUp routes
 app.use(authRoutes);
 
 app.get('/', (req, res) => {
 	res.render('login');
+});
+
+app.post('/signOut', (req, res) => {
+	res.cookie('access_token', { maxAge: 0 });
+	res.redirect('/');
 });
 
 app.get('/categories/:id', bearerAuth, (req, res) => {
@@ -53,41 +67,7 @@ app.get('/categories/:id', bearerAuth, (req, res) => {
 	res.render('categories', { userId });
 });
 
-// app.get('/:room', bearerAuth, (req, res) => {
-// 	res.render('home', { roomId: req.params.room });
-// });
-
-app.post('/signOut', (req, res) => {
-	res.cookie('access_token', { maxAge: 0 });
-	res.redirect('/');
-});
-
-app.post('/tables', async (req, res) => {
-	const tablesObject = req.body;
-	try {
-		const resObj = await tables.create(tablesObject);
-		res.status(201).json(resObj);
-	} catch (error) {
-		throw new Error(error.message);
-	}
-});
-
-app.get('/tables', async (req, res, next) => {
-	try {
-		const resArr = await tables.get();
-		res.render('tables', { resArr });
-	} catch (error) {
-		next(error);
-	}
-});
-
-app.get('/profile', async (req, res) => {
-	//where id ?
-	const id = req.cookies.user.user._id;
-	const user = await userCollection.get(id);
-	res.render('profile', { user });
-});
-
+// profile routes
 app.put('/profile/:id', async (req, res) => {
 	let id = req.params.id;
 	let body = req.body;
@@ -95,25 +75,77 @@ app.put('/profile/:id', async (req, res) => {
 	res.render('profile', { user });
 });
 
-app.get('/help', async (req, res) => {
+// help desk routes
+app.get('/help/:id', async (req, res) => {
 	try {
-		const Posts = require('./database/models/posts');
-		const Comment = require('./database/models/comments');
-		const Users = require('./database/models/user');
+		const userId = req.params.id;
+		const posts = await postCollection.get();
 
-		// const posts = await Posts.find({});
-		// const comments = await Comment.find({});
-		const users = await Users.find({});
+		const comments = await CommentModel.find()
+			.populate('post', 'time description')
+			.select('time description post');
 
-		res.render('postAndComment', {
-			// PostsArr : posts,
-			// CommentsArr : comments,
-			UsersArr: users,
-		});
+		if (comments) res.render('postAndComment', { userId, posts, comments });
+		else res.render('postAndComment', { userId, posts });
 	} catch (err) {
 		res.status(403).json({ error: err.message });
 	}
 });
+
+//add post routes
+app.post('/post/:id', async (req, res) => {
+	try {
+		const userId = req.params.id;
+		const newPost = req.body;
+		await postCollection.create(newPost);
+
+		res.redirect(`/help/${userId}`);
+	} catch (err) {
+		res.status(403).json({ error: err.message });
+	}
+});
+
+//add comment routes
+app.post('/comment/:id', async (req, res) => {
+	try {
+		let time = moment().format('h:mm a');
+		const userId = req.params.id;
+		const newComment = {
+			description: req.body.description,
+			owner: req.body.owner,
+			post: req.body.post,
+			time,
+		};
+		await commentCollection.create(newComment);
+
+		res.redirect(`/help/${userId}`);
+	} catch (err) {
+		res.status(403).json({ error: err.message });
+	}
+});
+
+// app.get('/:room', bearerAuth, (req, res) => {
+// 	res.render('home', { roomId: req.params.room });
+// });
+
+// app.post('/tables', async (req, res) => {
+// 	const tablesObject = req.body;
+// 	try {
+// 		const resObj = await tables.create(tablesObject);
+// 		res.status(201).json(resObj);
+// 	} catch (error) {
+// 		throw new Error(error.message);
+// 	}
+// });
+
+// app.get('/tables', async (req, res, next) => {
+// 	try {
+// 		const resArr = await tables.get();
+// 		res.render('tables', { resArr });
+// 	} catch (error) {
+// 		next(error);
+// 	}
+// });
 
 // Catchalls
 app.use('*', notFound);
