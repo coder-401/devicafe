@@ -5,6 +5,10 @@ const questions = JSON.parse(fs.readFileSync('questions.json').toString());
 
 const User = require('./../../database/models/user');
 
+const collection = require('./../../database/controller/data-collection');
+
+const userCollection = new collection(User);
+
 const signUpHandler = async (req, res, next) => {
 	try {
 		let user = new User(req.body);
@@ -15,7 +19,7 @@ const signUpHandler = async (req, res, next) => {
 		};
 
 		// res.status(201).json(output);
-		res.render(`/${user.user._id}`);
+		res.render(`/`);
 	} catch (e) {
 		res.status(403).json({ error: e.message });
 	}
@@ -33,8 +37,6 @@ const signInHandler = (req, res, next) => {
 			httpOnly: true,
 		});
 
-		// res.status(200).json(user);
-		// res.redirect(`/${user.user._id}`);
 		res.redirect(`categories/${user.user._id}`);
 	} catch (e) {
 		res.status(403).json({ error: e.message });
@@ -43,8 +45,9 @@ const signInHandler = (req, res, next) => {
 
 const profileHandler = async (req, res, next) => {
 	try {
-		const user = await User.findById(req.user._id);
-		res.status(200).json(user);
+		const id = req.params.id;
+		const user = await userCollection.get(id);
+		res.render('profile', { user });
 	} catch (e) {
 		res.status(403).json({ error: e.message });
 	}
