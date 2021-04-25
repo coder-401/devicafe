@@ -121,16 +121,3 @@ video {
 .stop {
 	color: #cc3b33;
 }
-/*-------------------POST_AND_COMMENTS------------------------------------------------------------------*/
-
-.postDiv{
-	background-color: aqua;
-	margin-bottom: 5%;
-}
-.thePost p{
-	font-size: 25px;
-}
-.thePost h3{
-	font-size: 15px;
-	font-weight: 100;
-}
