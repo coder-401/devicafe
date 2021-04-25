@@ -9,6 +9,7 @@ const fs = require('fs');
 const moment = require('moment');
 
 const questions = JSON.parse(fs.readFileSync('questions.json').toString());
+// console.log('************0',questions);
 
 //database
 
