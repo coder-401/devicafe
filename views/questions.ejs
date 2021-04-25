@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>navigate to the questions</h1>
+
+    <form action="/questions/<%=userId %>" method="GET">
+        <select name="type" id="type">
+            <option value="none">none</option>
+            <option value="javascript">javaScript</option>
+            <option value="node">Node</option>
+            <option value="react">React</option>
+        </select>
+        <select name="difficulty" id="difficulty">
+            <option value="none">none</option>
+            <option value="beginner">beginner</option>
+            <option value="intermidate">intermediate</option>
+            <option value="advance">advanced</option>
+        </select>
+        <input type="submit" value="filter">
+    </form>
+
+
+    <% questions.forEach(e=>{%>
+    <div style="border: 2px solid black; margin: 3%;">
+        <h3><%= e.question%></h3>
+        <p><%= e.difficulty%></p>
+        <button id="display-answer" onclick="viewSAnswer('<%=e.id%>')"> view more</button>
+        <div id="<%= e.id%>" hidden>
+            <p> <%= e.answer%></p>
+            <button id="less" onclick="closeAnswer('<%= e.id%>')">view less</button>
+            <form action="/addToFavQuestion" method="POST">
+                <button id="add2fav">add to fav</button>
+                
+            </form>
+        </div>
+    </div>
+    
+    <%});%>
+    <script>
+        function viewSAnswer(id){
+            document.getElementById(id).style.display='block'; 
+        }
+        function closeAnswer(id){
+            document.getElementById(id).style.display='none'; 
+        }
+    </script>
+</body>
+
+</html>
