@@ -42,7 +42,6 @@ const signOutHandler = (req, res) => {
 
 const googleOauthHandler = async (req, res) => {
 	let token = req.body.token;
-	console.log(token);
 
 	const client = new OAuth2Client(process.env.ClientIDGoogle);
 
@@ -63,17 +62,23 @@ const googleOauthHandler = async (req, res) => {
 			role: role,
 			password: password,
 		};
+
 		const inDB = await User.find({ username: username });
 
+		console.log('inDB', inDB);
 		if (!inDB.length) {
+			console.log('if', inDB);
 			let newUser = new User(user);
 			const userRecord = await newUser.save();
-			console.log(userRecord);
+			console.log('userRecord', userRecord);
 			res.redirect(`categories/${userRecord._id}`);
+		} else {
+			console.log('else', inDB);
+			res.redirect(`categories/${inDB[0]._id}`);
 		}
 	}
 
-	verify().catch(console.error);
+	// verify().catch(console.error());
 };
 
 module.exports = {

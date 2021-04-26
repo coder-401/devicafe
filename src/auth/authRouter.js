@@ -20,7 +20,6 @@ authRouter.get('/', (req, res) => {
 authRouter.post('/signin', basicAuth, signInHandler);
 authRouter.post('/signup', signUpHandler);
 authRouter.post('/signOut', signOutHandler);
-
 authRouter.post('/login', googleOauthHandler);
 
 module.exports = authRouter;
