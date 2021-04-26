@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <form action=" /signOut" method="POST">
+      <input type="submit" value="sign out">
+    </form>
+    <a href="/profile/<%=userId %>">
+      <h3>Profile</h3>
+    </a>
     <form id="postForm" action="/post/<%= userId %>" method="POST">
       <textarea name="description" id="description" cols="30" rows="10"></textarea><br />
       <input type="hidden" name="owner" id="owner" value="<%= userId %>">
@@ -17,56 +23,73 @@
     </form>
 
 
-<%let count = 0%>
-<%let count2 = 0%>
-    <div class="postAndComment">
+    <%let count=0%>
+      <%let count2=0%>
+        <div class="postAndComment">
 
-      <% for( let i = 0; i < posts.length; i++ ) { %>
-        <%count++%>
-        <div>
-          <p><b>The Post : </b><%=posts[posts.length-1-i].description %> <span><b><%=posts[posts.length-1-i].time %></b> </span></p>
-          <form action="/post/<%= userId %>/<%= posts[posts.length-1-i]._id %>?_method=delete" method="POST">
-            <button>Delete Post</button> </form> <button id="<%=count%>btnPost" class="editPostBtn">Edit Post</button>
-            
-    <form class="form" action="/post/<%= userId %>/<%= posts[posts.length-1-i]._id %>?_method=put" method="POST">
-      <textarea name="description" placeholder="<%=posts[posts.length-1-i].description %>"></textarea>
-     <button type="submit"> Edit </button>
-  </form>
+          <% for( let i=0; i < posts.length; i++ ) { %>
+            <%count++%>
+              <div>
+                <p><b>The Post : </b>
+                  <%=posts[posts.length-1-i].description %> <span><b>
+                        <%=posts[posts.length-1-i].time %>
+                      </b> </span>
+                </p>
+                <form action="/post/<%= userId %>/<%= posts[posts.length-1-i]._id %>?_method=delete" method="POST">
+                  <button>Delete Post</button>
+                </form> <button id="<%=count%>btnPost" class="editPostBtn">Edit Post</button>
 
-          <% if(comments.length>0) {%>
-            <% comments.forEach(comment=> {%>
-              <% if (comment.post) { %>
-              <% if(comment.post._id.toString()===posts[posts.length-1-i]._id.toString()) {%>
-                <%count2++%>
-
-                <p><b>Comment : </b><%=comment.description %> <span><b><%= comment.time%></b> </span></p> <form action="/comment/<%= userId %>/<%= comment._id.toString()%>?_method=delete" method="POST">
-                  <button>Delete Comment</button> </form><button id="<%=count2%>btnComment" class="editCommentBtn">Edit Comment</button>
-                  <form class="form" action="/comment/<%= userId %>/<%= comment._id.toString()%>?_method=put" method="POST">
-                    <textarea name="description" placeholder="<%=comment.description %>"></textarea>
-                   <button type="submit"> Edit</button>
+                <form class="form" action="/post/<%= userId %>/<%= posts[posts.length-1-i]._id %>?_method=put"
+                  method="POST">
+                  <textarea name="description"
+                    placeholder="<%=posts[posts.length-1-i].description %>"><%=posts[posts.length-1-i].description %></textarea>
+                  <button type="submit"> Edit </button>
                 </form>
-                <% } %>
-                <%} %>
-                  <%}) %>
-                    <%} %>
+
+                <% if(comments.length>0) {%>
+                  <% comments.forEach(comment=> {%>
+                    <% if (comment.post) { %>
+                      <% if(comment.post._id.toString()===posts[posts.length-1-i]._id.toString()) {%>
+                        <%count2++%>
+
+                          <p><b>Comment : </b>
+                            <%=comment.description %> <span><b>
+                                  <%= comment.time%>
+                                </b> </span>
+                          </p>
+                          <form action="/comment/<%= userId %>/<%= comment._id.toString()%>?_method=delete"
+                            method="POST">
+                            <button>Delete Comment</button>
+                          </form><button id="<%=count2%>btnComment" class="editCommentBtn">Edit Comment</button>
+                          <form class="form" action="/comment/<%= userId %>/<%= comment._id.toString()%>?_method=put"
+                            method="POST">
+                            <textarea name="description"
+                              placeholder="<%=comment.description %>"><%=comment.description %></textarea>
+                            <button type="submit"> Edit</button>
+                          </form>
+                          <% } %>
+                            <%} %>
+                              <%}) %>
+                                <%} %>
 
 
 
-          <form id="commentForm" action="/comment/<%= userId %>" method="POST">
-            <textarea name="description" id="description"></textarea><br />
-            <input type="hidden" name="owner" id="owner" value="<%= userId %>">
-            <input type="hidden" name="post" id="post" value="<%= posts[posts.length-1-i]._id %>">
-            <input type="submit" value="comment">
-          </form>
+                                  <form id="commentForm" action="/comment/<%= userId %>" method="POST">
+                                    <textarea name="description" id="description"></textarea><br />
+                                    <input type="hidden" name="owner" id="owner" value="<%= userId %>">
+                                    <input type="hidden" name="post" id="post"
+                                      value="<%= posts[posts.length-1-i]._id %>">
+                                    <input type="submit" value="comment">
+                                  </form>
+              </div>
+              <% } %>
+
+
         </div>
-      <% } %>
-
-
-    </div>
 
 
 
-    <!-- <script>
+        <!-- <script>
       const socket = io();
       const postForm = document.querySelector("#postForm");
 
@@ -149,8 +172,8 @@
       })
     </script> -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/postAndComment.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/postAndComment.js"></script>
   </body>
 
 </html>

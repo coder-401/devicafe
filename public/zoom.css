@@ -1,4 +1,4 @@
-* {
+/* * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -120,4 +120,15 @@ video {
 .unmute,
 .stop {
 	color: #cc3b33;
+} */
+
+#video-grid {
+	width: 20px;
+	height: 10px;
+	margin-bottom: 2rem;
+}
+
+#video-grid video {
+	width: 100%;
+	height: 100%;
 }

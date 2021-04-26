@@ -2,6 +2,7 @@
 
 const socket = io();
 const videoGrid = document.getElementById('video-grid');
+const usersList = document.querySelector('.users');
 
 var myPeer = new Peer(undefined, {
 	port: '443',
@@ -18,12 +19,16 @@ navigator.mediaDevices
 	})
 	.then((stream) => {
 		myVideoStream = stream;
+
+		myVideoStream.getAudioTracks()[0].enabled = false;
+		myVideoStream.getVideoTracks()[0].enabled = false;
+
 		addVideoStream(myVideo, stream);
 
 		myPeer.on('call', (call) => {
-			console.log(call);
 			call.answer(stream);
 			const video = document.createElement('video');
+
 			call.on('stream', (userVideoStream) => {
 				addVideoStream(video, userVideoStream);
 			});
@@ -37,13 +42,15 @@ navigator.mediaDevices
 
 		$('html').keydown(function (e) {
 			if (e.which == 13 && text.val().length !== 0) {
-				socket.emit('message', text.val());
+				socket.emit('message', text.val(), username);
 				text.val('');
 			}
 		});
 
-		socket.on('createMessage', (message) => {
-			$('ul').append(`<li class="message"><b>user</b><br/>${message}</li>`);
+		socket.on('createMessage', (message, username) => {
+			$('.messages').append(
+				`<li class="message"><b>${username}</b><br/>${message}</li>`,
+			);
 			scrollToBottom();
 		});
 	});
@@ -52,8 +59,12 @@ socket.on('user-disconnected', (userId) => {
 	if (peers[userId]) peers[userId].close();
 });
 
+socket.on('roomUsers', (users) => {
+	usersList.innerHTML = users.map((user) => `<li>${user}</li>`).join('');
+});
+
 myPeer.on('open', (id) => {
-	socket.emit('join-room', ROOM_ID, id);
+	socket.emit('join-room', ROOM_ID, id, username);
 });
 
 function connectToNewUser(userId, stream) {
@@ -100,8 +111,8 @@ const playStop = () => {
 		myVideoStream.getVideoTracks()[0].enabled = false;
 		setPlayVideo();
 	} else {
-		setStopVideo();
 		myVideoStream.getVideoTracks()[0].enabled = true;
+		setStopVideo();
 	}
 };
 
@@ -126,6 +137,7 @@ const setStopVideo = () => {
     <i class="fas fa-video"></i>
     <span>Stop Video</span>
   `;
+
 	document.querySelector('.main__video_button').innerHTML = html;
 };
 

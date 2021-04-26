@@ -17,6 +17,7 @@ const cafeRoutes = require('./routes/cafeRoutes');
 
 const errorHandler = require('./error-handler/500.js');
 const notFound = require('./error-handler/404.js');
+const user = require('./database/models/user');
 
 // Prepare the express app
 const app = express();
@@ -47,17 +48,25 @@ app.use(errorHandler);
 //socket connections
 let postOwner;
 let commentOwner;
+let users = [];
 io.on('connection', (socket) => {
-	socket.on('join-room', (roomId, userId) => {
+	socket.on('join-room', (roomId, userId, username) => {
 		socket.join(roomId);
 		socket.broadcast.to(roomId).emit('user-connected', userId);
 
-		socket.on('message', (message) => {
-			io.to(roomId).emit('createMessage', message);
+		socket.on('message', (message, username) => {
+			const index = users.indexOf(username);
+			io.to(roomId).emit('createMessage', message, users[index]);
 		});
 
+		if (!users.includes(username)) users.push(username);
+		io.to(roomId).emit('roomUsers', users);
+
 		socket.on('disconnect', () => {
+			const index = users.indexOf(username);
+			users.splice(index, 1);
 			socket.broadcast.to(roomId).emit('user-disconnected', userId);
+			io.to(roomId).emit('roomUsers', users);
 		});
 	});
 
