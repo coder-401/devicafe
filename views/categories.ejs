@@ -11,24 +11,24 @@
     <body>
 
         <header>
-            <!-- <img src="asdas" alt="img"> -->
-            <a href="/Profile/<%=userId %>">
+
+            <a href="/profile/<%=userId %>">
                 <h3>Profile</h3>
             </a>
 
         </header>
 
         <div>
-            <a href="/questions/<%=userId %>">Questions</a>
+            <a href="/questions/<%=userId %>">Questios</a>
+
         </div>
         <div>
-            <form action="/help">
-                <input type="text" name="userId" value="<%= userId%>" hidden>
-                <button type="submit">help desk</button>
-            </form>
+
+            <a href="/help/<%=userId %>">help desk</a>
+
         </div>
         <div>
-            <p>cafe</p>
+            <a href="/cafe/<%=userId %>">cafe</a>
         </div>
 
     </body>

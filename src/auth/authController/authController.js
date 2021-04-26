@@ -1,27 +1,20 @@
 'use strict';
 
-const fs = require('fs');
-const questions = JSON.parse(fs.readFileSync('questions.json').toString());
-
 const User = require('./../../database/models/user');
+const collection = require('./../../database/controller/data-collection');
+const userCollection = new collection(User);
 
-const signUpHandler = async (req, res, next) => {
+const signUpHandler = async (req, res) => {
 	try {
-		let user = new User(req.body);
-		const userRecord = await user.save();
-		const output = {
-			user: userRecord,
-			token: userRecord.token,
-		};
+		await userCollection.create(req.body);
 
-		// res.status(201).json(output);
-		res.render(`/${user.user._id}`);
+		res.render('login');
 	} catch (e) {
 		res.status(403).json({ error: e.message });
 	}
 };
 
-const signInHandler = (req, res, next) => {
+const signInHandler = (req, res) => {
 	try {
 		const user = {
 			user: req.user,
@@ -33,21 +26,15 @@ const signInHandler = (req, res, next) => {
 			httpOnly: true,
 		});
 
-		// res.status(200).json(user);
-		// res.redirect(`/${user.user._id}`);
 		res.redirect(`categories/${user.user._id}`);
 	} catch (e) {
 		res.status(403).json({ error: e.message });
 	}
 };
 
-const profileHandler = async (req, res, next) => {
-	try {
-		const user = await User.findById(req.user._id);
-		res.status(200).json(user);
-	} catch (e) {
-		res.status(403).json({ error: e.message });
-	}
+const signOutHandler = (req, res) => {
+	res.cookie('access_token', { maxAge: 0 });
+	res.redirect('/');
 };
 
 const questionsHandler=  (req,res,next)=>{
@@ -142,4 +129,4 @@ module.exports = {
 	profileHandler,
 	questionsHandler,
 	googleOauthHandler
-};
+

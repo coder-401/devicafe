@@ -8,21 +8,23 @@ const bearerAuth = require('./middleware/bearer.js');
 const permissions = require('./middleware/acl.js');
 // const googleOauth= require('./middleware/googleOauth');
 
+
 const {
 	signUpHandler,
 	signInHandler,
 	profileHandler,
 	questionsHandler,
-	googleOauthHandler
+	googleOauthHandler,
+	signOutHandler,
 } = require('./authController/authController');
 
-authRouter.post('/signup', signUpHandler);
+authRouter.get('/', (req, res) => {
+	res.render('login');
+});
 
 authRouter.post('/signin', basicAuth, signInHandler);
-
-authRouter.get('/profile/:id', bearerAuth, profileHandler);
-
-authRouter.get('/questions/:id', bearerAuth, questionsHandler);
+authRouter.post('/signup', signUpHandler);
+authRouter.post('/signOut', signOutHandler);
 
 authRouter.post('/login' ,googleOauthHandler);
 

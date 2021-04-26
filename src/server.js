@@ -5,32 +5,23 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const fs = require('fs');
+const methodOverride = require('method-override');
 
-const questions = JSON.parse(fs.readFileSync('questions.json').toString());
-// console.log('************0',questions);
+//routers
+const authRoutes = require('./auth/authRouter');
+const categoriesRoutes = require('./routes/categoriesRoute');
+const profileRoutes = require('./routes/profileRoute');
+const helpRoutes = require('./routes/helpRoute');
+const questionsRoutes = require('./routes/questionsRoute');
+const cafeRoutes = require('./routes/cafeRoutes');
 
-//database
-
-const collection = require('./database/controller/data-collection');
-
-const UserModel = require('./database/models/user');
-const userCollection = new collection(UserModel);
-
-const tablesModel = require('./database/models/table');
-const tables = new collection(tablesModel);
-
-// Esoteric Resources
 const errorHandler = require('./error-handler/500.js');
 const notFound = require('./error-handler/404.js');
-const authRoutes = require('./auth/authRouter');
-const bearerAuth = require('./auth/middleware/bearer');
 
 // Prepare the express app
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const methodOverride = require('method-override');
 
 // App Level MW
 app.use(cors());
@@ -44,82 +35,16 @@ app.use(methodOverride('_method'));
 
 // Routes
 app.use(authRoutes);
+app.use(categoriesRoutes);
+app.use(profileRoutes);
+app.use(helpRoutes);
+app.use(questionsRoutes);
+app.use(cafeRoutes);
 
-app.get('/', (req, res) => {
-	res.render('login');
-});
-
-app.get('/categories/:id', bearerAuth, (req, res) => {
-	const userId = req.params.id;
-	res.render('categories', { userId });
-});
-
-// app.get('/:room', bearerAuth, (req, res) => {
-// 	res.render('home', { roomId: req.params.room });
-// });
-
-app.post('/signOut', (req, res) => {
-	res.cookie('access_token', { maxAge: 0 });
-	res.redirect('/');
-});
-
-app.post('/tables', async (req, res) => {
-	const tablesObject = req.body;
-	try {
-		const resObj = await tables.create(tablesObject);
-		res.status(201).json(resObj);
-	} catch (error) {
-		throw new Error(error.message);
-	}
-});
-
-app.get('/tables', async (req, res, next) => {
-	try {
-		const resArr = await tables.get();
-		res.render('tables', { resArr });
-	} catch (error) {
-		next(error);
-	}
-});
-
-app.get('/profile', async (req, res) => {
-	//where id ?
-	const id = req.cookies.user.user._id;
-	const user = await userCollection.get(id);
-	res.render('profile', { user });
-});
-
-app.put('/profile/:id', async (req, res) => {
-	let id = req.params.id;
-	let body = req.body;
-	const user = await userCollection.update(id, body);
-	res.render('profile', { user });
-});
-
-app.get('/help', async (req, res) => {
-	try {
-		const Posts = require('./database/models/posts');
-		const Comment = require('./database/models/comments');
-		const Users = require('./database/models/user');
-
-		// const posts = await Posts.find({});
-		// const comments = await Comment.find({});
-		const users = await Users.find({});
-
-		res.render('postAndComment', {
-			// PostsArr : posts,
-			// CommentsArr : comments,
-			UsersArr: users,
-		});
-	} catch (err) {
-		res.status(403).json({ error: err.message });
-	}
-});
-
-// Catchalls
 app.use('*', notFound);
 app.use(errorHandler);
 
+//socket connections
 let postOwner;
 let commentOwner;
 io.on('connection', (socket) => {
@@ -197,8 +122,8 @@ async function saveCommentInDB(userComment, postId, userId) {
 	return userCommentRecord;
 }
 /*--------------------------------------------------------------------------------*/
+
 module.exports = {
-	questions,
 	server,
 	start: (port) => {
 		if (!port) {

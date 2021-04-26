@@ -1,20 +1,21 @@
 'use strict';
 
-const mongoose= require('mongoose');
-const Schema= mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-let Comments= new Schema({
-    description: {type:String, required:true},
-    post:{
-        type:Schema.Types.ObjectId,
-        ref:'posts'
-    },
-    owner:{
-        type:Schema.Types.ObjectId,
-        ref:'users'
-    },
-    time:{type:String,default:Date.now().toString()}
+let Comments = new Schema({
+	description: { type: String, required: true },
+	post: {
+		type: Schema.Types.ObjectId,
+		ref: 'Posts',
+	},
+	owner: {
+		type: Schema.Types.ObjectId,
+		ref: 'users',
+	},
+	time: {
+		type: String,
+	},
 });
 
-
-module.exports= mongoose.model('comments',Comments);
+module.exports = mongoose.model('comments', Comments);
