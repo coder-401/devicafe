@@ -16,6 +16,9 @@
     </head>
 
     <body style="background-color: aqua; color: black;">
+        <form action="/signOut" method="POST">
+            <input type="submit" value="sign out">
+        </form>
         <div class="main">
             <div class="main__left">
                 <div class="main__videos">
@@ -23,9 +26,6 @@
 
                     </div>
                 </div>
-                <form action=" /signOut" method="POST">
-                    <input type="submit" value="sign out">
-                </form>
                 <a href="/profile/<%=userId %>">
                     <h3>Profile</h3>
                 </a>

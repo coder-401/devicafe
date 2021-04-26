@@ -18,5 +18,6 @@ mongoose
 		require('./src/server.js').start(process.env.PORT);
 	})
 	.catch((e) => {
+		throw new Error(e.message);
 		console.log(e.message);
 	});
