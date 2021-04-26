@@ -92,9 +92,54 @@ const questionsHandler=  (req,res,next)=>{
 }
 
 
+
+const {OAuth2Client}=require('google-auth-library');
+const dotenv= require('dotenv');
+dotenv.config();
+
+const googleOauthHandler = async (req,res)=>{
+	let token= req.body.token;
+	console.log(token);
+
+	const client= new OAuth2Client(process.env.ClientIDGoogle);
+
+	async function verify(){
+    const ticket= await client.verifyIdToken({
+        idToken:token,
+        audience:process.env.ClientIDGoogle
+    });
+    const payload= ticket.getPayload();
+    const password= payload['sub'];
+	let username= payload['email'].split('@')[0];
+	let email=payload['email'];
+	let role='user';
+
+	let user = {
+		username:username,
+		email:email,
+		role:role,
+		password:password
+
+	}
+	const inDB=await User.find({username:username});
+
+	if(!inDB.length){
+		let newUser= new User(user);
+		const userRecord= await newUser.save();
+		console.log(userRecord);
+		res.redirect(`categories/${userRecord._id}`);
+	}
+
+	}
+
+	verify().catch(console.error);
+
+}
+
 module.exports = {
 	signUpHandler,
 	signInHandler,
 	profileHandler,
-	questionsHandler
+	questionsHandler,
+	googleOauthHandler
 };

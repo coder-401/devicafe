@@ -2,6 +2,8 @@
 <html lang="en">
 
     <head>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="517747499003-me32d5erbvsl5j04jjc67j2cmchvmlaj.apps.googleusercontent.com">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +16,22 @@
             <input type="text" name="password" id="password">
             <input type="submit" value="login">
         </form>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        
 
+        <script>
+            function onSignIn(googleUser) {
+                var id_token = googleUser.getAuthResponse().id_token;
+                
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/login');
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onload = function() {
+                console.log('Signed in as: ' + xhr.responseText);
+                };
+                xhr.send(JSON.stringify({token:id_token}));
+            }
+        </script>
     </body>
 
 </html>
