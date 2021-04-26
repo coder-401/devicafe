@@ -37,8 +37,96 @@ const signOutHandler = (req, res) => {
 	res.redirect('/');
 };
 
+const questionsHandler=  (req,res,next)=>{
+	try {
+		let userId = req.params.id
+		let type = req.query.type
+		let difficulty = req.query.difficulty
+		let newQuestions
+
+		
+		if(type && difficulty) {
+
+			if(type !== "none" && difficulty  !== "none") {
+				 newQuestions = questions.filter(question => {
+					return (question.category === type && question.difficulty === difficulty)
+				})
+				
+			} else if(type  !== "none") {
+				 newQuestions = questions.filter(question => {
+					return question.category === type 
+				})
+				
+			} else if(difficulty  !== "none") {
+				 newQuestions = questions.filter(question => {
+					return question.difficulty === difficulty 
+				})
+				
+			} else {
+				 newQuestions = questions
+				 
+			}
+			res.render('questions',{questions: newQuestions,userId })
+		} else {
+			res.render('questions',{questions,userId })
+		}
+
+		
+		
+	} catch (error) {
+		res.status(403).json({error:error.message});
+	}
+}
+
+
+
+const {OAuth2Client}=require('google-auth-library');
+const dotenv= require('dotenv');
+dotenv.config();
+
+const googleOauthHandler = async (req,res)=>{
+	let token= req.body.token;
+	console.log(token);
+
+	const client= new OAuth2Client(process.env.ClientIDGoogle);
+
+	async function verify(){
+    const ticket= await client.verifyIdToken({
+        idToken:token,
+        audience:process.env.ClientIDGoogle
+    });
+    const payload= ticket.getPayload();
+    const password= payload['sub'];
+	let username= payload['email'].split('@')[0];
+	let email=payload['email'];
+	let role='user';
+
+	let user = {
+		username:username,
+		email:email,
+		role:role,
+		password:password
+
+	}
+	const inDB=await User.find({username:username});
+
+	if(!inDB.length){
+		let newUser= new User(user);
+		const userRecord= await newUser.save();
+		console.log(userRecord);
+		res.redirect(`categories/${userRecord._id}`);
+	}
+
+	}
+
+	verify().catch(console.error);
+
+}
+
 module.exports = {
 	signUpHandler,
 	signInHandler,
-	signOutHandler,
-};
+	profileHandler,
+	questionsHandler,
+	googleOauthHandler
+
