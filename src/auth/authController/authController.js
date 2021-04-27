@@ -9,12 +9,18 @@ const userCollection = new collection(User);
 
 const signUpHandler = async (req, res) => {
 	try {
-		await userCollection.create(req.body);
-
-		res.render('login');
+		let user = await User.find({ username: req.body.username });
+		if (!user) {
+			await userCollection.create(req.body);
+		}
+		res.redirect('/');
 	} catch (e) {
 		res.status(403).json({ error: e.message });
 	}
+};
+
+const getSignUpHandler = (req, res) => {
+	res.render('signUp');
 };
 
 const signInHandler = (req, res) => {
@@ -43,6 +49,11 @@ const signOutHandler = (req, res) => {
 const googleOauthHandler = async (req, res) => {
 	let token = req.body.token;
 
+	res.cookie('access_token', token, {
+		maxAge: 360000000,
+		httpOnly: true,
+	});
+
 	const client = new OAuth2Client(process.env.ClientIDGoogle);
 
 	async function verify() {
@@ -65,24 +76,21 @@ const googleOauthHandler = async (req, res) => {
 
 		const inDB = await User.find({ username: username });
 
-		console.log('inDB', inDB);
 		if (!inDB.length) {
-			console.log('if', inDB);
 			let newUser = new User(user);
 			const userRecord = await newUser.save();
-			console.log('userRecord', userRecord);
-			res.redirect(`categories/${userRecord._id}`);
+			res.redirect(`/categories/${userRecord._id}`);
 		} else {
-			console.log('else', inDB);
-			res.redirect(`categories/${inDB[0]._id}`);
+			res.redirect(`/categories/${inDB[0]._id}`);
 		}
 	}
 
-	// verify().catch(console.error());
+	verify().catch(console.error());
 };
 
 module.exports = {
 	signUpHandler,
+	getSignUpHandler,
 	signInHandler,
 	signOutHandler,
 	googleOauthHandler,
