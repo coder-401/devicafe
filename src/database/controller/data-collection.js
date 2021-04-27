@@ -16,6 +16,9 @@ class DataCollection {
 			return new Error(error.message);
 		}
 	}
+	getByUserName(username){
+		return this.model.findOne({username});
+	}
 
 	create(record) {
 		try {
