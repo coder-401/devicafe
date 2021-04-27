@@ -30,10 +30,10 @@
           <% for( let i=0; i < posts.length; i++ ) { %>
             <%count++%>
               <div>
-                <p><b>The Post : </b>
-                  <%=posts[posts.length-1-i].description %> <span><b>
-                        <%=posts[posts.length-1-i].time %>
-                      </b> </span>
+                <p><b>
+                    <%=posts[posts.length-1-i].time %> Post :
+                  </b>
+                  <%=posts[posts.length-1-i].description %>
                 </p>
                 <form action="/post/<%= userId %>/<%= posts[posts.length-1-i]._id %>?_method=delete" method="POST">
                   <button>Delete Post</button>
@@ -52,10 +52,10 @@
                       <% if(comment.post._id.toString()===posts[posts.length-1-i]._id.toString()) {%>
                         <%count2++%>
 
-                          <p><b>Comment : </b>
-                            <%=comment.description %> <span><b>
-                                  <%= comment.time%>
-                                </b> </span>
+                          <p><b>
+                              <%= comment.time%> Comment :
+                            </b>
+                            <%=comment.description %>
                           </p>
                           <form action="/comment/<%= userId %>/<%= comment._id.toString()%>?_method=delete"
                             method="POST">
