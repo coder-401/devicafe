@@ -16,7 +16,7 @@ class DataCollection {
 			return new Error(error.message);
 		}
 	}
-
+	
 	create(record) {
 		try {
 			let newRecord = new this.model(record);
