@@ -49,10 +49,11 @@ app.use(errorHandler);
 let postOwner;
 let commentOwner;
 let users = [];
+
 io.on('connection', (socket) => {
 	socket.on('join-room', (roomId, userId, username) => {
 		socket.join(roomId);
-		socket.broadcast.to(roomId).emit('user-connected', userId);
+		socket.to(roomId).emit('user-connected', userId);
 
 		socket.on('message', (message, username) => {
 			const index = users.indexOf(username);
@@ -69,14 +70,31 @@ io.on('connection', (socket) => {
 			io.to(roomId).emit('roomUsers', users);
 		});
 	});
+	/*------------------------------whiteBoard---------------------------------*/
+	let drawing = false;
+	let strokeStyle = 'black';
+	let lineWidth = 10;
+	socket.on('mousedown', (x, y, _strokeStyle, _lineWidth) => {
+		drawing = true;
+		strokeStyle = _strokeStyle;
+		lineWidth = _lineWidth;
+		io.emit('_mousedown', drawing, x, y, strokeStyle, lineWidth);
+	});
+	socket.on('mouseup', () => {
+		drawing = false;
+		io.emit('_mouseup', drawing);
+	});
+	socket.on('mousemove', (x, y) => {
+		if (drawing) {
+			io.emit('_mousemove', x, y);
+		}
+	});
 
 	/*------------------------------Post_Part---------------------------------*/
 	let userPostRecord;
 	socket.on('post', (userPost, userId) => {
 		savePostInDB(userPost, userId).then((data) => {
 			userPostRecord = data;
-			console.log('post', userPostRecord);
-
 			io.emit('postpublic', userPostRecord, postOwner);
 		});
 	});
@@ -85,14 +103,13 @@ io.on('connection', (socket) => {
 	socket.on('comment', (comment, postId, userId) => {
 		saveCommentInDB(comment, postId, userId).then((data) => {
 			userCommentRecord = data;
-			// console.log("comment", userCommentRecord);
 			io.emit('commentpublic', userCommentRecord, commentOwner);
 		});
 	});
 	/*--------------------------Code_Challenge_Part-----------------------------*/
-	socket.on('showcodechallenge',(veiwFrame)=>{
-		socket.broadcast.emit('publiccode',veiwFrame)
-	})
+	socket.on('showcodechallenge', (veiwFrame) => {
+		socket.broadcast.emit('publiccode', veiwFrame);
+	});
 });
 /*---------------------------Save Post in DataBase-------------------------*/
 
@@ -102,7 +119,6 @@ async function savePostInDB(userPost, userId) {
 
 	const user = await Users.find({ _id: userId });
 	postOwner = user[0].username;
-	console.log('__POST_OWNER__', postOwner);
 
 	let post = new Posts({
 		description: userPost,
@@ -110,7 +126,6 @@ async function savePostInDB(userPost, userId) {
 	});
 
 	const userPostRecord = await post.save();
-	console.log('Saved POST In DataBase', userPostRecord);
 	// const any = await Posts.find({}).populate('comments').select('description owner -_id')
 	// console.log(any,"ANY++++++++++++++++++++")
 	return userPostRecord;
@@ -122,7 +137,6 @@ async function saveCommentInDB(userComment, postId, userId) {
 
 	const user = await Users.find({ _id: userId });
 	commentOwner = user[0].username;
-	console.log('__COMMENT_OWNER__', commentOwner);
 
 	let comment = new Comment({
 		description: userComment,
@@ -131,7 +145,6 @@ async function saveCommentInDB(userComment, postId, userId) {
 	});
 
 	const userCommentRecord = await comment.save();
-	console.log('Saved Comment In DataBase', userCommentRecord);
 	return userCommentRecord;
 }
 
