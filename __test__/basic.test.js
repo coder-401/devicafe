@@ -24,9 +24,11 @@ describe("Testing signin with basic", () => {
     const response = await mockRequest.post("/signin").send(body);
     expect(response.status).toBe(302);
   });
-  it("should NOT signin with basic if ", async () => {
+  it("should NOT signin with basic if one of the requirment is wrong", async () => {
     body = {
         email: "test@test.test",
+        username: "test",
+        password: "test33"
       };
     const response = await mockRequest.post("/signin").send(body);
     expect(response.status).toBe(403);

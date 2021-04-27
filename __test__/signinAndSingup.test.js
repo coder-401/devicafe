@@ -53,6 +53,7 @@ describe("Testing The Errors", () => {
   });
 });
 
+
 describe("Testing signup and signin routes", () => {
   it("should create an account", async () => {
     const response = await mockRequest.post("/signup").send(body);
@@ -77,6 +78,26 @@ describe("Testing signup and signin routes", () => {
 });
 
 // test('server socket',()=>{
-
-// })
-/*resposne.socket ==>*/
+  
+  // })
+  /*resposne.socket ==>*/
+  
+  describe("Testing signup route", () => {
+    it("should NOT create an account", async () => {
+       body = {
+        email: "test@test.test",
+      };
+      const response = await mockRequest.post("/signup").send(body);
+  
+      expect(response.status).toBe(403);
+    });
+    it("should NOT singin ", async () => {
+      body = {
+       email: "test@test.test",
+     };
+     const response = await mockRequest.post("/signup").send(body);
+ 
+     expect(response.status).toBe(403);
+   });
+  
+  });
