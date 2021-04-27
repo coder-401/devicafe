@@ -1,11 +1,12 @@
 'use strict';
 
-const socket = io();
+const socket = io('https://backenders-devecafe.herokuapp.com/');
 const videoGrid = document.getElementById('video-grid');
 const usersList = document.querySelector('.users');
 
 var myPeer = new Peer(undefined, {
 	port: '443',
+	secure: true,
 });
 
 let myVideoStream;
