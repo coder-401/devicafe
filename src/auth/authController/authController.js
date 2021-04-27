@@ -10,8 +10,9 @@ const userCollection = new collection(User);
 const signUpHandler = async (req, res) => {
 	try {
 		let user = await User.find({ username: req.body.username });
-		if (!user) {
-			await userCollection.create(req.body);
+		if (user.length === 0) {
+
+		await userCollection.create(req.body);
 		}
 		res.redirect('/');
 	} catch (e) {
@@ -34,7 +35,6 @@ const signInHandler = (req, res) => {
 			maxAge: 360000000,
 			httpOnly: true,
 		});
-
 		res.redirect(`categories/${user.user._id}`);
 	} catch (e) {
 		res.status(403).json({ error: e.message });

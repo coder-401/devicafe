@@ -8,8 +8,6 @@ const usermodel = require("./../database/models/user");
 const questionModel = require("./../database/models/question");
 const favQuestion = require("./../database/models/favQuestion");
 
-
-
 const collectionUser = new Collection(usermodel);
 const collectionQuestion = new Collection(questionModel);
 const collectionFavQuestion = new Collection(favQuestion);
@@ -68,23 +66,24 @@ const addQuestion = async (req, res) => {
   };
 
   const newQ = await collectionQuestion.create(record);
+  // console.log(newQ,"fsafas")
   res.redirect(`/questions/${userId}`);
 };
-  const addToFavQuestion = async (req, res) => {
-	let userId = req.params.id;
 
-	let {question,answer,QuesId} = req.body;
-	let record = {
-		question,
-		answer
-	}
+const addToFavQuestion = async (req, res) => {
+  let userId = req.params.id;
 
-	const findQues = await collectionFavQuestion.get(QuesId);
+  let { question, answer, QuesId } = req.body;
+  let record = {
+    question,
+    answer
+  };
+  const findQues = await favQuestion.find({question});
 
-	if(!findQues){
-		await collectionFavQuestion.create(record);
-	}
-    res.redirect(`/questions/${userId}`)
+  if (findQues.length === 0) {
+    const ee = await collectionFavQuestion.create(record);
+  }
+  res.redirect(`/questions/${userId}`);
 };
 module.exports = {
   getQuestions,
