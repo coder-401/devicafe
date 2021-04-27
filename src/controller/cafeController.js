@@ -84,7 +84,7 @@ const getSpecificTable = async (req, res) => {
 		});
 	}
 
-	res.redirect(`/cafe/${userId}`);
+	return res.redirect(`/cafe/${userId}`);
 };
 
 module.exports = {
