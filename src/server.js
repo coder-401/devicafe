@@ -89,6 +89,10 @@ io.on('connection', (socket) => {
 			io.emit('commentpublic', userCommentRecord, commentOwner);
 		});
 	});
+	/*--------------------------Code_Challenge_Part-----------------------------*/
+	socket.on('showcodechallenge',(veiwFrame)=>{
+		socket.broadcast.emit('publiccode',veiwFrame)
+	})
 });
 /*---------------------------Save Post in DataBase-------------------------*/
 
@@ -130,7 +134,8 @@ async function saveCommentInDB(userComment, postId, userId) {
 	console.log('Saved Comment In DataBase', userCommentRecord);
 	return userCommentRecord;
 }
-/*--------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------*/
 
 module.exports = {
 	server,

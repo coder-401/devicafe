@@ -17,6 +17,27 @@
             <h3>Profile</h3>
         </a>
 
+        <% if (userRole === "admin") { %>
+            <form action="/addquestion/<%=userId%>" method="POST">
+                <input type="text" name="question">
+                <input type="text" name="answer">
+
+                <select name="difficulty" id="difficulty">
+                    <option value="none">none</option>
+                    <option value="beginner">beginner</option>
+                    <option value="intermidate">intermediate</option>
+                    <option value="advance">advanced</option>
+                </select>
+                <select name="category" id="category">
+                    <option value="none">none</option>
+                    <option value="javascript">javaScript</option>
+                    <option value="node">Node</option>
+                    <option value="react">React</option>
+                </select>
+            <button type="submit">Add The Question</button>
+            </form>
+         
+        <% } %>
         <form action="/questions/<%=userId %>" method="GET">
             <select name="type" id="type">
                 <option value="none">none</option>
@@ -48,20 +69,55 @@
                         <%= e.answer%>
                     </p>
                     <button id="less" onclick="closeAnswer('<%= e.id%>')">view less</button>
-                    <form action="/addToFavQuestion" method="POST">
-                        <button id="add2fav">add to fav</button>
-
+                    <form action="/addToFavQuestion/<%=userId%>" method="POST">
+                        <input type="hidden" name="QuesId" value="<%=e._id%>">
+                        <input type="hidden" name="question"value="<%= e.question%>">
+                        <input type="hidden" name="answer" value="<%= e.answer%>">
+                        <button  onclick="diable('<%= e._id%>btn')" id="<%=e._id%>btn" type="submit">add to fav</button>
                     </form>
                 </div>
             </div>
 
             <%});%>
+            <% questionFromDB.forEach(ques => { %>
+                <div style="border: 2px solid black; margin: 3%;">
+                    <h3>
+                        <%= ques.question%>
+                    </h3>
+                    <p>
+                        <%= ques.difficulty%>
+                    </p>
+                    <button id="display-answer" onclick="viewSAnswer('<%=ques.id%>')"> view more</button>
+                    <div id="<%= ques.id%>" hidden>
+                        <p>
+                            <%= ques.answer%>
+                        </p>
+                        <button id="less" onclick="closeAnswer('<%= ques.id%>')">view less</button>
+
+                        <form action="/addToFavQuestion/<%=userId%>" method="POST">
+                            <input type="hidden" name="QuesId" value="<%=ques._id%>">
+                            <input type="hidden" name="question"value="<%= ques.question%>">
+                            <input type="hidden" name="answer" value="<%= ques.answer%>">
+                         
+                            <button onclick="diable('<%= ques._id%>btn')" id="<%=ques._id%>btn" type="submit">add to fav</button>
+
+                        </form>
+                    </div>
+                </div>
+             
+            <% }) %>
                 <script>
                     function viewSAnswer(id) {
                         document.getElementById(id).style.display = 'block';
                     }
                     function closeAnswer(id) {
                         document.getElementById(id).style.display = 'none';
+                    }
+
+                    function diable (id){
+                        let btn = document.getElementById(id);
+                        btn.disabled = true;
+                        btn.style.background = "red";
                     }
                 </script>
     </body>
