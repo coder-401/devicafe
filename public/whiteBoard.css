@@ -1,0 +1,54 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+#canvas {
+	border: 2px solid black;
+	background-color: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 90vh;
+	width: 100%;
+}
+
+.eraser {
+	border: 2px solid black;
+	width: 100px;
+	background-color: blue;
+	position: absolute;
+	bottom: 10%;
+	left: 0;
+}
+.pen {
+	border: 2px solid black;
+	width: 100px;
+	background-color: blue;
+	position: absolute;
+	bottom: 10%;
+	right: 0;
+}
+.pen:hover {
+	cursor: pointer;
+	background-color: brown;
+}
+.eraser:hover {
+	cursor: pointer;
+	background-color: brown;
+}
+.tools {
+	display: flex;
+	flex-direction: row;
+}
+
+.btn-hide-show {
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.hide {
+	display: none;
+}

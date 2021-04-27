@@ -12,10 +12,13 @@
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
         <link rel="stylesheet" href="./../../zoom.css">
+        <link rel="stylesheet" href="./../../whiteBoard.css">
 
     </head>
 
     <body style="background-color: aqua; color: black;">
+
+
         <form action="/signOut" method="POST">
             <input type="submit" value="sign out">
         </form>
@@ -83,28 +86,36 @@
         </div>
         <section>
             <% if (role==='interviewer' ) {%>
-            <form id="CCForm" action="">
-                <label for="">Code Challenge difficulty</label>
-                <select name="difficulty" id="">
-                    <option value="Easy">Easy</option>
-                    <option value="Meduim">Meduim</option>
-                    <option value="Hard">Hard</option>
-                </select><br>
-                <button type="submit">View</button>
-            </form>
-            <div class="CC">
-         
-            </div>
-            <iframe id="iframe"></iframe>
-            <%} %>
+                <form id="CCForm" action="">
+                    <label for="">Code Challenge difficulty</label>
+                    <select name="difficulty" id="">
+                        <option value="Easy">Easy</option>
+                        <option value="Meduim">Meduim</option>
+                        <option value="Hard">Hard</option>
+                    </select><br>
+                    <button type="submit">View</button>
+                </form>
+                <div class="CC">
+
+                </div>
+                <iframe id="iframe"></iframe>
+                <%} %>
         </section>
+
+
+        <canvas id="canvas" class="hide"></canvas>
+        <div class="tools">
+            <div id="eraser" class="eraser hide">eraser</div>
+            <div id="pen" class="pen hide">pen</div>
+        </div>
+
+        <button class="btn-hide-show">Hide/show</button>
+
+
         <script>
             let username = "<%=username %>"
         </script>
-
-
-
-         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script> -->
@@ -113,6 +124,7 @@
             crossorigin="anonymous"></script>
         <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
+        <script src="./../../whiteBoard.js"></script>
         <script src="./../../zoom.js"></script>
     </body>
 
