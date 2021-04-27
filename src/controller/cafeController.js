@@ -59,28 +59,32 @@ const getSpecificTable = async (req, res) => {
 	const tableId = req.body.tableId;
 	const userId = req.params.id;
 
-	const username = await userCollection.get(userId);
+	if (tableId.length === 36) {
+		const username = await userCollection.get(userId);
 
-	if (secondUserRole === 'interviewer') {
-		return res.render('cafe/table', {
+		if (secondUserRole === 'interviewer') {
+			return res.render('cafe/table', {
+				userId,
+				tableId,
+				role: secondUserRole,
+				topic: secondUserTopic,
+				difficulty: secondUserDifficulty,
+				username: username.username,
+				questions: newQuestions,
+			});
+		}
+
+		res.render('cafe/table', {
 			userId,
 			tableId,
 			role: secondUserRole,
 			topic: secondUserTopic,
-			difficulty: secondUserDifficulty,
 			username: username.username,
-			questions: newQuestions,
+			difficulty: secondUserDifficulty,
 		});
 	}
 
-	res.render('cafe/table', {
-		userId,
-		tableId,
-		role: secondUserRole,
-		topic: secondUserTopic,
-		username: username.username,
-		difficulty: secondUserDifficulty,
-	});
+	res.redirect(`/cafe/${userId}`);
 };
 
 module.exports = {
