@@ -34,11 +34,11 @@
                 </a>
                 <div class="main__controls">
                     <div class="main__controls__block">
-                        <div onclick="muteUnmute()" class="main__controls__button main__mute_button">
+                        <div onclick="muteUnmute()" class="main__controls__button main__mute_button toggle2">
                             <i class="unmute fas fa-microphone-slash"></i>
                             <span>Unmute</span>
                         </div>
-                        <div onclick="playStop()" class="main__controls__button main__video_button">
+                        <div onclick="playStop()" class="main__controls__button main__video_button toggle">
                             <i class="stop fas fa-video-slash"></i>
                             <span>Play Video</span>
                         </div>
@@ -47,15 +47,15 @@
             </div>
 
 
-            <h3>
+            <h3 id="tableId">
                 Table Id: <%= tableId %>
             </h3>
 
             <ul class="users">
 
             </ul>
-
-
+            <button class="showQuesBtn" >show Question</button>
+            <section class="questionCont">
             <% if (role==='interviewer' ) {%>
                 <% questions.forEach(question=> {%>
                     <div style="border: 1px solid black; margin: 1rem;">
@@ -68,7 +68,7 @@
                     <% }) %>
 
                         <%} %>
-
+                </section>
                             <div class="main__right">
                                 <div class="main__header">
                                     <h6># Chat</h6>
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
         </div>
-        <section>
+        <section class="ccContainer">
             <% if (role==='interviewer' ) {%>
                 <form id="CCForm" action="">
                     <label for="">Code Challenge difficulty</label>
@@ -98,6 +98,7 @@
                 <div class="CC">
 
                 </div>
+                <button id="btnbtn">Hide Text Editor</button>
                 <iframe id="iframe"></iframe>
                 <%} %>
         </section>
@@ -112,10 +113,26 @@
         <button class="btn-hide-show">Hide/show</button>
 
 
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script>
             let username = "<%=username %>"
+
+            $('.showQuesBtn').on('click',()=>{
+                $('.questionCont').toggle();
+            })
+
+            $('#btnbtn').on('click',()=>{
+                $('#iframe').toggle();
+            })
+            // $('.toggle').on('click',()=>{
+            //     $('#video-grid').toggle()
+            // })
+            // $('.play').on('click',()=>{
+            //     $('#video-grid').hide()
+            // })
+
+
         </script>
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script> -->
