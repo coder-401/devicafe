@@ -6,6 +6,7 @@ const usersList = document.querySelector('.users');
 
 var myPeer = new Peer(undefined, {
 	port: '443',
+	secure: true,
 });
 
 let myVideoStream;
