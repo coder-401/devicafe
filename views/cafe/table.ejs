@@ -57,18 +57,17 @@
             <button class="showQuesBtn">show Question</button>
             <section class="questionCont">
                 <% if (role==='interviewer' ) {%>
-                    <%= console.log(questions) %>
-                        <% questions.forEach(question=> {%>
-                            <div style="border: 1px solid black; margin: 1rem;" class="question">
-                                <%= question.question %> <br>
-                                    <%= question.answer %><br>
-                                        <%= question.difficulty %><br>
-                                            <%= question.category %><br>
-                            </div>
+                    <% questions.forEach(question=> {%>
+                        <div style="border: 1px solid black; margin: 1rem;" class="question">
+                            <%= question.question %> <br>
+                                <%= question.answer %><br>
+                                    <%= question.difficulty %><br>
+                                        <%= question.category %><br>
+                        </div>
 
-                            <% }) %>
+                        <% }) %>
 
-                                <%} %>
+                            <%} %>
             </section>
             <div class="main__right">
                 <div class="main__header">
