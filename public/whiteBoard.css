@@ -9,8 +9,9 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 90vh;
+	height: 100vh;
 	width: 100%;
+z-index: 0;
 }
 
 .eraser {
@@ -18,15 +19,16 @@
 	width: 100px;
 	background-color: blue;
 	position: absolute;
-	bottom: 10%;
+	bottom: 0;
 	left: 0;
+	
 }
 .pen {
 	border: 2px solid black;
 	width: 100px;
 	background-color: blue;
 	position: absolute;
-	bottom: 10%;
+	bottom: 0;
 	right: 0;
 }
 .pen:hover {
@@ -44,9 +46,8 @@
 
 .btn-hide-show {
 	position: absolute;
-	bottom: 10%;
-	left: 50%;
-	transform: translateX(-50%);
+	top: 0;
+	right: 0;
 }
 
 .hide {

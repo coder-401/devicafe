@@ -107,6 +107,7 @@ const muteUnmute = () => {
 const playStop = () => {
 	let enabled = myVideoStream.getVideoTracks()[0].enabled;
 	if (enabled) {
+		console.log(myVideoStream)
 		myVideoStream.getVideoTracks()[0].enabled = false;
 		setPlayVideo();
 	} else {
@@ -133,7 +134,7 @@ const setUnmuteButton = () => {
 
 const setStopVideo = () => {
 	const html = `
-    <i class="fas fa-video"></i>
+    <i class="fas fa-video play"></i>
     <span>Stop Video</span>
   `;
 
@@ -157,6 +158,8 @@ if (iframe) {
 	iframe.style.display = 'none';
 
 	CCForm.addEventListener('submit', (eve) => {
+		const btnbtn = document.querySelector('#btnbtn');
+		btnbtn.style.display = 'block';
 		eve.preventDefault();
 		iframe.style.display = 'block';
 		let radIdx = getRandom();
