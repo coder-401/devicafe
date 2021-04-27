@@ -1,10 +1,14 @@
 'use strict';
 
 const User = require('./../../database/models/user');
-
+let token;
 module.exports = async (req, res, next) => {
 	try {
-		const token = req.cookies.access_token;
+		token = req.cookies.access_token;
+		
+		if(!token){
+			token = req.headers.authorization.split(' ').pop();
+		}
 		const userId = req.params.id;
 		if (token.length > 300) {
 			next();

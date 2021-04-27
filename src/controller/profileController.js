@@ -11,12 +11,12 @@ const userCollection = new collection(UserModel);
 let favQ;
 const updateProfile = async (req, res) => {
 	let id = req.params.id;
-	let body = req.body;
-	const user = await userCollection.update(id, body);
+	let record = req.body;
+	const user = await userCollection.update(id, record);
 	if(favQ){
-		res.render('profile', { user ,favQ});
+		return res.render('profile', { user ,favQ});
 	}
-	res.render('profile', { user });
+	return res.render('profile', { user });
 };
 
 const getProfile = async (req, res, next) => {
