@@ -16,11 +16,11 @@
 
     </head>
 
-    <body style="background-color: aqua; color: black;">
+    <body>
 
 
         <form action="/signOut" method="POST">
-            <input type="submit" value="sign out">
+            <input type="submit" value="sign out" class="btn-out">
         </form>
         <div class="main">
             <div class="main__left">
@@ -54,35 +54,35 @@
             <ul class="users">
 
             </ul>
-            <button class="showQuesBtn" >show Question</button>
             <section class="questionCont">
-            <% if (role==='interviewer' ) {%>
-                <% questions.forEach(question=> {%>
-                    <div style="border: 1px solid black; margin: 1rem;">
-                        <%= question.question %> <br>
-                            <%= question.answer %><br>
-                                <%= question.difficulty %><br>
-                                    <%= question.category %><br>
-                    </div>
+                <% if (role==='interviewer' ) {%>
+                    <button class="showQuesBtn">show Question</button>
+                    <% questions.forEach(question=> {%>
+                        <div style="border: 1px solid black; margin: 1rem;" class="question">
+                            <%= question.question %> <br>
+                                <%= question.answer %><br>
+                                    <%= question.difficulty %><br>
+                                        <%= question.category %><br>
+                        </div>
 
-                    <% }) %>
+                        <% }) %>
 
-                        <%} %>
-                </section>
-                            <div class="main__right">
-                                <div class="main__header">
-                                    <h6># Chat</h6>
-                                </div>
-                                <div class="main__chat_window">
-                                    <ul class="messages">
+                            <%} %>
+            </section>
+            <div class="main__right">
+                <div class="main__header">
+                    <h6># Chat</h6>
+                </div>
+                <div class="main__chat_window">
+                    <ul class="messages">
 
-                                    </ul>
+                    </ul>
 
-                                </div>
-                                <div class="main__message_container">
-                                    <input id="chat_message" type="text" placeholder="Type message here...">
-                                </div>
-                            </div>
+                </div>
+                <div class="main__message_container">
+                    <input id="chat_message" type="text" placeholder="Type message here...">
+                </div>
+            </div>
         </div>
         <section class="ccContainer">
             <% if (role==='interviewer' ) {%>
@@ -110,32 +110,22 @@
             <div id="pen" class="pen hide">pen</div>
         </div>
 
-        <button class="btn-hide-show">Hide/show</button>
+        <button class="btn-hide-show">Hide/show White Board</button>
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script>
             let username = "<%=username %>"
 
-            $('.showQuesBtn').on('click',()=>{
+            $('.showQuesBtn').on('click', () => {
                 $('.questionCont').toggle();
             })
 
-            $('#btnbtn').on('click',()=>{
+            $('#btnbtn').on('click', () => {
                 $('#iframe').toggle();
             })
-            // $('.toggle').on('click',()=>{
-            //     $('#video-grid').toggle()
-            // })
-            // $('.play').on('click',()=>{
-            //     $('#video-grid').hide()
-            // })
-
 
         </script>
-        <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             crossorigin="anonymous"></script>

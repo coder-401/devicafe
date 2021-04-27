@@ -11,34 +11,45 @@
 	left: 0;
 	height: 100vh;
 	width: 100%;
-z-index: 0;
+	z-index: 0;
 }
 
 .eraser {
 	border: 2px solid black;
 	width: 100px;
-	background-color: blue;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	
+	text-align: center;
+	color: black;
+	background-color: white;
+	padding: 0.5rem 1rem;
+	font-size: 1.5rem;
 }
 .pen {
 	border: 2px solid black;
 	width: 100px;
-	background-color: blue;
 	position: absolute;
 	bottom: 0;
 	right: 0;
+	text-align: center;
+	color: black;
+	background-color: white;
+	padding: 0.5rem 1rem;
+	font-size: 1.5rem;
 }
 .pen:hover {
 	cursor: pointer;
-	background-color: brown;
+	color: white;
+	background-color: black;
 }
+
 .eraser:hover {
 	cursor: pointer;
-	background-color: brown;
+	color: white;
+	background-color: black;
 }
+
 .tools {
 	display: flex;
 	flex-direction: row;
@@ -48,6 +59,23 @@ z-index: 0;
 	position: absolute;
 	top: 0;
 	right: 0;
+	color: black;
+	background-color: white;
+	padding: 0.5rem 1rem;
+	font-size: 1.5rem;
+}
+
+.btn-out {
+	color: black;
+	background-color: white;
+	padding: 0.5rem 1rem;
+	font-size: 1.5rem;
+}
+
+.btn-hide-show:hover {
+	cursor: pointer;
+	color: white;
+	background-color: black;
 }
 
 .hide {

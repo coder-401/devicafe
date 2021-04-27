@@ -59,7 +59,9 @@ socket.on('user-disconnected', (userId) => {
 });
 
 socket.on('roomUsers', (users) => {
-	usersList.innerHTML = users.map((user) => `<li>${user}</li>`).join('');
+	usersList.innerHTML = users
+		.map((user) => `<li>Username: ${user}</li>`)
+		.join('');
 });
 
 myPeer.on('open', (id) => {
@@ -107,7 +109,7 @@ const muteUnmute = () => {
 const playStop = () => {
 	let enabled = myVideoStream.getVideoTracks()[0].enabled;
 	if (enabled) {
-		console.log(myVideoStream)
+		console.log(myVideoStream);
 		myVideoStream.getVideoTracks()[0].enabled = false;
 		setPlayVideo();
 	} else {
