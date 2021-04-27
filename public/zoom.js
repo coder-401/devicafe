@@ -1,6 +1,6 @@
 'use strict';
 
-const socket = io('https://backenders-devecafe.herokuapp.com/');
+const socket = io();
 const videoGrid = document.getElementById('video-grid');
 const usersList = document.querySelector('.users');
 
