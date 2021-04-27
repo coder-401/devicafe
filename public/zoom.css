@@ -5,6 +5,7 @@
 }
 
 body {
+	height: 100%;
 	background-color: rgb(182, 179, 179);
 	color: black;
 }
@@ -69,6 +70,22 @@ ul {
 
 .question {
 	background-color: white;
+}
+
+.ccContainer {
+	margin-top: 5rem;
+	position: relative;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 50vh;
+	border: 2px solid black;
+}
+
+iframe {
+	position: absolute;
+	top: 100px;
+	left: 0;
 }
 
 /* ------------------------------------------------ */
