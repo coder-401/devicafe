@@ -32,6 +32,19 @@
             <input type="email" name="email" value="<%=user.email%>">
             <input type="submit" value="submit">
         </form>
+
+        <section>
+            <% if (favQ) { %>
+                <% favQ.forEach(ele => { %>
+    
+                    <div>
+                        <h3><%=ele.question%></h3>
+                        <p><%=ele.answer%></p>
+                    </div>
+                <% }) %>
+             
+            <% } %>
+        </section>
         <script>
             let updateInfoButton = document.getElementById("update-info");
             let form = document.getElementById("form")
