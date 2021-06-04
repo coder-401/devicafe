@@ -3,10 +3,10 @@
 const User = require('./../../database/models/user');
 
 module.exports = async (req, res, next) => {
-	const { email, username, password } = req.body;
+	const { username, password } = req.body;
 
 	try {
-		req.user = await User.authenticateBasic(email, username, password);
+		req.user = await User.authenticateBasic(username, password);
 		next();
 	} catch (e) {
 		_authError();
