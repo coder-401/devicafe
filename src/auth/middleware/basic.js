@@ -3,16 +3,16 @@
 const User = require('./../../database/models/user');
 
 module.exports = async (req, res, next) => {
-	const { username, password } = req.body;
+	const { email, username, password } = req.body;
 
 	try {
-		req.user = await User.authenticateBasic(username, password);
+		req.user = await User.authenticateBasic(email, username, password);
 		next();
 	} catch (e) {
 		_authError();
 	}
 
 	function _authError() {
-		res.status(403).send('Invalid Login');
+		res.status(400).json('incorrect credentials');
 	}
 };

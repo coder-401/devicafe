@@ -41,14 +41,23 @@ users.pre('save', async function () {
 });
 
 // BASIC AUTH
-users.statics.authenticateBasic = async function (username, password) {
+users.statics.authenticateBasic = async function (email, username, password) {
 	try {
-		const user = await this.findOne({ username });
-		const valid = await bcrypt.compare(password, user.password);
-		if (valid) {
-			return user;
+		if (username) {
+			const user = await this.findOne({ username });
+			const valid = await bcrypt.compare(password, user.password);
+			if (valid) {
+				return user;
+			}
+		} else if (email) {
+			const user = await this.findOne({ email });
+			const valid = await bcrypt.compare(password, user.password);
+			if (valid) {
+				return user;
+			}
+		} else {
+			throw new Error('Invalid User');
 		}
-		throw new Error('Invalid User');
 	} catch (error) {
 		throw new Error(error.message);
 	}
