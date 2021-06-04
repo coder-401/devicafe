@@ -19,7 +19,11 @@ let users = new Schema({
 
 users.virtual('token').get(function () {
 	let tokenObject = {
+		_id: this._id,
 		username: this.username,
+		email: this.email,
+		password: this.password,
+		role: this.role,
 	};
 
 	return jwt.sign(tokenObject, process.env.SECRET);
@@ -38,6 +42,10 @@ users.pre('save', async function () {
 	if (this.isModified('password')) {
 		this.password = await bcrypt.hash(this.password, 10);
 	}
+});
+
+users.pre('findOneAndUpdate', async function () {
+	this._update.password = await bcrypt.hash(this._update.password, 10);
 });
 
 // BASIC AUTH

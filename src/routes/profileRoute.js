@@ -10,9 +10,7 @@ const {
 
 const bearerAuth = require('./../auth/middleware/bearer');
 
-router.put('/profile/:id', bearerAuth, updateProfile);
 router.get('/profile/:id', bearerAuth, getProfile);
-router.get('/profile',(req,res)=>{
-	throw Error()
-})
+router.put('/profile/:id', bearerAuth, updateProfile);
+
 module.exports = router;
