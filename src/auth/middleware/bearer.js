@@ -4,11 +4,12 @@ const User = require('./../../database/models/user');
 
 module.exports = async (req, res, next) => {
 	try {
-		let token = req.cookies.access_token;
+		let token = req.cookies.auth;
 
 		if (!token) {
 			token = req.headers.authorization.split(' ').pop();
 		}
+
 		const userId = req.params.id;
 
 		const validUser = await User.authenticateWithToken(token, userId);

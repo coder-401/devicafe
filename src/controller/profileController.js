@@ -1,38 +1,33 @@
 'use strict';
 
 const collection = require('./../database/controller/data-collection');
-
 const UserModel = require('./../database/models/user');
-const FavQesModel = require('./../database/models/favQuestion');
-
-const favQuesCollection = new collection(FavQesModel);
-
 const userCollection = new collection(UserModel);
-let favQ;
-const updateProfile = async (req, res) => {
-	let id = req.params.id;
-	let record = req.body;
-	const user = await userCollection.update(id, record);
-	if(favQ){
-		return res.render('profile', { user ,favQ});
-	}
-	return res.render('profile', { user });
-};
 
-const getProfile = async (req, res, next) => {
+const getProfile = async (req, res) => {
 	try {
 		const id = req.params.id;
 		const user = await userCollection.get(id);
 
-		 favQ = await FavQesModel.find().populate("owner").select("question answer");
-		
-		res.render('profile', { user,favQ });
+		res.status(200).json(user);
 	} catch (e) {
 		res.status(403).json({ error: e.message });
 	}
 };
 
+const updateProfile = async (req, res) => {
+	try {
+		const id = req.params.id;
+		const record = req.body;
+		const user = await userCollection.update(id, record);
+
+		res.status(200).json(user);
+	} catch (error) {
+		res.status(403).json({ error: e.message });
+	}
+};
+
 module.exports = {
-	updateProfile,
 	getProfile,
+	updateProfile,
 };
