@@ -17,7 +17,6 @@ const cafeRoutes = require('./routes/cafeRoutes');
 
 const errorHandler = require('./error-handler/500.js');
 const notFound = require('./error-handler/404.js');
-const user = require('./database/models/user');
 
 // Prepare the express app
 const app = express();
@@ -46,8 +45,6 @@ app.use('*', notFound);
 app.use(errorHandler);
 
 //socket connections
-let postOwner;
-let commentOwner;
 let users = [];
 
 io.on('connection', (socket) => {
@@ -70,6 +67,7 @@ io.on('connection', (socket) => {
 			io.to(roomId).emit('roomUsers', users);
 		});
 	});
+
 	/*------------------------------whiteBoard---------------------------------*/
 	let drawing = false;
 	let strokeStyle = 'black';
@@ -90,68 +88,13 @@ io.on('connection', (socket) => {
 		}
 	});
 
-	/*------------------------------Post_Part---------------------------------*/
-	// let userPostRecord;
-	// socket.on('post', (userPost, userId) => {
-	// 	savePostInDB(userPost, userId).then((data) => {
-	// 		userPostRecord = data;
-	// 		io.emit('postpublic', userPostRecord, postOwner);
-	// 	});
-	// });
-	/*---------------------------------Comment_Part-----------------------------*/
-	// let userCommentRecord;
-	// socket.on('comment', (comment, postId, userId) => {
-	// 	saveCommentInDB(comment, postId, userId).then((data) => {
-	// 		userCommentRecord = data;
-	// 		io.emit('commentpublic', userCommentRecord, commentOwner);
-	// 	});
-	// });
 	/*--------------------------Code_Challenge_Part-----------------------------*/
 	socket.on('showcodechallenge', (veiwFrame) => {
 		socket.broadcast.emit('publiccode', veiwFrame);
 	});
 });
-/*---------------------------Save Post in DataBase-------------------------*/
-
-// async function savePostInDB(userPost, userId) {
-// 	const Posts = require('./database/models/posts');
-// 	const Users = require('./database/models/user');
-
-// 	const user = await Users.find({ _id: userId });
-// 	postOwner = user[0].username;
-
-// 	let post = new Posts({
-// 		description: userPost,
-// 		owner: user[0],
-// 	});
-
-// 	const userPostRecord = await post.save();
-// 	// const any = await Posts.find({}).populate('comments').select('description owner -_id')
-// 	// console.log(any,"ANY++++++++++++++++++++")
-// 	return userPostRecord;
-// }
-/*---------------------------Save Comment in DataBase-------------------------*/
-// async function saveCommentInDB(userComment, postId, userId) {
-// 	const Comment = require('./database/models/comments');
-// 	const Users = require('./database/models/user');
-
-// 	const user = await Users.find({ _id: userId });
-// 	commentOwner = user[0].username;
-
-// 	let comment = new Comment({
-// 		description: userComment,
-// 		post: postId,
-// 		owner: userId,
-// 	});
-
-// 	const userCommentRecord = await comment.save();
-// 	return userCommentRecord;
-// }
-
-/*----------------------------------------------------------------------------------*/
 
 module.exports = {
-	server,
 	start: (port) => {
 		if (!port) {
 			throw new Error('Missing Port');

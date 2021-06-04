@@ -1,583 +1,583 @@
 [
-   {
-      "question":"What is JavaScript?",
-      "answer":"JavaScript is a scripting language used for programming web pages as well as server systems. It is an object-oriented, interpreted, lightweight and powerful programming language, made up of first-class functions. The JavaScript can update the content dynamically for web pages.",
-      "difficulty":"beginner",
-      "category":"javascript",
-      "id":1
-   },
-   {
-      "question":" Name the different types of JavaScript data?",
-      "answer":"String   Function   Boolean   Object   Number ",
-      "difficulty":"beginner",
-      "category":"javascript",
-      "id":2
-   },
-   {
-      "question":"What is the definition of global variables? In what way, these variables are declared? ",
-      "answer":"A global variable is a special kind of variable in JavaScript. This variable is easy to use and also available across the entire length of the JavaScript code. Mainly, the var keyword is used whether to declare a global or local variable.",
-      "difficulty":"beginner",
-      "category":"javascript",
-      "id":3
-   },
-   {
-      "question":"What is the definition of the prompt box? ",
-      "answer":"The Input provided by any user in the JavaScript is entered with the help of a prompt box. While putting forward the data or the input, the prompt box allows the user to do this with the help of a text box. To include the number, label box is also used.",
-      "difficulty":"beginner",
-      "category":"javascript",
-      "id":4
-   },
-   {
-      "question":"Name the different types of groups of data types that are used in JavaScript and define them?",
-      "answer":"There are two basic groups of data types -    Reference type- These are complex types of data that can mainly include dates and strings.  Primitive type- These are the types of data that include numbers",
-      "difficulty":"beginner",
-      "category":"javascript",
-      "id":5
-   },
-   {
-      "question":"Name the problems that are associated with the use of global variables?",
-      "answer":"Even though global variables are easy to use, these have some shortfalls. While using this type of variables, the problem of clashing of the variable names of different global and local scope occurs. The code that is often relied on the global variable also gets difficult to be tested and debugged.",
-      "difficulty":"beginner",
-      "category":"javascript",
-      "id":6
-   },
-   {
-      "question":"Which Company developed JavaScript?",
-      "answer":"Netscape company had developed the JavaScript Programming Language.",
-      "difficulty":"beginner",
-      "category":"javascript",
-      "id":7
-   },
-   {
-      "question":"What type of variables we use in JavaScript?",
-      "answer":"We use object data type variables in JavaScript.",
-      "difficulty":"beginner",
-      "category":"javascript",
-      "id":8
-   },
-   {
-      "question":" What is mean by NULL in JavaScript?",
-      "answer":"If no value has been given to the variable then, it is called a null object (or) null value.",
-      "difficulty":"beginner",
-      "category":"javascript",
-      "id":9
-   },
-   {
-      "question":"Which property is used to detect the operating system in a cloud machine?",
-      "answer":"Navigator. platform String property is used to detect issues of the operating system in a cloud.",
-      "difficulty":"beginner",
-      "category":"javascript",
-      "id":10
-   },
-   {
-      "question":" List out different types of errors in JavaScript?",
-      "answer":" Different types of errors in JavaScript are:  Run time errors- errors occurred due to misrepresentation of HTML commands. Load time errors- errors occurred at the time of web page loading are known as load time errors. These errors may occur due to improper syntaxes Logical errors- logical errors may occur due to improper logical performance of the function.",
-      "difficulty":"intermidate",
-      "category":"javascript",
-      "id":11
-   },
-   {
-      "question":" How to get an element by class in JavaScript?",
-      "answer":" By using  method Document.getElementsByclass name(), we can get elements in class name.",
-      "difficulty":"intermidate",
-      "category":"javascript",
-      "id":12
-   },
-   {
-      "question":"What is a closure?",
-      "answer":"The closure is a primary mechanism to private the data items. Closures give access to the outer function’s scope from inner function scope. Closures are created for every function in JavaScript. To define a closure, create a function inside another function to expose it. ",
-      "difficulty":"intermidate",
-      "category":"javascript",
-      "id":13
-   },
-   {
-      "question":"What is “===” operator?",
-      "answer":"“===” is a strict equality operator, returns a true value, if the two operands have the same value.",
-      "difficulty":"intermidate",
-      "category":"javascript",
-      "id":14
-   },
-   {
-      "question":"How can we read the properties of JavaScript?",
-      "answer":"Using dot(.) notation we can read and write the properties of JS.",
-      "difficulty":"intermidate",
-      "category":"javascript",
-      "id":15
-   },
-   {
-      "question":"What is the difference between Attributes and properties?",
-      "answer":"Attributes- Attributes provide the information about the details given to objects like name, age, id, etc, Properties- Properties gives information about the values given to the objects.",
-      "difficulty":"intermidate",
-      "category":"javascript",
-      "id":16
-   },
-   {
-      "question":"What are the possible ways to define a variable in JavaScript?",
-      "answer":"There are three possible ways to declare a variable in JavaScript are:  Var- variables and values of variables can be declared to the Variable statement by Variable statement. Example - var b = 20;. Declaration of variables should be done before the execution of code. Const- A constant variable is assigned with one value only once before the execution of code. let- If let statements are used in the variable declaration, the variable values can be reassigned before the execution of code.",
-      "difficulty":"intermidate",
-      "category":"javascript",
-      "id":17
-   },
-   {
-      "question":"What are the terms BOM and DOM in JavaScript?",
-      "answer":"BOM- BOM is a Browser Object Model, in which the window object is supported by all the browsers. The JavaScript objects, variables and functions also become the members of the window object. This model deals with the objects of browsers like location, navigator, history, and screen. DOM- DOM is a Document Object Model in JavaScript that helps to access document and HTML elements. When a web page is loaded the browser creates a DOM for the page. All the objects on the page all arranged in an order.",
-      "difficulty":"intermidate",
-      "category":"javascript",
-      "id":18
-   },
-   {
-      "question":"Explain the terms array slice() and array splice()?",
-      "answer":"Array slice() method removes the array items from the array and reforms the removed items into a new array. The selected items through an array slice() method are removed from the array and formed as another new array.   array splice() method removes the items of the selected array from the array and does not form another array.",
-      "difficulty":"intermidate",
-      "category":"javascript",
-      "id":19
-   },
-   {
-      "question":"Explain View state and Session state?",
-      "answer":"View State- The particular point of time where the user spent on only a page of the session is called view state Session State- Where the browser or user spends on all pages of the application is called session state.",
-      "difficulty":"intermidate",
-      "category":"javascript",
-      "id":20
-   },
-   {
-      "question":"Explain about MUL function in JavaScript?",
-      "answer":"MUL is a multiplication function. The multiplication of numbers can be done as a value is defined in the function and the value is returned by another function and the process goes on.",
-      "difficulty":"advance",
-      "category":"javascript",
-      "id":21
-   },
-   {
-      "question":"Can redirection of a page is possible in JavaScript?",
-      "answer":"Redirection of the page is possible in JavaScript. By using two ways we can redirect a page to other pages, they are:Location.href- This is one of the ways to redirect a page. By this, we can get back access to the document. Location.replace- In this, we can’t get access back the actual document.",
-      "difficulty":"advance",
-      "category":"javascript",
-      "id":22
-   },
-   {
-      "question":"How to add and remove properties from objects?",
-      "answer":"By using,object.property_name The = value we can add a property to the JS object  By using, deleteobject.property_name is used to remove the property from the JS object.",
-      "difficulty":"advance",
-      "category":"javascript",
-      "id":23
-   },
-   {
-      "question":"Name some of the JavaScript frameworks?",
-      "answer":"The applications written in JavaScript are known as JavaScript frameworks. These frameworks are a different form of JavaScript libraries and flows. Here is a list of some important frameworks, they are:  Angular JS Vue  React",
-      "difficulty":"advance",
-      "category":"javascript",
-      "id":24
-   },
-   {
-      "question":"Explain about escape characters?",
-      "answer":" Espace characters are used to handle the special characters without breaking the code in javascript. It uses a black slash for different characters like single and double quotes, newline and so on  ’ single quote   backslash ’’ double quote n  newline b  backspace t  tab f   form feed",
-      "difficulty":"advance",
-      "category":"javascript",
-      "id":25
-   },
-   {
-      "question":"How set object is used in JavaScript?",
-      "answer":"Set objects are used to store different values to the elements. The values may be a reference or primitive values.",
-      "difficulty":"advance",
-      "category":"javascript",
-      "id":26
-   },
-   {
-      "question":"Write about number objects?",
-      "answer":"Number objects help to represent the number of values to the variables. The values may be floating point or integer. In JavaScript, the floating points are represented by using the IEEE standard.",
-      "difficulty":"advance",
-      "category":"javascript",
-      "id":27
-   },
-   {
-      "question":" Explain about escape characters?",
-      "answer":"Espace characters are used to handle the special characters without breaking the code in javascript. It uses a black slash for different characters like single and double quotes, newline and so on  ’ single quote   backslash ’’ double quote n  newline b  backspace t  tab f   form feed",
-      "difficulty":"advance",
-      "category":"javascript",
-      "id":28
-   },
-   {
-      "question":"What is the use of Weakmap object in JavaScript?",
-      "answer":"Weakmap is similar to a collection of objects like a map. If the weak map object is set to a process, it considers each element as a key object and that key object will have a weak reference.",
-      "difficulty":"advance",
-      "category":"javascript",
-      "id":29
-   },
-   {
-      "question":" What is meant by the debugger in JavaScript?",
-      "answer":"Debugger keyword in JavaScript helps in setting a breakpoint in the code itself. The program will stop executing code where the debugger keyword is applied in the program.",
-      "difficulty":"advance",
-      "category":"javascript",
-      "id":30
-   },
-   {
-      "question":"What is Node.js? Where can you use it?",
-      "answer":"Node.js is an open-source, cross-platform JavaScript runtime environment and library to run web applications outside the client’s browser. It is used to create server-side web applications.  Node.js is perfect for data-intensive applications as it uses an asynchronous, event-driven model. You can use  I/O intensive web applications like video streaming sites. You can also use it for developing: Real-time web applications, Network applications, General-purpose applications, and Distributed systems.",
-      "difficulty":"beginner",
-      "category":"node",
-      "id":31
-   },
-   {
-      "question":"Why use Node.js?",
-      "answer":"Node.js makes building scalable network programs easy. Some of its advantages include:  It is generally fast It rarely blocks It offers a unified programming language and data type Everything is asynchronous  It yields great concurrency",
-      "difficulty":"beginner",
-      "category":"node",
-      "id":32
-   },
-   {
-      "question":"Why is Node.js Single-threaded?",
-      "answer":"Node.js is single-threaded for async processing. By doing async processing on a single-thread under typical web loads, more performance and scalability can be achieved instead of the typical thread-based implementation.",
-      "difficulty":"beginner",
-      "category":"node",
-      "id":33
-   },
-   {
-      "question":"Explain callback in Node.js.",
-      "answer":"A callback function is called after a given task. It allows other code to be run in the meantime and prevents any blocking.  Being an asynchronous platform, Node.js heavily relies on callback. All APIs of Node are written to support callbacks.",
-      "difficulty":"beginner",
-      "category":"node",
-      "id":34
-   },
-   {
-      "question":" How would you define the term I/O? ",
-      "answer":"The term I/O is used to describe any program, operation, or device that transfers data to or from a medium and to or from another medium Every transfer is an output from one medium and an input into another. The medium can be a physical device, network, or files within a system",
-      "difficulty":"beginner",
-      "category":"node",
-      "id":35
-   },
-   {
-      "question":"How is Node.js most frequently used?",
-      "answer":"Node.js is widely used in the following applications:  Real-time chats Internet of Things Complex SPAs (Single-Page Applications) Real-time collaboration tools Streaming applications Microservices architecture",
-      "difficulty":"beginner",
-      "category":"node",
-      "id":36
-   },
-   {
-      "question":"What is NPM?",
-      "answer":"NPM stands for Node Package Manager, responsible for managing all the packages and modules for Node.js.  Node Package Manager provides two main functionalities:  Provides online repositories for node.js packages/modules, which are searchable on search.nodejs.org Provides command-line utility to install Node.js packages and also manages Node.js versions and dependencies  ",
-      "difficulty":"beginner",
-      "category":"node",
-      "id":37
-   },
-   {
-      "question":"Why is Node.js preferred over other backend technologies like Java and PHP?",
-      "answer":"Some of the reasons why Node.js is preferred include:  Node.js is very fast Node Package Manager has over 50,000 bundles available at the developer’s disposal Perfect for data-intensive, real-time web applications, as Node.js never waits for an API to return data Better synchronization of code between server and client due to same code base Easy for web developers to start using Node.js in their projects as it is a JavaScript library",
-      "difficulty":"beginner",
-      "category":"node",
-      "id":38
-   },
-   {
-      "question":"Which database is more popularly used with Node.js?",
-      "answer":"MongoDB is the most common database used with Node.js. It is a NoSQL, cross-platform, document-oriented database that provides high performance, high availability, and easy scalability.",
-      "difficulty":"beginner",
-      "category":"node",
-      "id":39
-   },
-   {
-      "question":"What are some of the most commonly used libraries in Node.js?",
-      "answer":"There are two commonly used libraries in Node.js:  ExpressJS - Express is a flexible Node.js web application framework that provides a wide set of features to develop web and mobile applications. Mongoose - Mongoose is also a Node.js web application framework that makes it easy to connect an application to a database.",
-      "difficulty":"beginner",
-      "category":"node",
-      "id":40
-   },
-   {
-      "question":"What does event-driven programming mean?",
-      "answer":"An event-driven programming approach uses events to trigger various functions. An event can be anything, such as typing a key or clicking a mouse button. A call-back function is already registered with the element executes whenever an event is triggered.",
-      "difficulty":"intermidate",
-      "category":"node",
-      "id":41
-   },
-   {
-      "question":"What is an Event Loop in Node.js?",
-      "answer":"Event loops handle asynchronous callbacks in Node.js. It is the foundation of the non-blocking input/output in Node.js, making it one of the most important environmental features.",
-      "difficulty":"intermidate",
-      "category":"node",
-      "id":42
-   },
-   {
-      "question":"What is an EventEmitter in Node.js?",
-      "answer":"EventEmitter is a class that holds all the objects that can emit events Whenever an object from the EventEmitter class throws an event, all attached functions are called upon synchronously",
-      "difficulty":"intermidate",
-      "category":"node",
-      "id":43
-   },
-   {
-      "question":"What are the two types of API functions in Node.js?",
-      "answer":"The two types of API functions in Node.js are:  Asynchronous, non-blocking functions Synchronous, blocking functions",
-      "difficulty":"intermidate",
-      "category":"node",
-      "id":44
-   },
-   {
-      "question":"What is the package.json file?",
-      "answer":"The package.json file is the heart of a Node.js system. This file holds the metadata for a particular project. The package.json file is found in the root directory of any Node application or module  This is what a package.json file looks like immediately after creating a Node.js project using the command: npm init  You can edit the parameters when you create a Node.js project.",
-      "difficulty":"intermidate",
-      "category":"node",
-      "id":45
-   },
-   {
-      "question":"What is the Express.js package?",
-      "answer":"Express is a flexible Node.js web application framework that provides a wide set of features to develop both web and mobile applications",
-      "difficulty":"intermidate",
-      "category":"node",
-      "id":46
-   },
-   {
-      "question":"What are streams in Node.js?",
-      "answer":"Streams are objects that enable you to read data or write data continuously.  There are four types of streams:  Readable – Used for reading operations  Writable − Used for write operations  Duplex − Can be used for both reading and write operations  Transform − A type of duplex stream where the output is computed based on input",
-      "difficulty":"intermidate",
-      "category":"node",
-      "id":47
-   },
-   {
-      "question":"How do you create a simple server in Node.js that returns Hello World?",
-      "answer":"Import the HTTP module Use createServer function with a callback function using request and response as parameters. Type “hello world.\"  Set the server to listen to port 8080 and assign an IP address",
-      "difficulty":"intermidate",
-      "category":"node",
-      "id":48
-   },
-   {
-      "question":"Explain asynchronous and non-blocking APIs in Node.js.",
-      "answer":"All Node.js library APIs are asynchronous, which means they are also non-blocking A Node.js-based server never waits for an API to return data. Instead, it moves to the next API after calling it, and a notification mechanism from a Node.js event responds to the server for the previous API call",
-      "difficulty":"intermidate",
-      "category":"node",
-      "id":49
-   },
-   {
-      "question":"What is the purpose of module.exports?",
-      "answer":"A module in Node.js is used to encapsulate all the related codes into a single unit of code, which can be interpreted by shifting all related functions into a single file. You can export a module using the module.exports, which allows it to be imported into another file using a required keyword.",
-      "difficulty":"intermidate",
-      "category":"node",
-      "id":50
-   },
-   {
-      "question":"What is REPL in Node.js?",
-      "answer":"REPL stands for Read Eval Print Loop, and it represents a computer environment. It’s similar to a Windows console or Unix/Linux shell in which a command is entered. Then, the system responds with an output",
-      "difficulty":"advance",
-      "category":"node",
-      "id":51
-   },
-   {
-      "question":"What is the control flow function?",
-      "answer":"The control flow function is a piece of code that runs in between several asynchronous function calls.",
-      "difficulty":"advance",
-      "category":"node",
-      "id":52
-   },
-   {
-      "question":"How does control flow manage the function calls?",
-      "answer":"control order of execution , collect data ,limit concurrency , call the next step in the program",
-      "difficulty":"advance",
-      "category":"node",
-      "id":53
-   },
-   {
-      "question":"What is the buffer class in Node.js?",
-      "answer":"Buffer class stores raw data similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap. Buffer class is used because pure JavaScript is not compatible with binary data",
-      "difficulty":"advance",
-      "category":"node",
-      "id":54
-   },
-   {
-      "question":"What is piping in Node.js?",
-      "answer":"Piping is a mechanism used to connect the output of one stream to another stream. It is normally used to retrieve data from one stream and pass output to another stream",
-      "difficulty":"advance",
-      "category":"node",
-      "id":55
-   },
-   {
-      "question":"What is callback hell?",
-      "answer":"Callback hell, also known as the pyramid of doom, is the result of intensively nested, unreadable, and unmanageable callbacks, which in turn makes the code harder to read and debug improper implementation of the asynchronous logic causes callback hell",
-      "difficulty":"advance",
-      "category":"node",
-      "id":56
-   },
-   {
-      "question":"What is a reactor pattern in Node.js?",
-      "answer":"A reactor pattern is a concept of non-blocking I/O operations. This pattern provides a handler that is associated with each I/O operation. As soon as an I/O request is generated, it is then submitted to a demultiplexer",
-      "difficulty":"advance",
-      "category":"node",
-      "id":57
-   },
-   {
-      "question":"Explain the concept of middleware in Node.js.",
-      "answer":"Middleware is a function that receives the request and response objects. Most tasks that the middleware functions perform are:    Execute any code Update or modify the request and the response objects Finish the request-response cycle Invoke the next middleware in the stack",
-      "difficulty":"advance",
-      "category":"node",
-      "id":58
-   },
-   {
-      "question":"What are the different types of HTTP requests?",
-      "answer":"HTTP defines a set of request methods used to perform desired actions. The request methods include:  GET: Used to retrieve the data  POST: Generally used to make a change in state or reactions on the server  HEAD: Similar to the GET method, but asks for the response without the response body  DELETE: Used to delete the predetermined resource",
-      "difficulty":"advance",
-      "category":"node",
-      "id":59
-   },
-   {
-      "question":"How would you connect a MongoDB database to Node.js?",
-      "answer":"To create a database in MongoDB:  Start by creating a MongoClient object Specify a connection URL with the correct IP address and the name of the database you want to create",
-      "difficulty":"advance",
-      "category":"node",
-      "id":60
-   },
-   {
-      "question":"What are the features of React?",
-      "answer":"JSX , Components ,Virtual DOM,One-way data-binding",
-      "difficulty":"beginner",
-      "category":"react",
-      "id":61
-   },
-   {
-      "question":"What is JSX?",
-      "answer":"JSX is a syntax extension of JavaScript. It is used with React to describe what the user interface should look like. By using JSX, we can write HTML structures in the same file that contains JavaScript code.",
-      "difficulty":"beginner",
-      "category":"react",
-      "id":62
-   },
-   {
-      "question":"Can web browsers read JSX directly? ",
-      "answer":"Web browsers cannot read JSX directly. This is because they are built to only read regular JS objects and JSX is not a regular JavaScript object  For a web browser to read a JSX file, the file needs to be transformed into a regular JavaScript object. For this, we use Babel",
-      "difficulty":"beginner",
-      "category":"react",
-      "id":63
-   },
-   {
-      "question":"What is the virtual DOM?",
-      "answer":"DOM stands for Document Object Model. The DOM represents an HTML document with a logical tree structure. Each branch of the tree ends in a node, and each node contains objects.",
-      "difficulty":"beginner",
-      "category":"react",
-      "id":64
-   },
-   {
-      "question":"What are synthetic events in React?",
-      "answer":"Synthetic events combine the response of different browser's native events into one API, ensuring that the events are consistent across different browsers. The application is consistent regardless of the browser it is running in. Here, preventDefault is a synthetic event.",
-      "difficulty":"beginner",
-      "category":"react",
-      "id":65
-   },
-   {
-      "question":"Explain how lists work in React",
-      "answer":"We create lists in React as we do in regular JavaScript. Lists display data in an ordered format The traversal of lists is done using the map() function",
-      "difficulty":"beginner",
-      "category":"react",
-      "id":66
-   },
-   {
-      "question":"Why is there a need for using keys in Lists?",
-      "answer":"Keys are very important in lists for the following reasons:  A key is a unique identifier and it is used to identify which items have changed, been updated or deleted from the lists It also helps to determine which components need to be re-rendered instead of re-rendering all the components every time. Therefore, it increases performance, as only the updated components are re-rendered",
-      "difficulty":"beginner",
-      "category":"react",
-      "id":67
-   },
-   {
-      "question":"What are forms in React?",
-      "answer":"React employs forms to enable users to interact with web applications.  Using forms, users can interact with the application and enter the required information whenever needed. Form contain certain elements, such as text fields, buttons, checkboxes, radio buttons, etc Forms are used for many different tasks such as user authentication, searching, filtering, indexing, etc",
-      "difficulty":"beginner",
-      "category":"react",
-      "id":68
-   },
-   {
-      "question":"What is an arrow function in react?",
-      "answer":"An arrow function is a short way of writing a function to React.",
-      "difficulty":"beginner",
-      "category":"react",
-      "id":69
-   },
-   {
-      "question":"What are the components in React?",
-      "answer":"Components are the building blocks of any React application, and a single app usually consists of multiple components. A component is essentially a piece of the user interface. It splits the user interface into independent, reusable parts that can be processed separately.",
-      "difficulty":"intermidate",
-      "category":"react",
-      "id":70
-   },
-   {
-      "question":"what is functional component in react ?",
-      "answer":"Functional Components: These types of components have no state of their own and only contain render methods, and therefore are also called stateless components. They may derive data from other components as props (properties).",
-      "difficulty":"intermidate",
-      "category":"react",
-      "id":71
-   },
-   {
-      "question":"what are class components in react ?",
-      "answer":"These types of components can hold and manage their own state and have a separate render method to return JSX on the screen. They are also called Stateful components as they can have a state.",
-      "difficulty":"intermidate",
-      "category":"react",
-      "id":72
-   },
-   {
-      "question":"What is the use of render() in React?",
-      "answer":"It is required for each component to have a render() function. This function returns the HTML, which is to be displayed in the component.",
-      "difficulty":"intermidate",
-      "category":"react",
-      "id":73
-   },
-   {
-      "question":"What is a state in React?",
-      "answer":"The state is a built-in React object that is used to contain data or information about the component. The state in a component can change over time, and whenever it changes, the component re-renders. The change in state can happen as a response to user action or system-generated events. It determines the behavior of the component and how it will render.",
-      "difficulty":"intermidate",
-      "category":"react",
-      "id":74
-   },
-   {
-      "question":"What are props in React?",
-      "answer":"Props are short for Properties. It is a React built-in object that stores the value of attributes of a tag and works similarly to HTML attributes. Props provide a way to pass data from one component to another component. Props are passed to the component in the same way as arguments are passed in a function.",
-      "difficulty":"intermidate",
-      "category":"react",
-      "id":75
-   },
-   {
-      "question":"What is a higher-order component in React?",
-      "answer":"A higher-order component acts as a container for other components. This helps to keep components simple and enables re-usability. They are generally used when multiple components have to use a common logic. ",
-      "difficulty":"intermidate",
-      "category":"react",
-      "id":76
-   },
-   {
-      "question":"Explain the lifecycle methods of components.",
-      "answer":"getInitialState(): This is executed before the creation of the component. componentDidMount(): Is executed when the component gets rendered and placed on the DOM. shouldComponentUpdate(): Is invoked when a component determines changes to the DOM and returns a “true” or “false” value based on certain conditions. componentDidUpdate(): Is invoked immediately after rendering takes place. componentWillUnmount(): Is invoked immediately before a component is destroyed and unmounted permanently.",
-      "difficulty":"intermidate",
-      "category":"react",
-      "id":77
-   },
-   {
-      "question":" What is Redux?",
-      "answer":"Redux is an open-source, JavaScript library used to manage application state. React uses Redux to build the user interface. It is a predictable state container for JavaScript applications and is used for the entire application’s state management.",
-      "difficulty":"advance",
-      "category":"react",
-      "id":78
-   },
-   {
-      "question":"What are the components of Redux?",
-      "answer":"Store: Holds the state of the application. Action: The source information for the store. Reducer: Specifies how the application's state changes in response to actions sent to the store.",
-      "difficulty":"advance",
-      "category":"react",
-      "id":79
-   },
-   {
-      "question":"What is the Flux?",
-      "answer":"Flux is the application architecture that Facebook uses for building web applications. It is a method of handling complex data inside a client-side application and manages how data flows in a React application.",
-      "difficulty":"advance",
-      "category":"react",
-      "id":80
-   },
-   {
-      "question":"What is React Router?",
-      "answer":"React Router is a routing library built on top of React, which is used to create routes in a React application. ",
-      "difficulty":"advance",
-      "category":"react",
-      "id":81
-   },
-   {
-      "question":"Why do we need to React Router?",
-      "answer":"It maintains consistent structure and behavior and is used to develop single-page web applications.  Enables multiple views in a single application by defining multiple routes in the React application.",
-      "difficulty":"advance",
-      "category":"react",
-      "id":82
-   },
-   {
-      "question":"Explain the use of CSS modules in React.",
-      "answer":"The CSS module file is created with the .module.css extension The CSS inside a module file is available only for the component that imported it, so there are no naming conflicts while styling the components.",
-      "difficulty":"advance",
-      "category":"react",
-      "id":83
-   }
+	{
+		"question": "What is JavaScript?",
+		"answer": "JavaScript is a scripting language used for programming web pages as well as server systems. It is an object-oriented, interpreted, lightweight and powerful programming language, made up of first-class functions. The JavaScript can update the content dynamically for web pages.",
+		"difficulty": "beginner",
+		"category": "javascript",
+		"id": 1
+	},
+	{
+		"question": " Name the different types of JavaScript data?",
+		"answer": "String Function Boolean Object Number",
+		"difficulty": "beginner",
+		"category": "javascript",
+		"id": 2
+	},
+	{
+		"question": "What is the definition of global variables? In what way, these variables are declared? ",
+		"answer": "A global variable is a special kind of variable in JavaScript. This variable is easy to use and also available across the entire length of the JavaScript code. Mainly, the var keyword is used whether to declare a global or local variable.",
+		"difficulty": "beginner",
+		"category": "javascript",
+		"id": 3
+	},
+	{
+		"question": "What is the definition of the prompt box? ",
+		"answer": "The Input provided by any user in the JavaScript is entered with the help of a prompt box. While putting forward the data or the input, the prompt box allows the user to do this with the help of a text box. To include the number, label box is also used.",
+		"difficulty": "beginner",
+		"category": "javascript",
+		"id": 4
+	},
+	{
+		"question": "Name the different types of groups of data types that are used in JavaScript and define them?",
+		"answer": "There are two basic groups of data types -    Reference type- These are complex types of data that can mainly include dates and strings.  Primitive type- These are the types of data that include numbers",
+		"difficulty": "beginner",
+		"category": "javascript",
+		"id": 5
+	},
+	{
+		"question": "Name the problems that are associated with the use of global variables?",
+		"answer": "Even though global variables are easy to use, these have some shortfalls. While using this type of variables, the problem of clashing of the variable names of different global and local scope occurs. The code that is often relied on the global variable also gets difficult to be tested and debugged.",
+		"difficulty": "beginner",
+		"category": "javascript",
+		"id": 6
+	},
+	{
+		"question": "Which Company developed JavaScript?",
+		"answer": "Netscape company had developed the JavaScript Programming Language.",
+		"difficulty": "beginner",
+		"category": "javascript",
+		"id": 7
+	},
+	{
+		"question": "What type of variables we use in JavaScript?",
+		"answer": "We use object data type variables in JavaScript.",
+		"difficulty": "beginner",
+		"category": "javascript",
+		"id": 8
+	},
+	{
+		"question": " What is mean by NULL in JavaScript?",
+		"answer": "If no value has been given to the variable then, it is called a null object (or) null value.",
+		"difficulty": "beginner",
+		"category": "javascript",
+		"id": 9
+	},
+	{
+		"question": "Which property is used to detect the operating system in a cloud machine?",
+		"answer": "Navigator. platform String property is used to detect issues of the operating system in a cloud.",
+		"difficulty": "beginner",
+		"category": "javascript",
+		"id": 10
+	},
+	{
+		"question": " List out different types of errors in JavaScript?",
+		"answer": " Different types of errors in JavaScript are:  Run time errors- errors occurred due to misrepresentation of HTML commands. Load time errors- errors occurred at the time of web page loading are known as load time errors. These errors may occur due to improper syntaxes Logical errors- logical errors may occur due to improper logical performance of the function.",
+		"difficulty": "intermidate",
+		"category": "javascript",
+		"id": 11
+	},
+	{
+		"question": " How to get an element by class in JavaScript?",
+		"answer": " By using  method Document.getElementsByclass name(), we can get elements in class name.",
+		"difficulty": "intermidate",
+		"category": "javascript",
+		"id": 12
+	},
+	{
+		"question": "What is a closure?",
+		"answer": "The closure is a primary mechanism to private the data items. Closures give access to the outer function’s scope from inner function scope. Closures are created for every function in JavaScript. To define a closure, create a function inside another function to expose it. ",
+		"difficulty": "intermidate",
+		"category": "javascript",
+		"id": 13
+	},
+	{
+		"question": "What is “===” operator?",
+		"answer": "“===” is a strict equality operator, returns a true value, if the two operands have the same value.",
+		"difficulty": "intermidate",
+		"category": "javascript",
+		"id": 14
+	},
+	{
+		"question": "How can we read the properties of JavaScript?",
+		"answer": "Using dot(.) notation we can read and write the properties of JS.",
+		"difficulty": "intermidate",
+		"category": "javascript",
+		"id": 15
+	},
+	{
+		"question": "What is the difference between Attributes and properties?",
+		"answer": "Attributes- Attributes provide the information about the details given to objects like name, age, id, etc, Properties- Properties gives information about the values given to the objects.",
+		"difficulty": "intermidate",
+		"category": "javascript",
+		"id": 16
+	},
+	{
+		"question": "What are the possible ways to define a variable in JavaScript?",
+		"answer": "There are three possible ways to declare a variable in JavaScript are:  Var- variables and values of variables can be declared to the Variable statement by Variable statement. Example - var b = 20;. Declaration of variables should be done before the execution of code. Const- A constant variable is assigned with one value only once before the execution of code. let- If let statements are used in the variable declaration, the variable values can be reassigned before the execution of code.",
+		"difficulty": "intermidate",
+		"category": "javascript",
+		"id": 17
+	},
+	{
+		"question": "What are the terms BOM and DOM in JavaScript?",
+		"answer": "BOM- BOM is a Browser Object Model, in which the window object is supported by all the browsers. The JavaScript objects, variables and functions also become the members of the window object. This model deals with the objects of browsers like location, navigator, history, and screen. DOM- DOM is a Document Object Model in JavaScript that helps to access document and HTML elements. When a web page is loaded the browser creates a DOM for the page. All the objects on the page all arranged in an order.",
+		"difficulty": "intermidate",
+		"category": "javascript",
+		"id": 18
+	},
+	{
+		"question": "Explain the terms array slice() and array splice()?",
+		"answer": "Array slice() method removes the array items from the array and reforms the removed items into a new array. The selected items through an array slice() method are removed from the array and formed as another new array.   array splice() method removes the items of the selected array from the array and does not form another array.",
+		"difficulty": "intermidate",
+		"category": "javascript",
+		"id": 19
+	},
+	{
+		"question": "Explain View state and Session state?",
+		"answer": "View State- The particular point of time where the user spent on only a page of the session is called view state Session State- Where the browser or user spends on all pages of the application is called session state.",
+		"difficulty": "intermidate",
+		"category": "javascript",
+		"id": 20
+	},
+	{
+		"question": "Explain about MUL function in JavaScript?",
+		"answer": "MUL is a multiplication function. The multiplication of numbers can be done as a value is defined in the function and the value is returned by another function and the process goes on.",
+		"difficulty": "advance",
+		"category": "javascript",
+		"id": 21
+	},
+	{
+		"question": "Can redirection of a page is possible in JavaScript?",
+		"answer": "Redirection of the page is possible in JavaScript. By using two ways we can redirect a page to other pages, they are:Location.href- This is one of the ways to redirect a page. By this, we can get back access to the document. Location.replace- In this, we can’t get access back the actual document.",
+		"difficulty": "advance",
+		"category": "javascript",
+		"id": 22
+	},
+	{
+		"question": "How to add and remove properties from objects?",
+		"answer": "By using,object.property_name The = value we can add a property to the JS object  By using, deleteobject.property_name is used to remove the property from the JS object.",
+		"difficulty": "advance",
+		"category": "javascript",
+		"id": 23
+	},
+	{
+		"question": "Name some of the JavaScript frameworks?",
+		"answer": "The applications written in JavaScript are known as JavaScript frameworks. These frameworks are a different form of JavaScript libraries and flows. Here is a list of some important frameworks, they are:  Angular JS Vue  React",
+		"difficulty": "advance",
+		"category": "javascript",
+		"id": 24
+	},
+	{
+		"question": "Explain about escape characters?",
+		"answer": " Espace characters are used to handle the special characters without breaking the code in javascript. It uses a black slash for different characters like single and double quotes, newline and so on  ’ single quote   backslash ’’ double quote n  newline b  backspace t  tab f   form feed",
+		"difficulty": "advance",
+		"category": "javascript",
+		"id": 25
+	},
+	{
+		"question": "How set object is used in JavaScript?",
+		"answer": "Set objects are used to store different values to the elements. The values may be a reference or primitive values.",
+		"difficulty": "advance",
+		"category": "javascript",
+		"id": 26
+	},
+	{
+		"question": "Write about number objects?",
+		"answer": "Number objects help to represent the number of values to the variables. The values may be floating point or integer. In JavaScript, the floating points are represented by using the IEEE standard.",
+		"difficulty": "advance",
+		"category": "javascript",
+		"id": 27
+	},
+	{
+		"question": " Explain about escape characters?",
+		"answer": "Espace characters are used to handle the special characters without breaking the code in javascript. It uses a black slash for different characters like single and double quotes, newline and so on  ’ single quote   backslash ’’ double quote n  newline b  backspace t  tab f   form feed",
+		"difficulty": "advance",
+		"category": "javascript",
+		"id": 28
+	},
+	{
+		"question": "What is the use of Weakmap object in JavaScript?",
+		"answer": "Weakmap is similar to a collection of objects like a map. If the weak map object is set to a process, it considers each element as a key object and that key object will have a weak reference.",
+		"difficulty": "advance",
+		"category": "javascript",
+		"id": 29
+	},
+	{
+		"question": " What is meant by the debugger in JavaScript?",
+		"answer": "Debugger keyword in JavaScript helps in setting a breakpoint in the code itself. The program will stop executing code where the debugger keyword is applied in the program.",
+		"difficulty": "advance",
+		"category": "javascript",
+		"id": 30
+	},
+	{
+		"question": "What is Node.js? Where can you use it?",
+		"answer": "Node.js is an open-source, cross-platform JavaScript runtime environment and library to run web applications outside the client’s browser. It is used to create server-side web applications.  Node.js is perfect for data-intensive applications as it uses an asynchronous, event-driven model. You can use  I/O intensive web applications like video streaming sites. You can also use it for developing: Real-time web applications, Network applications, General-purpose applications, and Distributed systems.",
+		"difficulty": "beginner",
+		"category": "node",
+		"id": 31
+	},
+	{
+		"question": "Why use Node.js?",
+		"answer": "Node.js makes building scalable network programs easy. Some of its advantages include:  It is generally fast It rarely blocks It offers a unified programming language and data type Everything is asynchronous  It yields great concurrency",
+		"difficulty": "beginner",
+		"category": "node",
+		"id": 32
+	},
+	{
+		"question": "Why is Node.js Single-threaded?",
+		"answer": "Node.js is single-threaded for async processing. By doing async processing on a single-thread under typical web loads, more performance and scalability can be achieved instead of the typical thread-based implementation.",
+		"difficulty": "beginner",
+		"category": "node",
+		"id": 33
+	},
+	{
+		"question": "Explain callback in Node.js.",
+		"answer": "A callback function is called after a given task. It allows other code to be run in the meantime and prevents any blocking.  Being an asynchronous platform, Node.js heavily relies on callback. All APIs of Node are written to support callbacks.",
+		"difficulty": "beginner",
+		"category": "node",
+		"id": 34
+	},
+	{
+		"question": " How would you define the term I/O? ",
+		"answer": "The term I/O is used to describe any program, operation, or device that transfers data to or from a medium and to or from another medium Every transfer is an output from one medium and an input into another. The medium can be a physical device, network, or files within a system",
+		"difficulty": "beginner",
+		"category": "node",
+		"id": 35
+	},
+	{
+		"question": "How is Node.js most frequently used?",
+		"answer": "Node.js is widely used in the following applications:  Real-time chats Internet of Things Complex SPAs (Single-Page Applications) Real-time collaboration tools Streaming applications Microservices architecture",
+		"difficulty": "beginner",
+		"category": "node",
+		"id": 36
+	},
+	{
+		"question": "What is NPM?",
+		"answer": "NPM stands for Node Package Manager, responsible for managing all the packages and modules for Node.js.  Node Package Manager provides two main functionalities:  Provides online repositories for node.js packages/modules, which are searchable on search.nodejs.org Provides command-line utility to install Node.js packages and also manages Node.js versions and dependencies  ",
+		"difficulty": "beginner",
+		"category": "node",
+		"id": 37
+	},
+	{
+		"question": "Why is Node.js preferred over other backend technologies like Java and PHP?",
+		"answer": "Some of the reasons why Node.js is preferred include:  Node.js is very fast Node Package Manager has over 50,000 bundles available at the developer’s disposal Perfect for data-intensive, real-time web applications, as Node.js never waits for an API to return data Better synchronization of code between server and client due to same code base Easy for web developers to start using Node.js in their projects as it is a JavaScript library",
+		"difficulty": "beginner",
+		"category": "node",
+		"id": 38
+	},
+	{
+		"question": "Which database is more popularly used with Node.js?",
+		"answer": "MongoDB is the most common database used with Node.js. It is a NoSQL, cross-platform, document-oriented database that provides high performance, high availability, and easy scalability.",
+		"difficulty": "beginner",
+		"category": "node",
+		"id": 39
+	},
+	{
+		"question": "What are some of the most commonly used libraries in Node.js?",
+		"answer": "There are two commonly used libraries in Node.js:  ExpressJS - Express is a flexible Node.js web application framework that provides a wide set of features to develop web and mobile applications. Mongoose - Mongoose is also a Node.js web application framework that makes it easy to connect an application to a database.",
+		"difficulty": "beginner",
+		"category": "node",
+		"id": 40
+	},
+	{
+		"question": "What does event-driven programming mean?",
+		"answer": "An event-driven programming approach uses events to trigger various functions. An event can be anything, such as typing a key or clicking a mouse button. A call-back function is already registered with the element executes whenever an event is triggered.",
+		"difficulty": "intermidate",
+		"category": "node",
+		"id": 41
+	},
+	{
+		"question": "What is an Event Loop in Node.js?",
+		"answer": "Event loops handle asynchronous callbacks in Node.js. It is the foundation of the non-blocking input/output in Node.js, making it one of the most important environmental features.",
+		"difficulty": "intermidate",
+		"category": "node",
+		"id": 42
+	},
+	{
+		"question": "What is an EventEmitter in Node.js?",
+		"answer": "EventEmitter is a class that holds all the objects that can emit events Whenever an object from the EventEmitter class throws an event, all attached functions are called upon synchronously",
+		"difficulty": "intermidate",
+		"category": "node",
+		"id": 43
+	},
+	{
+		"question": "What are the two types of API functions in Node.js?",
+		"answer": "The two types of API functions in Node.js are:  Asynchronous, non-blocking functions Synchronous, blocking functions",
+		"difficulty": "intermidate",
+		"category": "node",
+		"id": 44
+	},
+	{
+		"question": "What is the package.json file?",
+		"answer": "The package.json file is the heart of a Node.js system. This file holds the metadata for a particular project. The package.json file is found in the root directory of any Node application or module  This is what a package.json file looks like immediately after creating a Node.js project using the command: npm init  You can edit the parameters when you create a Node.js project.",
+		"difficulty": "intermidate",
+		"category": "node",
+		"id": 45
+	},
+	{
+		"question": "What is the Express.js package?",
+		"answer": "Express is a flexible Node.js web application framework that provides a wide set of features to develop both web and mobile applications",
+		"difficulty": "intermidate",
+		"category": "node",
+		"id": 46
+	},
+	{
+		"question": "What are streams in Node.js?",
+		"answer": "Streams are objects that enable you to read data or write data continuously.  There are four types of streams:  Readable – Used for reading operations  Writable − Used for write operations  Duplex − Can be used for both reading and write operations  Transform − A type of duplex stream where the output is computed based on input",
+		"difficulty": "intermidate",
+		"category": "node",
+		"id": 47
+	},
+	{
+		"question": "How do you create a simple server in Node.js that returns Hello World?",
+		"answer": "Import the HTTP module Use createServer function with a callback function using request and response as parameters. Type “hello world.\"  Set the server to listen to port 8080 and assign an IP address",
+		"difficulty": "intermidate",
+		"category": "node",
+		"id": 48
+	},
+	{
+		"question": "Explain asynchronous and non-blocking APIs in Node.js.",
+		"answer": "All Node.js library APIs are asynchronous, which means they are also non-blocking A Node.js-based server never waits for an API to return data. Instead, it moves to the next API after calling it, and a notification mechanism from a Node.js event responds to the server for the previous API call",
+		"difficulty": "intermidate",
+		"category": "node",
+		"id": 49
+	},
+	{
+		"question": "What is the purpose of module.exports?",
+		"answer": "A module in Node.js is used to encapsulate all the related codes into a single unit of code, which can be interpreted by shifting all related functions into a single file. You can export a module using the module.exports, which allows it to be imported into another file using a required keyword.",
+		"difficulty": "intermidate",
+		"category": "node",
+		"id": 50
+	},
+	{
+		"question": "What is REPL in Node.js?",
+		"answer": "REPL stands for Read Eval Print Loop, and it represents a computer environment. It’s similar to a Windows console or Unix/Linux shell in which a command is entered. Then, the system responds with an output",
+		"difficulty": "advance",
+		"category": "node",
+		"id": 51
+	},
+	{
+		"question": "What is the control flow function?",
+		"answer": "The control flow function is a piece of code that runs in between several asynchronous function calls.",
+		"difficulty": "advance",
+		"category": "node",
+		"id": 52
+	},
+	{
+		"question": "How does control flow manage the function calls?",
+		"answer": "control order of execution , collect data ,limit concurrency , call the next step in the program",
+		"difficulty": "advance",
+		"category": "node",
+		"id": 53
+	},
+	{
+		"question": "What is the buffer class in Node.js?",
+		"answer": "Buffer class stores raw data similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap. Buffer class is used because pure JavaScript is not compatible with binary data",
+		"difficulty": "advance",
+		"category": "node",
+		"id": 54
+	},
+	{
+		"question": "What is piping in Node.js?",
+		"answer": "Piping is a mechanism used to connect the output of one stream to another stream. It is normally used to retrieve data from one stream and pass output to another stream",
+		"difficulty": "advance",
+		"category": "node",
+		"id": 55
+	},
+	{
+		"question": "What is callback hell?",
+		"answer": "Callback hell, also known as the pyramid of doom, is the result of intensively nested, unreadable, and unmanageable callbacks, which in turn makes the code harder to read and debug improper implementation of the asynchronous logic causes callback hell",
+		"difficulty": "advance",
+		"category": "node",
+		"id": 56
+	},
+	{
+		"question": "What is a reactor pattern in Node.js?",
+		"answer": "A reactor pattern is a concept of non-blocking I/O operations. This pattern provides a handler that is associated with each I/O operation. As soon as an I/O request is generated, it is then submitted to a demultiplexer",
+		"difficulty": "advance",
+		"category": "node",
+		"id": 57
+	},
+	{
+		"question": "Explain the concept of middleware in Node.js.",
+		"answer": "Middleware is a function that receives the request and response objects. Most tasks that the middleware functions perform are:    Execute any code Update or modify the request and the response objects Finish the request-response cycle Invoke the next middleware in the stack",
+		"difficulty": "advance",
+		"category": "node",
+		"id": 58
+	},
+	{
+		"question": "What are the different types of HTTP requests?",
+		"answer": "HTTP defines a set of request methods used to perform desired actions. The request methods include:  GET: Used to retrieve the data  POST: Generally used to make a change in state or reactions on the server  HEAD: Similar to the GET method, but asks for the response without the response body  DELETE: Used to delete the predetermined resource",
+		"difficulty": "advance",
+		"category": "node",
+		"id": 59
+	},
+	{
+		"question": "How would you connect a MongoDB database to Node.js?",
+		"answer": "To create a database in MongoDB:  Start by creating a MongoClient object Specify a connection URL with the correct IP address and the name of the database you want to create",
+		"difficulty": "advance",
+		"category": "node",
+		"id": 60
+	},
+	{
+		"question": "What are the features of React?",
+		"answer": "JSX , Components ,Virtual DOM,One-way data-binding",
+		"difficulty": "beginner",
+		"category": "react",
+		"id": 61
+	},
+	{
+		"question": "What is JSX?",
+		"answer": "JSX is a syntax extension of JavaScript. It is used with React to describe what the user interface should look like. By using JSX, we can write HTML structures in the same file that contains JavaScript code.",
+		"difficulty": "beginner",
+		"category": "react",
+		"id": 62
+	},
+	{
+		"question": "Can web browsers read JSX directly? ",
+		"answer": "Web browsers cannot read JSX directly. This is because they are built to only read regular JS objects and JSX is not a regular JavaScript object  For a web browser to read a JSX file, the file needs to be transformed into a regular JavaScript object. For this, we use Babel",
+		"difficulty": "beginner",
+		"category": "react",
+		"id": 63
+	},
+	{
+		"question": "What is the virtual DOM?",
+		"answer": "DOM stands for Document Object Model. The DOM represents an HTML document with a logical tree structure. Each branch of the tree ends in a node, and each node contains objects.",
+		"difficulty": "beginner",
+		"category": "react",
+		"id": 64
+	},
+	{
+		"question": "What are synthetic events in React?",
+		"answer": "Synthetic events combine the response of different browser's native events into one API, ensuring that the events are consistent across different browsers. The application is consistent regardless of the browser it is running in. Here, preventDefault is a synthetic event.",
+		"difficulty": "beginner",
+		"category": "react",
+		"id": 65
+	},
+	{
+		"question": "Explain how lists work in React",
+		"answer": "We create lists in React as we do in regular JavaScript. Lists display data in an ordered format The traversal of lists is done using the map() function",
+		"difficulty": "beginner",
+		"category": "react",
+		"id": 66
+	},
+	{
+		"question": "Why is there a need for using keys in Lists?",
+		"answer": "Keys are very important in lists for the following reasons:  A key is a unique identifier and it is used to identify which items have changed, been updated or deleted from the lists It also helps to determine which components need to be re-rendered instead of re-rendering all the components every time. Therefore, it increases performance, as only the updated components are re-rendered",
+		"difficulty": "beginner",
+		"category": "react",
+		"id": 67
+	},
+	{
+		"question": "What are forms in React?",
+		"answer": "React employs forms to enable users to interact with web applications.  Using forms, users can interact with the application and enter the required information whenever needed. Form contain certain elements, such as text fields, buttons, checkboxes, radio buttons, etc Forms are used for many different tasks such as user authentication, searching, filtering, indexing, etc",
+		"difficulty": "beginner",
+		"category": "react",
+		"id": 68
+	},
+	{
+		"question": "What is an arrow function in react?",
+		"answer": "An arrow function is a short way of writing a function to React.",
+		"difficulty": "beginner",
+		"category": "react",
+		"id": 69
+	},
+	{
+		"question": "What are the components in React?",
+		"answer": "Components are the building blocks of any React application, and a single app usually consists of multiple components. A component is essentially a piece of the user interface. It splits the user interface into independent, reusable parts that can be processed separately.",
+		"difficulty": "intermidate",
+		"category": "react",
+		"id": 70
+	},
+	{
+		"question": "what is functional component in react ?",
+		"answer": "Functional Components: These types of components have no state of their own and only contain render methods, and therefore are also called stateless components. They may derive data from other components as props (properties).",
+		"difficulty": "intermidate",
+		"category": "react",
+		"id": 71
+	},
+	{
+		"question": "what are class components in react ?",
+		"answer": "These types of components can hold and manage their own state and have a separate render method to return JSX on the screen. They are also called Stateful components as they can have a state.",
+		"difficulty": "intermidate",
+		"category": "react",
+		"id": 72
+	},
+	{
+		"question": "What is the use of render() in React?",
+		"answer": "It is required for each component to have a render() function. This function returns the HTML, which is to be displayed in the component.",
+		"difficulty": "intermidate",
+		"category": "react",
+		"id": 73
+	},
+	{
+		"question": "What is a state in React?",
+		"answer": "The state is a built-in React object that is used to contain data or information about the component. The state in a component can change over time, and whenever it changes, the component re-renders. The change in state can happen as a response to user action or system-generated events. It determines the behavior of the component and how it will render.",
+		"difficulty": "intermidate",
+		"category": "react",
+		"id": 74
+	},
+	{
+		"question": "What are props in React?",
+		"answer": "Props are short for Properties. It is a React built-in object that stores the value of attributes of a tag and works similarly to HTML attributes. Props provide a way to pass data from one component to another component. Props are passed to the component in the same way as arguments are passed in a function.",
+		"difficulty": "intermidate",
+		"category": "react",
+		"id": 75
+	},
+	{
+		"question": "What is a higher-order component in React?",
+		"answer": "A higher-order component acts as a container for other components. This helps to keep components simple and enables re-usability. They are generally used when multiple components have to use a common logic. ",
+		"difficulty": "intermidate",
+		"category": "react",
+		"id": 76
+	},
+	{
+		"question": "Explain the lifecycle methods of components.",
+		"answer": "getInitialState(): This is executed before the creation of the component. componentDidMount(): Is executed when the component gets rendered and placed on the DOM. shouldComponentUpdate(): Is invoked when a component determines changes to the DOM and returns a “true” or “false” value based on certain conditions. componentDidUpdate(): Is invoked immediately after rendering takes place. componentWillUnmount(): Is invoked immediately before a component is destroyed and unmounted permanently.",
+		"difficulty": "intermidate",
+		"category": "react",
+		"id": 77
+	},
+	{
+		"question": " What is Redux?",
+		"answer": "Redux is an open-source, JavaScript library used to manage application state. React uses Redux to build the user interface. It is a predictable state container for JavaScript applications and is used for the entire application’s state management.",
+		"difficulty": "advance",
+		"category": "react",
+		"id": 78
+	},
+	{
+		"question": "What are the components of Redux?",
+		"answer": "Store: Holds the state of the application. Action: The source information for the store. Reducer: Specifies how the application's state changes in response to actions sent to the store.",
+		"difficulty": "advance",
+		"category": "react",
+		"id": 79
+	},
+	{
+		"question": "What is the Flux?",
+		"answer": "Flux is the application architecture that Facebook uses for building web applications. It is a method of handling complex data inside a client-side application and manages how data flows in a React application.",
+		"difficulty": "advance",
+		"category": "react",
+		"id": 80
+	},
+	{
+		"question": "What is React Router?",
+		"answer": "React Router is a routing library built on top of React, which is used to create routes in a React application. ",
+		"difficulty": "advance",
+		"category": "react",
+		"id": 81
+	},
+	{
+		"question": "Why do we need to React Router?",
+		"answer": "It maintains consistent structure and behavior and is used to develop single-page web applications.  Enables multiple views in a single application by defining multiple routes in the React application.",
+		"difficulty": "advance",
+		"category": "react",
+		"id": 82
+	},
+	{
+		"question": "Explain the use of CSS modules in React.",
+		"answer": "The CSS module file is created with the .module.css extension The CSS inside a module file is available only for the component that imported it, so there are no naming conflicts while styling the components.",
+		"difficulty": "advance",
+		"category": "react",
+		"id": 83
+	}
 ]
