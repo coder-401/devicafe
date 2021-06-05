@@ -5,8 +5,6 @@ const router = express.Router();
 
 const { getQuestions } = require('./../controller/questionsController');
 
-const bearerAuth = require('./../auth/middleware/bearer');
-
-router.get('/questions', bearerAuth, getQuestions);
+router.get('/questions', getQuestions);
 
 module.exports = router;
