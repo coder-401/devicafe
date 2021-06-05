@@ -18,7 +18,7 @@ const comments = (state = intialState, action) => {
 					if (comment._id === payload._id) {
 						return payload;
 					} else {
-						return post;
+						return comment;
 					}
 				}),
 			};
@@ -44,7 +44,7 @@ export const getComment = (comments) => {
 	};
 };
 
-export const createPost = (comment) => {
+export const createComment = (comment) => {
 	return {
 		type: 'CREATE_COMMENT',
 		payload: comment,
