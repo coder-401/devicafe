@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Schema = mongoose.Schema;
 
-let users = new Schema({
+let Users = new Schema({
 	email: { type: String, required: true, unique: true },
 	username: { type: String, required: true, unique: true },
 	password: { type: String, required: true },
@@ -17,7 +17,7 @@ let users = new Schema({
 	},
 });
 
-users.virtual('token').get(function () {
+Users.virtual('token').get(function () {
 	let tokenObject = {
 		_id: this._id,
 		username: this.username,
@@ -29,7 +29,7 @@ users.virtual('token').get(function () {
 	return jwt.sign(tokenObject, process.env.SECRET);
 });
 
-users.virtual('capabilities').get(function () {
+Users.virtual('capabilities').get(function () {
 	let acl = {
 		user: ['read'],
 		editor: ['read', 'create', 'update'],
@@ -38,18 +38,18 @@ users.virtual('capabilities').get(function () {
 	return acl[this.role];
 });
 
-users.pre('save', async function () {
+Users.pre('save', async function () {
 	if (this.isModified('password')) {
 		this.password = await bcrypt.hash(this.password, 10);
 	}
 });
 
-users.pre('findOneAndUpdate', async function () {
+Users.pre('findOneAndUpdate', async function () {
 	this._update.password = await bcrypt.hash(this._update.password, 10);
 });
 
 // BASIC AUTH
-users.statics.authenticateBasic = async function (username, password) {
+Users.statics.authenticateBasic = async function (username, password) {
 	try {
 		if (username) {
 			const user = await this.findOne({ username });
@@ -66,12 +66,12 @@ users.statics.authenticateBasic = async function (username, password) {
 };
 
 // BEARER AUTH
-users.statics.authenticateWithToken = async function (token, userId) {
+Users.statics.authenticateWithToken = async function (token) {
 	try {
 		const parsedToken = jwt.verify(token, process.env.SECRET);
 		const user = await this.findOne({ username: parsedToken.username });
 		if (user) {
-			if (user._id.toString() === userId.toString()) return user;
+			return user;
 		}
 		throw new Error('User Not Found');
 	} catch (e) {
@@ -79,4 +79,4 @@ users.statics.authenticateWithToken = async function (token, userId) {
 	}
 };
 
-module.exports = mongoose.model('users', users);
+module.exports = mongoose.model('Users', Users);
