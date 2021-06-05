@@ -28,7 +28,7 @@ class DataCollection {
 
 	update(_id, record) {
 		try {
-			return this.model.findOneAndUpdate(_id, record, { new: true });
+			return this.model.findOneAndUpdate({ _id }, record, { new: true });
 		} catch (error) {
 			return new Error(error.message);
 		}

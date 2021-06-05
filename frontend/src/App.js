@@ -11,9 +11,10 @@ import Footer from './components/footer';
 import Profile from './components/profile';
 import Video from './components/videoCall';
 import Questions from './components/questions';
+import Posts from './components/posts';
 
 const App = () => {
-	return ( 
+	return (
 		<div>
 			<Router>
 				<Header />
@@ -22,9 +23,10 @@ const App = () => {
 					<Route exact path="/register" component={Register} />
 					<Route exact path="/profile" component={Profile} />
 					<Route exact path="/call" component={Video} />
+					<Route exact path="/posts" component={Posts} />
 				</Switch>
 			</Router>
-			<Questions />
+			{/* <Questions /> */}
 			<Footer />
 		</div>
 	);

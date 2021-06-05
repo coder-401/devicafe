@@ -1,5 +1,3 @@
-import cookie from 'react-cookies';
-
 const intialState = {
 	questions: [],
 };

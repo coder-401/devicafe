@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-// import { If, Then, Else } from 'react-if';
 
 const Profile = () => {
 	const state = useSelector((state) => {
