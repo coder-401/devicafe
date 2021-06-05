@@ -7,11 +7,9 @@ let Posts = new Schema({
 	description: { type: String, required: true },
 	owner: {
 		type: Schema.Types.ObjectId,
-		ref: 'users',
+		ref: 'Users',
 	},
-	time: {
-		type: String,
-	},
+	time: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Posts', Posts);

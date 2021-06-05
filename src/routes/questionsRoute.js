@@ -1,18 +1,12 @@
-"use strict";
+'use strict';
 
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const {
-  getQuestions,
-  addQuestion,
-  addToFavQuestion,
-} = require("./../controller/questionsController");
+const { getQuestions } = require('./../controller/questionsController');
 
-const bearerAuth = require("./../auth/middleware/bearer");
+const bearerAuth = require('./../auth/middleware/bearer');
 
-router.get("/questions/:id", bearerAuth, getQuestions);
-router.post("/addquestion/:id", bearerAuth, addQuestion);
-router.post("/addToFavQuestion/:id", bearerAuth, addToFavQuestion);
+router.get('/questions', bearerAuth, getQuestions);
 
 module.exports = router;

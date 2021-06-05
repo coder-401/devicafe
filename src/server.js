@@ -8,10 +8,13 @@ const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 
 //routers
-const authRoutes = require('./auth/authRouter');
+const authRouter = require('./auth/authRouter');
+const profileRouter = require('./routes/profileRoute');
+const tableRouter = require('./routes/tableRoute');
+const commentsRouter = require('./routes/commentsRoute');
+const postsRouter = require('./routes/postsRoute');
+
 const categoriesRoutes = require('./routes/categoriesRoute');
-const profileRoutes = require('./routes/profileRoute');
-const helpRoutes = require('./routes/helpRoute');
 const questionsRoutes = require('./routes/questionsRoute');
 const cafeRoutes = require('./routes/cafeRoutes');
 
@@ -34,10 +37,13 @@ app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
 // Routes
-app.use(authRoutes);
+app.use(authRouter);
+app.use(profileRouter);
+app.use(tableRouter);
+app.use(postsRouter);
+app.use(commentsRouter);
+
 app.use(categoriesRoutes);
-app.use(profileRoutes);
-app.use(helpRoutes);
 app.use(questionsRoutes);
 app.use(cafeRoutes);
 
