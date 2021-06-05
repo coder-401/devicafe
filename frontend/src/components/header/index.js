@@ -46,6 +46,7 @@ const Header = () => {
 					logout
 				</Link>
 				<Link to="/call">Video</Link>
+				<Link to="/posts">Posts</Link>
 			</Then>
 			<Else>
 				<span>header</span>
