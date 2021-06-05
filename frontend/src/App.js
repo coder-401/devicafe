@@ -1,4 +1,6 @@
 import React from 'react';
+
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //components
@@ -8,9 +10,10 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Profile from './components/profile';
 import Video from './components/videoCall';
+import Questions from './components/questions';
 
 const App = () => {
-	return (
+	return ( 
 		<div>
 			<Router>
 				<Header />
@@ -21,6 +24,7 @@ const App = () => {
 					<Route exact path="/call" component={Video} />
 				</Switch>
 			</Router>
+			<Questions />
 			<Footer />
 		</div>
 	);

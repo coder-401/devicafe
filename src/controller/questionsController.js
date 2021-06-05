@@ -7,6 +7,7 @@ const getQuestions = async (req, res) => {
 	try {
 		res.status(200).json(questions);
 	} catch (error) {
+		console.log(error);
 		res.status(403).json({ error: error.message });
 	}
 };
