@@ -45,6 +45,7 @@ const Header = () => {
 				<Link to="/" onClick={logoutHandle}>
 					logout
 				</Link>
+				<Link to="/call">Video</Link>
 			</Then>
 			<Else>
 				<span>header</span>

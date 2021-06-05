@@ -2,10 +2,19 @@
 
 // 3rd Party Resources
 const express = require('express');
+const http = require('http');
 const cors = require('cors');
 const morgan = require('morgan');
-const cookieParser = require('cookie-parser');
-const methodOverride = require('method-override');
+
+// Prepare the express app
+const app = express();
+const server = http.createServer(app);
+const io = require('socket.io')(server, {
+	cors: {
+		origin: 'http://localhost:3000',
+		methods: ['GET', 'POST'],
+	},
+});
 
 //routers
 const authRouter = require('./auth/authRouter');
@@ -13,65 +22,46 @@ const profileRouter = require('./routes/profileRoute');
 const tableRouter = require('./routes/tableRoute');
 const commentsRouter = require('./routes/commentsRoute');
 const postsRouter = require('./routes/postsRoute');
-
-const categoriesRoutes = require('./routes/categoriesRoute');
 const questionsRoutes = require('./routes/questionsRoute');
-const cafeRoutes = require('./routes/cafeRoutes');
-
 const errorHandler = require('./error-handler/500.js');
 const notFound = require('./error-handler/404.js');
 
-// Prepare the express app
-const app = express();
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
+//Built-in MW
+app.use(express.json());
 
-// App Level MW
+// Third Party MW
 app.use(cors());
 app.use(morgan('dev'));
-app.use(express.json());
-app.use(cookieParser());
-app.use(express.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
-app.use(methodOverride('_method'));
 
-// Routes
+// App Level MW
 app.use(authRouter);
 app.use(profileRouter);
 app.use(tableRouter);
 app.use(postsRouter);
 app.use(commentsRouter);
-
-app.use(categoriesRoutes);
 app.use(questionsRoutes);
-app.use(cafeRoutes);
 
 app.use('*', notFound);
 app.use(errorHandler);
 
 //socket connections
-let users = [];
-
 io.on('connection', (socket) => {
-	socket.on('join-room', (roomId, userId, username) => {
-		socket.join(roomId);
-		socket.to(roomId).emit('user-connected', userId);
+	socket.emit('me', socket.id);
 
-		socket.on('message', (message, username) => {
-			const index = users.indexOf(username);
-			io.to(roomId).emit('createMessage', message, users[index]);
+	socket.on('disconnect', () => {
+		socket.broadcast.emit('callEnded');
+	});
+
+	socket.on('callUser', (data) => {
+		io.to(data.userToCall).emit('callUser', {
+			signal: data.signalData,
+			from: data.from,
+			name: data.name,
 		});
+	});
 
-		if (!users.includes(username)) users.push(username);
-		io.to(roomId).emit('roomUsers', users);
-
-		socket.on('disconnect', () => {
-			const index = users.indexOf(username);
-			users.splice(index, 1);
-			socket.broadcast.to(roomId).emit('user-disconnected', userId);
-			io.to(roomId).emit('roomUsers', users);
-		});
+	socket.on('answerCall', (data) => {
+		io.to(data.to).emit('callAccepted', data.signal);
 	});
 
 	/*------------------------------whiteBoard---------------------------------*/
