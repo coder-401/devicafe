@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Else, If, Then } from 'react-if';
 import axios from 'axios';
+import Comments from './../comments';
 
 import { editPost, deletePost } from './../../reducers/posts';
 
@@ -77,6 +78,7 @@ const Post = ({ Post }) => {
 					</If>
 				</Then>
 			</If>
+			<Comments postId={_id} />
 		</div>
 	);
 };

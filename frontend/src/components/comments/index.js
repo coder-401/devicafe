@@ -1,7 +1,77 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { If, Then } from 'react-if';
+import axios from 'axios';
+import Comment from './../comment';
 
-const Comments = () => {
-	return <div>Comments</div>;
+import { getComment, createComment } from './../../reducers/comments';
+
+const Comments = ({ postId }) => {
+	const dispatch = useDispatch();
+
+	const state = useSelector((state) => {
+		return {
+			posts: state.posts.posts,
+			comments: state.comments.comments,
+			token: state.signIn.token,
+			user: state.signIn.user,
+		};
+	});
+
+	useEffect(async () => {
+		const response = await axios.get('http://localhost:5000/comments', {
+			headers: {
+				Authorization: `Bearer ${state.token}`,
+			},
+		});
+
+		dispatch(getComment(response.data));
+	}, []);
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		const newComment = {
+			description: e.target.description.value,
+			owner: state.user._id,
+			post: postId,
+			time: new Date(),
+		};
+
+		const response = await axios.post(
+			`http://localhost:5000/comment`,
+			newComment,
+			{
+				headers: {
+					Authorization: `Bearer ${state.token}`,
+				},
+			},
+		);
+
+		dispatch(createComment(response.data));
+	};
+
+	let comments = state.comments.filter((comment) => comment.post === postId);
+
+	return (
+		<React.Fragment>
+			<If condition={comments.length}>
+				<Then>
+					{comments.map((comment) => (
+						<div key={comment._id}>
+							<hr />
+							<Comment Comment={comment} />
+							<hr />
+						</div>
+					))}
+				</Then>
+			</If>
+			<form onSubmit={handleSubmit}>
+				<input type="text" name="description" />
+				<button>Add New Comment</button>
+			</form>
+		</React.Fragment>
+	);
 };
 
 export default Comments;
