@@ -33,7 +33,7 @@ const App = () => {
 					<Route exact path="/questions" component={Questions} />
 					<Route exact path="/community" component={Community} />
 					<Route exact path="/BookTable" component={Entrance} />
-					<Route exact path="/cafe" component={Cafe} />
+					<Route exact path="/cafe/:meetingId" component={Cafe} />
 				</Switch>
 			</Router>
 			<Footer />
