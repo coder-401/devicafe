@@ -45,12 +45,15 @@ app.use('*', notFound);
 app.use(errorHandler);
 
 //socket connections
+let users = [];
 io.on('connection', (socket) => {
+	/*------------------------------Video---------------------------------*/
+
+	users.push(socket.id);
+
 	socket.emit('me', socket.id);
 
-	socket.on('disconnect', () => {
-		socket.broadcast.emit('callEnded');
-	});
+	socket.emit('users', users);
 
 	socket.on('callUser', (data) => {
 		io.to(data.userToCall).emit('callUser', {
@@ -62,6 +65,20 @@ io.on('connection', (socket) => {
 
 	socket.on('answerCall', (data) => {
 		io.to(data.to).emit('callAccepted', data.signal);
+	});
+
+	socket.on('disconnect', () => {
+		socket.broadcast.emit('callEnded');
+	});
+
+	/*------------------------------Chat---------------------------------*/
+
+	socket.on('join_room', (data) => {
+		socket.join(data);
+	});
+
+	socket.on('send_message', (data) => {
+		socket.to(data.room).emit('receive_message', data.content);
 	});
 
 	/*------------------------------whiteBoard---------------------------------*/

@@ -20,6 +20,10 @@ const Video = () => {
 	const userVideo = useRef();
 	const connectionRef = useRef();
 
+	socket.on('users', (users) => {
+		console.log(users);
+	});
+
 	useEffect(() => {
 		navigator.mediaDevices
 			.getUserMedia({ video: true, audio: true })
@@ -29,7 +33,6 @@ const Video = () => {
 			});
 
 		socket.on('me', (id) => {
-			console.log(id);
 			setMe(id);
 		});
 

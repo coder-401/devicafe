@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Table = new Schema({
-	name: { type: String, required: true, unique: true },
+	topic: { type: String, required: true },
+	role: { type: String, required: true },
+	difficulty: { type: String, required: true },
 });
 
 module.exports = mongoose.model('Tables', Table);
