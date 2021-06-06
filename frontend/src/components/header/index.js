@@ -47,7 +47,7 @@ const Header = () => {
 			</Then>
 			<Else>
 				<span>Logo</span>
-				<Link to="/">login</Link>
+				<Link to="/login">login</Link>
 				<Link to="/register">register</Link>
 			</Else>
 		</If>
