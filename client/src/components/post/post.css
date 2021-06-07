@@ -1,7 +1,41 @@
 .container1 {
   width: 100%;
 }
+.switch_theme{
+  margin: 3% 0 0 5%;
+}
 
+.searchDiv{
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-content: space-between;
+  position: relative;
+  padding: 1% 0 0 0;
+  margin-left: 2% ;
+}
+.searchDiv form{
+  width: 60%;
+}
+.searchDiv form button{
+  background: transparent !important;
+  border: 0;
+  box-shadow: none;
+  color: #202020;
+  font-size: 1.3rem;
+  position: absolute;
+  top: 15%;
+  right: 0;
+}
+
+.searchDiv form button:enabled{
+  color: #202020;
+  box-shadow: none;
+}
+.searchDiv form button:hover{
+  color: #202020;
+  box-shadow: none;
+}
 .postsContainer {
   padding-top: 2%;
   width: 70%;
@@ -27,6 +61,9 @@
     position: absolute;
     top: 30px;
     left: 40.5%;
+}
+.card-body{
+  padding-bottom: 0 !important;
 }
 /*==============================Drop_Down_List================================*/
 .threeDots {
@@ -128,31 +165,34 @@ button[class^="grow"]:hover::after {
   gap: 40px;
 }
 .askForm textarea{
-    border-color: rgba(47, 79, 79, 0.274);
-    background-color: rgba(128, 128, 128, 0.356);
+    /* border-color: rgba(47, 79, 79, 0.274); */
+    /* background-color: rgba(128, 128, 128, 0.356); */
 }
 .askForm textarea:enabled{
     color: rgb(0, 0, 0);
     box-shadow: 1px 1px 1px #222222;
     border-color: rgba(47, 79, 79, 0.274) !important;
-    background-color: rgba(128, 128, 128, 0.356);
 }
 .askForm button {
-    margin-left: 30%;
-    width: 40%;
-    background-color: #000000;
-    border-color: black;
+    margin-left: 35%;
+    width: 30%;
+
+    background-color: #c99616;
+    border-color:#9e7100 ;
 }
 .askForm button:hover{
-    background-color: #eee;
-    color: black;
-    border-color: black;
+    background-color: #9e7100;
+    border-color: #c99616;
+}
+.modal-content{
+  width: 70% !important;
+  margin-left: 15%;
 }
 .askModal{
-    background-color: rgba(47, 79, 79, 0.274);
+  background-color: rgba(47, 79, 79, 0.274);
 }
 .modalHeader{
-background-color: #222222;
+background-color: #657b8a;
 color:#eee;
 }
 .modalHeader button{
@@ -162,7 +202,7 @@ color:#eee;
     color: #fff;
 }
 .modalBody{
-background-color: rgb(182, 182, 182);
+background-color: rgba(221, 221, 221, 0.26);
 }
 
 /*===================================== Post_Edit_Form ==========================================*/
