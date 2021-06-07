@@ -45,30 +45,39 @@ app.use('*', notFound);
 app.use(errorHandler);
 
 //socket connections
-let users = [];
+const users = [];
 io.on('connection', (socket) => {
-	/*------------------------------Video---------------------------------*/
+	/* ------------------------------Video--------------------------------- */
 
-	users.push(socket.id);
+	if (!users.includes(socket.id)) {
+		users.push(socket.id);
+	}
 
-	socket.emit('me', socket.id);
+	socket.emit('yourID', socket.id);
 
-	socket.emit('users', users);
+	io.sockets.emit('allUsers', users);
 
-	socket.on('callUser', (data) => {
-		io.to(data.userToCall).emit('callUser', {
-			signal: data.signalData,
-			from: data.from,
-			name: data.name,
-		});
-	});
-
-	socket.on('answerCall', (data) => {
-		io.to(data.to).emit('callAccepted', data.signal);
+	socket.on('username', (data) => {
+		socket.emit('username', data);
 	});
 
 	socket.on('disconnect', () => {
-		socket.broadcast.emit('callEnded');
+		const users2 = users.filter((user) => user !== socket.id);
+
+		console.log(users2);
+
+		io.sockets.emit('allUsers', users);
+	});
+
+	socket.on('callUser', (data) => {
+		io.to(data.userToCall).emit('hey', {
+			signal: data.signalData,
+			from: data.from,
+		});
+	});
+
+	socket.on('acceptCall', (data) => {
+		io.to(data.to).emit('callAccepted', data.signal);
 	});
 
 	/*------------------------------Chat---------------------------------*/

@@ -1,27 +1,41 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useSelector } from 'react-redux';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
+import styled from 'styled-components';
 
 const socket = io.connect('http://localhost:5000');
 
-const Video = () => {
-	const [me, setMe] = useState('');
+const Video = styled.video`
+	border: 1px solid blue;
+	width: 50%;
+	height: 50%;
+`;
+
+const VideoCall = () => {
+	const [yourID, setYourID] = useState('');
+	const [users, setUsers] = useState([]);
 	const [stream, setStream] = useState();
 	const [receivingCall, setReceivingCall] = useState(false);
 	const [caller, setCaller] = useState('');
 	const [callerSignal, setCallerSignal] = useState();
 	const [callAccepted, setCallAccepted] = useState(false);
-	const [idToCall, setIdToCall] = useState('');
-	const [callEnded, setCallEnded] = useState(false);
-	const [name, setName] = useState('');
+	const [username, setUsername] = useState('');
 
-	const myVideo = useRef();
 	const userVideo = useRef();
-	const connectionRef = useRef();
+	const partnerVideo = useRef();
 
-	socket.on('users', (users) => {
-		console.log(users);
+	const state = useSelector((state) => {
+		return {
+			token: state.signIn.token,
+			user: state.signIn.user,
+		};
+	});
+
+	socket.emit('username', state.user.username);
+
+	socket.on('username', (username) => {
+		setUsername(username);
 	});
 
 	useEffect(() => {
@@ -29,22 +43,27 @@ const Video = () => {
 			.getUserMedia({ video: true, audio: true })
 			.then((stream) => {
 				setStream(stream);
-				myVideo.current.srcObject = stream;
+				if (userVideo.current) {
+					userVideo.current.srcObject = stream;
+				}
 			});
 
-		socket.on('me', (id) => {
-			setMe(id);
+		socket.on('yourID', (id) => {
+			setYourID(id);
 		});
 
-		socket.on('callUser', (data) => {
+		socket.on('allUsers', (users) => {
+			setUsers(users);
+		});
+
+		socket.on('hey', (data) => {
 			setReceivingCall(true);
 			setCaller(data.from);
-			setName(data.name);
 			setCallerSignal(data.signal);
 		});
 	}, []);
 
-	const callUser = (id) => {
+	function callPeer(id) {
 		const peer = new Peer({
 			initiator: true,
 			trickle: false,
@@ -55,110 +74,82 @@ const Video = () => {
 			socket.emit('callUser', {
 				userToCall: id,
 				signalData: data,
-				from: me,
-				name: name,
+				from: yourID,
 			});
 		});
 
 		peer.on('stream', (stream) => {
-			userVideo.current.srcObject = stream;
+			if (partnerVideo.current) {
+				partnerVideo.current.srcObject = stream;
+			}
 		});
 
 		socket.on('callAccepted', (signal) => {
 			setCallAccepted(true);
 			peer.signal(signal);
 		});
+	}
 
-		connectionRef.current = peer;
-	};
-
-	const answerCall = () => {
+	function acceptCall() {
 		setCallAccepted(true);
 		const peer = new Peer({
 			initiator: false,
 			trickle: false,
 			stream: stream,
 		});
-
 		peer.on('signal', (data) => {
-			socket.emit('answerCall', { signal: data, to: caller });
+			socket.emit('acceptCall', { signal: data, to: caller });
 		});
 
 		peer.on('stream', (stream) => {
-			userVideo.current.srcObject = stream;
+			partnerVideo.current.srcObject = stream;
 		});
 
 		peer.signal(callerSignal);
+	}
 
-		connectionRef.current = peer;
-	};
+	let UserVideo;
+	if (stream) {
+		UserVideo = <Video playsInline muted ref={userVideo} autoPlay />;
+	}
 
-	const leaveCall = () => {
-		setCallEnded(true);
-		connectionRef.current.destroy();
-	};
+	let PartnerVideo;
+	if (callAccepted) {
+		PartnerVideo = <Video playsInline ref={partnerVideo} autoPlay />;
+	}
+
+	let incomingCall;
+	if (receivingCall) {
+		incomingCall = (
+			<div>
+				<h1>{caller} is calling you</h1>
+				<button onClick={acceptCall}>Accept</button>
+			</div>
+		);
+	}
 
 	return (
 		<React.Fragment>
-			<h1>VideoCall</h1>
 			<div>
-				<div>
-					<div>
-						{stream && (
-							<video
-								playsInline
-								muted
-								ref={myVideo}
-								autoPlay
-								style={{ width: '300px' }}
-							/>
-						)}
-					</div>
-					<div>
-						{callAccepted && !callEnded ? (
-							<video
-								playsInline
-								ref={userVideo}
-								autoPlay
-								style={{ width: '300px' }}
-							/>
-						) : null}
-					</div>
-				</div>
-				<div>
-					<input
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-						style={{ marginBottom: '20px' }}
-					/>
-					<CopyToClipboard text={me} style={{ marginBottom: '2rem' }}>
-						<button>Copy ID</button>
-					</CopyToClipboard>
-
-					<input
-						value={idToCall}
-						onChange={(e) => setIdToCall(e.target.value)}
-					/>
-					<div className="call-button">
-						{callAccepted && !callEnded ? (
-							<button onClick={leaveCall}>End Call</button>
-						) : (
-							<button onClick={() => callUser(idToCall)}>Start Call</button>
-						)}
-						{idToCall}
-					</div>
-				</div>
-				<div>
-					{receivingCall && !callAccepted ? (
-						<div className="caller">
-							<h1>{name} is calling...</h1>
-							<button onClick={answerCall}>Answer</button>
-						</div>
-					) : null}
-				</div>
+				{UserVideo}
+				{PartnerVideo}
 			</div>
+			<div>
+				{users.map((key) => {
+					if (key === yourID) {
+						return null;
+					}
+					return (
+						<button key={key} onClick={() => callPeer(key)}>
+							Call {username}
+							{key}
+						</button>
+					);
+				})}
+			</div>
+			<div>{incomingCall}</div>
 		</React.Fragment>
 	);
 };
 
-export default Video;
+export default VideoCall;
