@@ -20,8 +20,10 @@
 	},
 	"homepage": "https://github.com/coder-401/devicafe#readme",
 	"dependencies": {
+		"antd": "^4.16.2",
 		"base-64": "^1.0.0",
 		"bcrypt": "^5.0.1",
+		"bootstrap": "^4.6.0",
 		"cookie-parser": "^1.4.5",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
@@ -35,6 +37,7 @@
 		"morgan": "^1.10.0",
 		"passport": "^0.4.1",
 		"passport-google-oauth20": "^2.0.0",
+		"react-bootstrap": "^1.6.1",
 		"socket.io": "^4.0.1",
 		"uuid": "^8.3.2"
 	},
