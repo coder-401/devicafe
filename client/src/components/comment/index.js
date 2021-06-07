@@ -66,7 +66,7 @@ const Comment = ({ Comment }) => {
 					<Avatar textMarginRatio={0.2} textSizeRatio={2} name={owner.username} size="30" round={true} /> {owner.username}
 					<Card.Text className="commentTime" as="p">{time}</Card.Text>
 					<hr />
-					<Card.Text as="p">{description}</Card.Text>
+					<Card.Text style={{paddingBottom:"10px"}} as="p">{description}</Card.Text>
 					{commentId === _id && update ?
 						<Form className="commentEditFrom" onSubmit={handleSubmit}>
 							<Form.Control
@@ -90,30 +90,6 @@ const Comment = ({ Comment }) => {
 					}
 				</Card.Body>
 			</Card>
-
-
-
-			{/* 
-			<If condition={owner._id === state.user._id}>
-				<Then>
-					<AiFillDelete onClick={() => handleDelete(_id)} />
-					<If condition={commentId === _id}>
-						<Then>
-							<form onSubmit={handleSubmit}>
-								<input
-									type="text"
-									defaultValue={description}
-									name="description"
-								/>
-								<button>Update</button>
-							</form>
-						</Then>
-						<Else>
-							<button onClick={() => handleUpdate(_id)}>Update</button>
-						</Else>
-					</If>
-				</Then>
-			</If> */}
 		</div>
 	);
 };

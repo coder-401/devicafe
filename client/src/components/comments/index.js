@@ -5,7 +5,7 @@ import axios from 'axios';
 import Comment from './../comment';
 import '../comment/comment.css';
 import { getComment, createComment } from './../../reducers/comments';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Accordion, Card } from 'react-bootstrap';
 
 const Comments = ({ postId }) => {
 	const dispatch = useDispatch();
@@ -53,23 +53,29 @@ const Comments = ({ postId }) => {
 	};
 
 	let comments = state.comments.filter((comment) => comment.post === postId);
-
 	return (
 		<div className="commentsContainer">
-			<If condition={comments.length}>
-				<Then>
-					{comments.map((comment) => (
-						<div key={comment._id}>
-							<Comment Comment={comment} />
-							<hr />
-						</div>
-					))}
-				</Then>
-			</If>
-			<Form className="commentForm" onSubmit={handleSubmit}>
-				<Form.Control name="description" />
-				<Button type="submit">Comment</Button>
-			</Form>
+			<Accordion>
+				<Accordion.Toggle as={Button} variant="dark" eventKey="0">View {comments.length} Comments</Accordion.Toggle>
+				<Accordion.Collapse eventKey="0">
+					<Card.Body>
+						<If condition={comments.length}>
+							<Then>
+								{comments.map((comment) => (
+									<div key={comment._id}>
+										<Comment Comment={comment} />
+										<hr />
+									</div>
+								))}
+							</Then>
+						</If>
+						<Form className="commentForm" onSubmit={handleSubmit}>
+							<Form.Control name="description" />
+							<Button type="submit">Comment</Button>
+						</Form>
+					</Card.Body>
+				</Accordion.Collapse>
+			</Accordion>
 		</div>
 	);
 };

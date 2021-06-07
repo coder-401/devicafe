@@ -7,10 +7,14 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import '../post/post.css';
 import { getPost, createPost } from './../../reducers/posts';
 import Switch from 'react-switch';
+import { IoMdSunny } from 'react-icons/io';
+import { BsMoon } from 'react-icons/bs';
+import { BsSearch } from 'react-icons/bs';
 
 const Posts = () => {
 	const [modalShow, setModalShow] = useState(false);
 	const [theme, setTheme] = useState(false);
+	// const [search, setSearch] = useState([])
 
 	const dispatch = useDispatch();
 
@@ -28,7 +32,6 @@ const Posts = () => {
 				Authorization: `Bearer ${state.token}`,
 			},
 		});
-
 		dispatch(getPost(response.data.reverse()));
 	}, []);
 
@@ -52,22 +55,63 @@ const Posts = () => {
 	const toggleTheme = () => {
 		theme ? setTheme(false) : setTheme(true);
 	};
+
+	const searchSubmit = async (e)=>{
+		e.preventDefault();
+		const response = await axios.get('http://localhost:5000/posts', {
+			headers: {
+				Authorization: `Bearer ${state.token}`,
+			},
+		});
+
+		let reg = `\\b(\\w*${e.target.search.value}\\w*)\\b`;
+		let regex = new RegExp(reg,"g");
+		let arr = await response.data.filter((obj)=>{
+			return regex.test(obj.description)
+		})
+		dispatch(getPost(arr.reverse()));
+	}
+	const searchChange = async (e)=>{
+		e.preventDefault();
+		const response = await axios.get('http://localhost:5000/posts', {
+			headers: {
+				Authorization: `Bearer ${state.token}`,
+			},
+		});
+
+		let reg = `\\b(\\w*${e.target.value}\\w*)\\b`;
+		let regex = new RegExp(reg,"g");
+		let arr = await response.data.filter((obj)=>{
+			return regex.test(obj.description)
+		})
+		dispatch(getPost(arr.reverse()));
+	}
 	return (
 		<If condition={state.token}>
 			<Then>
 				<div className={theme + 'Theme'}>
-					<Switch
-						handleDiameter={27.5}
-						uncheckedIcon={false}
-						checkedIcon={false}
-						// offColor="red"
-						// onColor="#eee"
-						checked={theme}
-						height={25}
-						width={50}
-						onChange={toggleTheme}
-					/>
+					<div className="searchDiv">
+						<div style={{display:"flex",flexDirection:"row"}}>
+						{theme ? <BsMoon style={moonStyle} /> : <IoMdSunny style={sunStyle} />}
+						<Switch
+							className="switch_theme"
+							handleDiameter={25}
+							uncheckedIcon={false}
+							checkedIcon={false}
+							// offColor="red"
+							onColor="#3498db"
+							checked={theme}
+							height={25}
+							width={50}
+							onChange={toggleTheme}
+						/>
+						</div>
+						<Form onSubmit={searchSubmit}>
+							<Form.Control placeholder="Search" name="search" onChange={searchChange}/>
+							<Button type="submit"><BsSearch/></Button>
+						</Form>
 
+					</div>
 					<div className="postsContainer">
 						<div style={{ textAlign: 'center', padding: 0 }}>
 							<h3 style={{ color: theme ? '#fff' : 'black' }}>Got Stuck ?</h3>
@@ -114,3 +158,11 @@ const Posts = () => {
 	);
 };
 export default Posts;
+const sunStyle = {
+	color: "#6f6f6f",
+	fontSize: "2rem",
+}
+const moonStyle = {
+	color: "#3498db",
+	fontSize: "2rem",
+}
