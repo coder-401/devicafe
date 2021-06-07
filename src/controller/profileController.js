@@ -23,7 +23,7 @@ const updateProfile = async (req, res) => {
 
 		res.status(200).json(user);
 	} catch (error) {
-		res.status(403).json({ error: e.message });
+		res.status(403).json({ error: error.message });
 	}
 };
 
