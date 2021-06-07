@@ -45,39 +45,50 @@ app.use('*', notFound);
 app.use(errorHandler);
 
 //socket connections
-const users = [];
+const users = {};
+const socketToRoom = {};
 io.on('connection', (socket) => {
 	/* ------------------------------Video--------------------------------- */
 
-	if (!users.includes(socket.id)) {
-		users.push(socket.id);
-	}
+	socket.on('join room', (roomID) => {
+		if (users[roomID]) {
+			const length = users[roomID].length;
+			if (length === 4) {
+				socket.emit('room full');
+				return;
+			}
+			users[roomID].push(socket.id);
+		} else {
+			users[roomID] = [socket.id];
+		}
+		socketToRoom[socket.id] = roomID;
+		const usersInThisRoom = users[roomID].filter((id) => id !== socket.id);
 
-	socket.emit('yourID', socket.id);
-
-	io.sockets.emit('allUsers', users);
-
-	socket.on('username', (data) => {
-		socket.emit('username', data);
+		socket.emit('all users', usersInThisRoom);
 	});
 
-	socket.on('disconnect', () => {
-		const users2 = users.filter((user) => user !== socket.id);
-
-		io.sockets.emit('allUsers', users2);
-	});
-
-	socket.on('callUser', (data) => {
-		io.to(data.userToCall).emit('hey', {
-			signal: data.signalData,
-			from: data.from,
+	socket.on('sending signal', (payload) => {
+		io.to(payload.userToSignal).emit('user joined', {
+			signal: payload.signal,
+			callerID: payload.callerID,
 		});
 	});
 
-	socket.on('acceptCall', (data) => {
-		io.to(data.to).emit('callAccepted', data.signal);
+	socket.on('returning signal', (payload) => {
+		io.to(payload.callerID).emit('receiving returned signal', {
+			signal: payload.signal,
+			id: socket.id,
+		});
 	});
 
+	socket.on('disconnect', () => {
+		const roomID = socketToRoom[socket.id];
+		let room = users[roomID];
+		if (room) {
+			room = room.filter((id) => id !== socket.id);
+			users[roomID] = room;
+		}
+	});
 	/*------------------------------Chat---------------------------------*/
 
 	socket.on('join_room', (data) => {
@@ -94,8 +105,16 @@ io.on('connection', (socket) => {
 	});
 
 	/*--------------------------Code_Challenge_Part-----------------------------*/
-	socket.on('showcodechallenge', (veiwFrame) => {
-		socket.broadcast.emit('publiccode', veiwFrame);
+	socket.on('codeText', (code) => {
+		socket.broadcast.emit('code-update', code);
+	});
+
+	socket.on('themeChange', (theme) => {
+		io.emit('theme-update', theme);
+	});
+
+	socket.on('languageChange', (language) => {
+		io.emit('language-update', language);
 	});
 });
 
