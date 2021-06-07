@@ -78,9 +78,9 @@ const Profile = () => {
 					/>
 					<button>Update</button>
 				</form>
+				<ToastContainer />
 			</Then>
 			<Else>{handleLogin}</Else>
-			<ToastContainer />
 		</If>
 	);
 };
