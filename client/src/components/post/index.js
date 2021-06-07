@@ -9,6 +9,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import './post.css';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { BiEditAlt } from 'react-icons/bi';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Post = ({ Post, Theme }) => {
 	const [postId, setPostId] = useState('');
@@ -26,13 +27,24 @@ const Post = ({ Post, Theme }) => {
 	});
 
 	const handleDelete = async (id) => {
-		const response = await axios.delete(`http://localhost:5000/post/${id}`, {
-			headers: {
-				Authorization: `Bearer ${state.token}`,
-			},
-		});
+		try {
+			const response = await axios.delete(`http://localhost:5000/post/${id}`, {
+				headers: {
+					Authorization: `Bearer ${state.token}`,
+				},
+			});
 
-		dispatch(deletePost(response.data));
+			dispatch(deletePost(response.data));
+			toast.info('Post Deleted successfully', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
 	};
 
 	const handleUpdate = (id) => {
@@ -42,69 +54,101 @@ const Post = ({ Post, Theme }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const newData = { description: e.target.description.value };
+		try {
+			const newData = { description: e.target.description.value };
 
-		const response = await axios.put(
-			`http://localhost:5000/post/${postId}`,
-			newData,
-			{
-				headers: {
-					Authorization: `Bearer ${state.token}`,
+			const response = await axios.put(
+				`http://localhost:5000/post/${postId}`,
+				newData,
+				{
+					headers: {
+						Authorization: `Bearer ${state.token}`,
+					},
 				},
-			},
-		);
+			);
 
-		setPostId('');
-		dispatch(editPost(response.data));
+			setPostId('');
+			dispatch(editPost(response.data));
+			toast.info('Post Updated successfully', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
 	};
 
 	const toggleList = () => {
 		dot ? setDot(false) : setDot(true);
-	}
+	};
 	useEffect(() => {
-		Theme ? setCardBg("light") : setCardBg("dark");
-		Theme ? setCardText("dark") : setCardText("light");
+		Theme ? setCardBg('light') : setCardBg('dark');
+		Theme ? setCardText('dark') : setCardText('light');
 	}, [Theme]);
 
 	return (
 		<Card bg={cardBg} text={cardText}>
-			<Card.Body >
+			<Card.Body>
 				<Dropdown>
 					<Dropdown.Toggle id="dropdown-basic">
-						<BsThreeDotsVertical style={{ color: Theme ? "black" : "#fff" }} className="threeDots" />
+						<BsThreeDotsVertical
+							style={{ color: Theme ? 'black' : '#fff' }}
+							className="threeDots"
+						/>
 					</Dropdown.Toggle>
 
-					{owner._id === state.user._id ?
-						<Dropdown.Menu style={{ overflow: "hidden" }}>
-							<Dropdown.Item className="editItem" onClick={() => {
-								handleUpdate(_id)
-								toggleList()
-							}} ><h5>Edit</h5> <BiEditAlt /></Dropdown.Item>
+					{owner._id === state.user._id ? (
+						<Dropdown.Menu style={{ overflow: 'hidden' }}>
+							<Dropdown.Item
+								className="editItem"
+								onClick={() => {
+									handleUpdate(_id);
+									toggleList();
+								}}
+							>
+								<h5>Edit</h5> <BiEditAlt />
+							</Dropdown.Item>
 							<hr style={{ margin: 0 }} />
-							<Dropdown.Item className="deleteItem" onClick={() => handleDelete(_id)} ><h5>Delete</h5> <RiDeleteBin5Line id="deleteIcon" /></Dropdown.Item>
+							<Dropdown.Item
+								className="deleteItem"
+								onClick={() => handleDelete(_id)}
+							>
+								<h5>Delete</h5> <RiDeleteBin5Line id="deleteIcon" />
+							</Dropdown.Item>
 						</Dropdown.Menu>
-						: null
-					}
+					) : null}
 				</Dropdown>
 
-				<Card.Text as="h4"><Avatar textMarginRatio={0.2} textSizeRatio={2} name={owner.username} size="40" round={true} /> {owner.username}
+				<Card.Text as="h4">
+					<Avatar
+						textMarginRatio={0.2}
+						textSizeRatio={2}
+						name={owner.username}
+						size="40"
+						round={true}
+					/>{' '}
+					{owner.username}
 				</Card.Text>
-				<Card.Text className="postTime" as="h6">{time}</Card.Text>
-				<Card.Text style={{ margin: "18px 0 0 47px" }} as="p">{description}</Card.Text>
+				<Card.Text className="postTime" as="h6">
+					{time}
+				</Card.Text>
+				<Card.Text style={{ margin: '18px 0 0 47px' }} as="p">
+					{description}
+				</Card.Text>
 				<hr />
 
-				{postId === _id && dot ?
+				{postId === _id && dot ? (
 					<Form className="postEditForm" onSubmit={handleSubmit}>
-						<Form.Control
-							defaultValue={description}
-							name="description"
-						/>
+						<Form.Control defaultValue={description} name="description" />
 						<Button type="submit">Edit</Button>
 					</Form>
-					: null
-				}
+				) : null}
 			</Card.Body>
 			<Comments postId={_id} />
+			<ToastContainer />
 		</Card>
 	);
 };

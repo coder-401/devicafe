@@ -7,6 +7,7 @@ import './comment.css';
 import Avatar from 'react-avatar';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { BiEditAlt } from 'react-icons/bi';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Comment = ({ Comment }) => {
 	const [commentId, setCommentId] = useState('');
@@ -23,13 +24,27 @@ const Comment = ({ Comment }) => {
 	});
 
 	const handleDelete = async (id) => {
-		const response = await axios.delete(`http://localhost:5000/comment/${id}`, {
-			headers: {
-				Authorization: `Bearer ${state.token}`,
-			},
-		});
+		try {
+			const response = await axios.delete(
+				`http://localhost:5000/comment/${id}`,
+				{
+					headers: {
+						Authorization: `Bearer ${state.token}`,
+					},
+				},
+			);
 
-		dispatch(deleteComment(response.data));
+			dispatch(deleteComment(response.data));
+			toast.info('Deleted successfully', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
 	};
 
 	const handleUpdate = (id) => {
@@ -39,57 +54,80 @@ const Comment = ({ Comment }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const newData = { description: e.target.description.value };
+		try {
+			const newData = { description: e.target.description.value };
 
-		const response = await axios.put(
-			`http://localhost:5000/comment/${commentId}`,
-			newData,
-			{
-				headers: {
-					Authorization: `Bearer ${state.token}`,
+			const response = await axios.put(
+				`http://localhost:5000/comment/${commentId}`,
+				newData,
+				{
+					headers: {
+						Authorization: `Bearer ${state.token}`,
+					},
 				},
-			},
-		);
+			);
 
-		setCommentId('');
-		dispatch(editComment(response.data));
-    };
-	const toggleUpdate = ()=>{
+			setCommentId('');
+			dispatch(editComment(response.data));
+			toast.info('Comment Updated successfully', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
+	};
+	const toggleUpdate = () => {
 		update ? setUpdate(false) : setUpdate(true);
-	}
-
+	};
 
 	return (
 		<div>
 			<Card text="dark">
 				<Card.Body>
-					<Avatar textMarginRatio={0.2} textSizeRatio={2} name={owner.username} size="30" round={true} /> {owner.username}
-					<Card.Text className="commentTime" as="p">{time}</Card.Text>
+					<Avatar
+						textMarginRatio={0.2}
+						textSizeRatio={2}
+						name={owner.username}
+						size="30"
+						round={true}
+					/>{' '}
+					{owner.username}
+					<Card.Text className="commentTime" as="p">
+						{time}
+					</Card.Text>
 					<hr />
-					<Card.Text style={{paddingBottom:"10px"}} as="p">{description}</Card.Text>
-					{commentId === _id && update ?
+					<Card.Text style={{ paddingBottom: '10px' }} as="p">
+						{description}
+					</Card.Text>
+					{commentId === _id && update ? (
 						<Form className="commentEditFrom" onSubmit={handleSubmit}>
-							<Form.Control
-								defaultValue={description}
-								name="description"
-							/>
+							<Form.Control defaultValue={description} name="description" />
 							<Button type="submit">Edit</Button>
 						</Form>
-						: null
-					}
-
-					{owner._id === state.user._id ?
-					<div className="editDeleteDiv">
-						<BiEditAlt className="editIcon" onClick={() => {
-							handleUpdate(_id);
-							toggleUpdate();
-						}} />
-						<RiDeleteBin5Line className="deleteIcon" onClick={() => handleDelete(_id)} />
-					</div>
-						: null
-					}
+					) : null}
+					{owner._id === state.user._id ? (
+						<div className="editDeleteDiv">
+							<BiEditAlt
+								className="editIcon"
+								onClick={() => {
+									handleUpdate(_id);
+									toggleUpdate();
+								}}
+							/>
+							<RiDeleteBin5Line
+								className="deleteIcon"
+								onClick={() => handleDelete(_id)}
+							/>
+						</div>
+					) : null}
 				</Card.Body>
 			</Card>
+
+			<ToastContainer />
 		</div>
 	);
 };

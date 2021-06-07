@@ -6,6 +6,7 @@ import Comment from './../comment';
 import '../comment/comment.css';
 import { getComment, createComment } from './../../reducers/comments';
 import { Button, Form, Accordion, Card } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Comments = ({ postId }) => {
 	const dispatch = useDispatch();
@@ -20,43 +21,64 @@ const Comments = ({ postId }) => {
 	});
 
 	useEffect(async () => {
-		const response = await axios.get('http://localhost:5000/comments', {
-			headers: {
-				Authorization: `Bearer ${state.token}`,
-			},
-		});
+		try {
+			const response = await axios.get('http://localhost:5000/comments', {
+				headers: {
+					Authorization: `Bearer ${state.token}`,
+				},
+			});
 
-		dispatch(getComment(response.data));
+			dispatch(getComment(response.data));
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
 	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const newComment = {
-			description: e.target.description.value,
-			owner: state.user._id,
-			post: postId,
-			time: new Date(),
-		};
+		try {
+			const newComment = {
+				description: e.target.description.value,
+				owner: state.user._id,
+				post: postId,
+				time: new Date(),
+			};
 
-		const response = await axios.post(
-			`http://localhost:5000/comment`,
-			newComment,
-			{
-				headers: {
-					Authorization: `Bearer ${state.token}`,
+			const response = await axios.post(
+				`http://localhost:5000/comment`,
+				newComment,
+				{
+					headers: {
+						Authorization: `Bearer ${state.token}`,
+					},
 				},
-			},
-		);
-
-		dispatch(createComment(response.data));
+			);
+			e.target.description.value = '';
+			e.target.description.focus();
+			dispatch(createComment(response.data));
+			toast.info('Comment Created successfully', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
 	};
 
 	let comments = state.comments.filter((comment) => comment.post === postId);
 	return (
 		<div className="commentsContainer">
 			<Accordion>
-				<Accordion.Toggle as={Button} variant="dark" eventKey="0">View {comments.length} Comments</Accordion.Toggle>
+				<Accordion.Toggle as={Button} variant="dark" eventKey="0">
+					View {comments.length} Comments
+				</Accordion.Toggle>
 				<Accordion.Collapse eventKey="0">
 					<Card.Body>
 						<If condition={comments.length}>
@@ -76,6 +98,7 @@ const Comments = ({ postId }) => {
 					</Card.Body>
 				</Accordion.Collapse>
 			</Accordion>
+			<ToastContainer />
 		</div>
 	);
 };

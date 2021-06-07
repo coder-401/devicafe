@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { If, Then } from 'react-if';
+import { useHistory } from 'react-router-dom';
+import { If, Then, Else } from 'react-if';
 import axios from 'axios';
 import Question from './../question';
-
+import { ToastContainer, toast } from 'react-toastify';
 import { getQuestion } from './../../reducers/questions';
+import cookie from 'react-cookies';
 
 const Questions = () => {
 	const dispatch = useDispatch();
 	const [questions, setQuestions] = useState([]);
+	const history = useHistory();
 
 	const state = useSelector((state) => {
 		return {
@@ -17,11 +20,22 @@ const Questions = () => {
 		};
 	});
 
-	useEffect(async () => {
-		const response = await axios.get('http://localhost:5000/questions');
+	const handleLogin = () => {
+		history.push('/login');
+	};
 
-		setQuestions([...response.data]);
-		dispatch(getQuestion(response.data));
+	useEffect(async () => {
+		try {
+			const response = await axios.get('http://localhost:5000/questions');
+
+			setQuestions([...response.data]);
+			dispatch(getQuestion(response.data));
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
 	}, []);
 
 	const handleSubmit = (e) => {
@@ -52,30 +66,36 @@ const Questions = () => {
 
 	return (
 		<React.Fragment>
-			<form onSubmit={handleSubmit}>
-				<select name="topic">
-					<option value="">none</option>
-					<option value="javascript">JavaScript</option>
-					<option value="node">NodeJS</option>
-					<option value="react">ReactJS</option>
-				</select>
-				<select name="difficulty">
-					<option value="">none</option>
-					<option value="beginner">Still Fresh</option>
-					<option value="intermidate">Joniur Developer</option>
-					<option value="advance">Senior Developer</option>
-				</select>
-				<button>Get your Questions</button>
-			</form>
-			<If condition={state.questions.length && state.token}>
+			<If condition={cookie.load('auth')}>
 				<Then>
-					{questions.map((question) => (
-						<div key={question.id} className="question">
-							<Question Question={question} />
-						</div>
-					))}
+					<form onSubmit={handleSubmit}>
+						<select name="topic">
+							<option value="">none</option>
+							<option value="javascript">JavaScript</option>
+							<option value="node">NodeJS</option>
+							<option value="react">ReactJS</option>
+						</select>
+						<select name="difficulty">
+							<option value="">none</option>
+							<option value="beginner">Still Fresh</option>
+							<option value="intermidate">Joniur Developer</option>
+							<option value="advance">Senior Developer</option>
+						</select>
+						<button>Get your Questions</button>
+					</form>
+					<If condition={state.questions.length}>
+						<Then>
+							{questions.map((question) => (
+								<div key={question.id} className="question">
+									<Question Question={question} />
+								</div>
+							))}
+						</Then>
+					</If>
 				</Then>
+				<Else>{handleLogin}</Else>
 			</If>
+			<ToastContainer />
 		</React.Fragment>
 	);
 };
