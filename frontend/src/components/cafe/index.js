@@ -1,10 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { If, Then } from 'react-if';
 import Video from './../videoCall';
 import Chat from './../chat';
 import WhiteBoard from './../whiteBoard';
-// import TextEditor from './../textEditor';
+import Questions from './../questions';
 
 const Cafe = () => {
 	const { meetingId } = useParams();
@@ -18,12 +19,14 @@ const Cafe = () => {
 	});
 
 	return (
-		<React.Fragment>
-			<Video meetingId={meetingId} />
-			<Chat meetingId={meetingId} />
-			<WhiteBoard />
-			{/* <TextEditor /> */}
-		</React.Fragment>
+		<If condition={state.token}>
+			<Then>
+				<Video meetingId={meetingId} />
+				<Chat meetingId={meetingId} />
+				<WhiteBoard />
+				<Questions />
+			</Then>
+		</If>
 	);
 };
 

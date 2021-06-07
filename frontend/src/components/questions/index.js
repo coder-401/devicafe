@@ -67,7 +67,7 @@ const Questions = () => {
 				</select>
 				<button>Get your Questions</button>
 			</form>
-			<If condition={state.questions.length}>
+			<If condition={state.questions.length && state.token}>
 				<Then>
 					{questions.map((question) => (
 						<div key={question.id}>

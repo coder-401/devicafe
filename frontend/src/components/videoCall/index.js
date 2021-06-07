@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 import styled from 'styled-components';
@@ -39,7 +38,6 @@ const videoConstraints = {
 
 const Room = ({ meetingId }) => {
 	const [peers, setPeers] = useState([]);
-	const socketRef = useRef();
 	const userVideo = useRef();
 	const peersRef = useRef([]);
 	const roomID = meetingId;

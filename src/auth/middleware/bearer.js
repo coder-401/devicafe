@@ -10,6 +10,7 @@ module.exports = async (req, res, next) => {
 		req.user = validUser;
 		next();
 	} catch (e) {
+		console.log(e);
 		_authError();
 	}
 
