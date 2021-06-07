@@ -33,7 +33,10 @@ const Entrance = () => {
 				},
 			);
 
-			history.push(`/cafe/${data._id}`);
+			history.push({
+				pathname: `/cafe/${data._id}`,
+				state: data,
+			});
 		} catch (error) {
 			console.log(error);
 		}
@@ -51,7 +54,10 @@ const Entrance = () => {
 				},
 			});
 
-			history.push(`/cafe/${data._id}`);
+			history.push({
+				pathname: `/cafe/${data._id}`,
+				state: data,
+			});
 		} catch (error) {
 			console.log(error);
 		}

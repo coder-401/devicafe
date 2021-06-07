@@ -6,6 +6,7 @@ import Video from './../videoCall';
 import Chat from './../chat';
 import WhiteBoard from './../whiteBoard';
 import Questions from './../questions';
+import './cafe.css';
 
 const Cafe = () => {
 	const { meetingId } = useParams();
