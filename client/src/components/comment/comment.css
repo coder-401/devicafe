@@ -1,0 +1,61 @@
+.editIcon {
+  color: #f0c14b;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.deleteIcon {
+  color: rgb(173, 12, 12);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.commentsContainer{
+    width:80%;
+    margin: auto;
+}
+.editDeleteDiv{
+    width: 8%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 17%;
+    right: 5%;
+}
+.commentTime{
+    font-size: 0.8rem;
+    font-weight: 0 !important;
+    position: absolute;
+    top: 25px;
+    left: 40%;
+}
+/*================================== COMMENT_FORM ===============================*/
+
+.commentForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+.commentForm input{
+    width: 85%;
+}
+
+/*================================ Comment_Update_From ==========================*/
+.commentEditFrom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.commentEditFrom input{
+    width: 90%;
+}
+.commentEditFrom button{
+    color: #202020;
+    background-color:#f0c14b;
+    border-color: #c99616;
+}
+.commentEditFrom button:hover{
+    color: #eee;
+    background-color:#9e7100;
+    border-color: #c99616;
+}
