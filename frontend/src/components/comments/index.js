@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { If, Then } from 'react-if';
 import axios from 'axios';
 import Comment from './../comment';
-
+import '../comment/comment.css';
 import { getComment, createComment } from './../../reducers/comments';
+import { Button, Form } from 'react-bootstrap';
 
 const Comments = ({ postId }) => {
 	const dispatch = useDispatch();
@@ -54,23 +55,22 @@ const Comments = ({ postId }) => {
 	let comments = state.comments.filter((comment) => comment.post === postId);
 
 	return (
-		<React.Fragment>
+		<div className="commentsContainer">
 			<If condition={comments.length}>
 				<Then>
 					{comments.map((comment) => (
 						<div key={comment._id}>
-							<hr />
 							<Comment Comment={comment} />
 							<hr />
 						</div>
 					))}
 				</Then>
 			</If>
-			<form onSubmit={handleSubmit}>
-				<input type="text" name="description" />
-				<button>Add New Comment</button>
-			</form>
-		</React.Fragment>
+			<Form className="commentForm" onSubmit={handleSubmit}>
+				<Form.Control name="description" />
+				<Button type="submit">Comment</Button>
+			</Form>
+		</div>
 	);
 };
 

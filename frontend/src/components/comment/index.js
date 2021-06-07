@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Else, If, Then } from 'react-if';
+import { Card, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { editComment, deleteComment } from './../../reducers/comments';
+import './comment.css';
+import Avatar from 'react-avatar';
+import { RiDeleteBin5Line } from 'react-icons/ri';
+import { BiEditAlt } from 'react-icons/bi';
 
 const Comment = ({ Comment }) => {
 	const [commentId, setCommentId] = useState('');
+	const [update, setUpdate] = useState(false);
 
 	const { description, owner, time, _id } = Comment;
 	const dispatch = useDispatch();
@@ -48,17 +53,50 @@ const Comment = ({ Comment }) => {
 
 		setCommentId('');
 		dispatch(editComment(response.data));
-	};
+    };
+	const toggleUpdate = ()=>{
+		update ? setUpdate(false) : setUpdate(true);
+	}
+
 
 	return (
 		<div>
-			<p>
-				{owner.username} {time}
-			</p>
-			<p>description: {description}</p>
+			<Card text="dark">
+				<Card.Body>
+					<Avatar textMarginRatio={0.2} textSizeRatio={2} name={owner.username} size="30" round={true} /> {owner.username}
+					<Card.Text className="commentTime" as="p">{time}</Card.Text>
+					<hr />
+					<Card.Text as="p">{description}</Card.Text>
+					{commentId === _id && update ?
+						<Form className="commentEditFrom" onSubmit={handleSubmit}>
+							<Form.Control
+								defaultValue={description}
+								name="description"
+							/>
+							<Button type="submit">Edit</Button>
+						</Form>
+						: null
+					}
+
+					{owner._id === state.user._id ?
+					<div className="editDeleteDiv">
+						<BiEditAlt className="editIcon" onClick={() => {
+							handleUpdate(_id);
+							toggleUpdate();
+						}} />
+						<RiDeleteBin5Line className="deleteIcon" onClick={() => handleDelete(_id)} />
+					</div>
+						: null
+					}
+				</Card.Body>
+			</Card>
+
+
+
+			{/* 
 			<If condition={owner._id === state.user._id}>
 				<Then>
-					<button onClick={() => handleDelete(_id)}>Delete</button>
+					<AiFillDelete onClick={() => handleDelete(_id)} />
 					<If condition={commentId === _id}>
 						<Then>
 							<form onSubmit={handleSubmit}>
@@ -75,7 +113,7 @@ const Comment = ({ Comment }) => {
 						</Else>
 					</If>
 				</Then>
-			</If>
+			</If> */}
 		</div>
 	);
 };
