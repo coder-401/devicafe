@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Video from './../videoCall';
 import Chat from './../chat';
 import WhiteBoard from './../whiteBoard';
-import TextEditor from './../textEditor';
+// import TextEditor from './../textEditor';
 
 const Cafe = () => {
 	const { meetingId } = useParams();
@@ -22,7 +22,7 @@ const Cafe = () => {
 			<Video meetingId={meetingId} />
 			<Chat meetingId={meetingId} />
 			<WhiteBoard />
-			<TextEditor />
+			{/* <TextEditor /> */}
 		</React.Fragment>
 	);
 };

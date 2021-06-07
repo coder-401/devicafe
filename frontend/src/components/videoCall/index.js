@@ -6,150 +6,122 @@ import styled from 'styled-components';
 
 const socket = io.connect('http://localhost:5000');
 
-const Video = styled.video`
-	border: 1px solid blue;
-	width: 50%;
-	height: 50%;
+const Container = styled.div`
+	padding: 20px;
+	display: flex;
+	height: 100vh;
+	width: 90%;
+	margin: auto;
+	flex-wrap: wrap;
 `;
 
-const VideoCall = () => {
-	const [yourID, setYourID] = useState('');
-	const [users, setUsers] = useState([]);
-	const [stream, setStream] = useState();
-	const [receivingCall, setReceivingCall] = useState(false);
-	const [caller, setCaller] = useState('');
-	const [callerSignal, setCallerSignal] = useState();
-	const [callAccepted, setCallAccepted] = useState(false);
-	const [username, setUsername] = useState('');
+const StyledVideo = styled.video`
+	height: 40%;
+	width: 50%;
+`;
 
-	const userVideo = useRef();
-	const partnerVideo = useRef();
-
-	const state = useSelector((state) => {
-		return {
-			token: state.signIn.token,
-			user: state.signIn.user,
-		};
-	});
-
-	socket.emit('username', state.user.username);
-
-	socket.on('username', (username) => {
-		setUsername(username);
-	});
+const Video = (props) => {
+	const ref = useRef();
 
 	useEffect(() => {
-		navigator.mediaDevices
-			.getUserMedia({ video: true, audio: true })
-			.then((stream) => {
-				setStream(stream);
-				if (userVideo.current) {
-					userVideo.current.srcObject = stream;
-				}
-			});
-
-		socket.on('yourID', (id) => {
-			setYourID(id);
-		});
-
-		socket.on('allUsers', (users) => {
-			setUsers(users);
-		});
-
-		socket.on('hey', (data) => {
-			setReceivingCall(true);
-			setCaller(data.from);
-			setCallerSignal(data.signal);
+		props.peer.on('stream', (stream) => {
+			ref.current.srcObject = stream;
 		});
 	}, []);
 
-	function callPeer(id) {
+	return <StyledVideo playsInline autoPlay ref={ref} />;
+};
+
+const videoConstraints = {
+	height: window.innerHeight / 2,
+	width: window.innerWidth / 2,
+};
+
+const Room = ({ meetingId }) => {
+	const [peers, setPeers] = useState([]);
+	const socketRef = useRef();
+	const userVideo = useRef();
+	const peersRef = useRef([]);
+	const roomID = meetingId;
+
+	useEffect(() => {
+		navigator.mediaDevices
+			.getUserMedia({ video: videoConstraints, audio: true })
+			.then((stream) => {
+				userVideo.current.srcObject = stream;
+				socket.emit('join room', roomID);
+				socket.on('all users', (users) => {
+					const peers = [];
+					users.forEach((userID) => {
+						const peer = createPeer(userID, socket.id, stream);
+						peersRef.current.push({
+							peerID: userID,
+							peer,
+						});
+						peers.push(peer);
+					});
+					setPeers(peers);
+				});
+
+				socket.on('user joined', (payload) => {
+					const peer = addPeer(payload.signal, payload.callerID, stream);
+					peersRef.current.push({
+						peerID: payload.callerID,
+						peer,
+					});
+
+					setPeers((users) => [...users, peer]);
+				});
+
+				socket.on('receiving returned signal', (payload) => {
+					const item = peersRef.current.find((p) => p.peerID === payload.id);
+					item.peer.signal(payload.signal);
+				});
+			});
+	}, []);
+
+	function createPeer(userToSignal, callerID, stream) {
 		const peer = new Peer({
 			initiator: true,
 			trickle: false,
-			stream: stream,
+			stream,
 		});
 
-		peer.on('signal', (data) => {
-			socket.emit('callUser', {
-				userToCall: id,
-				signalData: data,
-				from: yourID,
+		peer.on('signal', (signal) => {
+			socket.emit('sending signal', {
+				userToSignal,
+				callerID,
+				signal,
 			});
 		});
 
-		peer.on('stream', (stream) => {
-			if (partnerVideo.current) {
-				partnerVideo.current.srcObject = stream;
-			}
-		});
-
-		socket.on('callAccepted', (signal) => {
-			setCallAccepted(true);
-			peer.signal(signal);
-		});
+		return peer;
 	}
 
-	function acceptCall() {
-		setCallAccepted(true);
+	function addPeer(incomingSignal, callerID, stream) {
 		const peer = new Peer({
 			initiator: false,
 			trickle: false,
-			stream: stream,
-		});
-		peer.on('signal', (data) => {
-			socket.emit('acceptCall', { signal: data, to: caller });
+			stream,
 		});
 
-		peer.on('stream', (stream) => {
-			partnerVideo.current.srcObject = stream;
+		peer.on('signal', (signal) => {
+			socket.emit('returning signal', { signal, callerID });
 		});
 
-		peer.signal(callerSignal);
-	}
+		peer.signal(incomingSignal);
 
-	let UserVideo;
-	if (stream) {
-		UserVideo = <Video playsInline muted ref={userVideo} autoPlay />;
-	}
-
-	let PartnerVideo;
-	if (callAccepted) {
-		PartnerVideo = <Video playsInline ref={partnerVideo} autoPlay />;
-	}
-
-	let incomingCall;
-	if (receivingCall) {
-		incomingCall = (
-			<div>
-				<h1>{caller} is calling you</h1>
-				<button onClick={acceptCall}>Accept</button>
-			</div>
-		);
+		return peer;
 	}
 
 	return (
-		<React.Fragment>
-			<div>
-				{UserVideo}
-				{PartnerVideo}
-			</div>
-			<div>
-				{users.map((key) => {
-					if (key === yourID) {
-						return null;
-					}
-					return (
-						<button key={key} onClick={() => callPeer(key)}>
-							Call {username}
-							{key}
-						</button>
-					);
-				})}
-			</div>
-			<div>{incomingCall}</div>
-		</React.Fragment>
+		<Container>
+			<StyledVideo muted ref={userVideo} autoPlay playsInline />
+			{peers.map((peer, index) => {
+				return <Video key={index} peer={peer} />;
+			})}
+		</Container>
 	);
 };
 
-export default VideoCall;
+export default Room;
