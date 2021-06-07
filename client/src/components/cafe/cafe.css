@@ -6,6 +6,7 @@
 
 #root {
 	background-color: rgb(228, 222, 222);
+	width: 100%;
 }
 
 .question {
@@ -13,8 +14,10 @@
 	position: relative;
 	padding: 3.5rem 3.5rem 0.5rem;
 	border-radius: 4rem;
-	width: 60%;
+	width: 30rem;
+	text-align: center;
 	margin: 0 auto 1rem;
+	background-color: rgb(250, 249, 249);
 }
 
 .category {
@@ -33,4 +36,8 @@
 	background-color: green;
 	padding: 0.2rem 1rem;
 	border-radius: 6rem;
+}
+
+.answer {
+	margin-top: 1rem;
 }
