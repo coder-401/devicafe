@@ -64,9 +64,7 @@ io.on('connection', (socket) => {
 	socket.on('disconnect', () => {
 		const users2 = users.filter((user) => user !== socket.id);
 
-		console.log(users2);
-
-		io.sockets.emit('allUsers', users);
+		io.sockets.emit('allUsers', users2);
 	});
 
 	socket.on('callUser', (data) => {
@@ -91,23 +89,8 @@ io.on('connection', (socket) => {
 	});
 
 	/*------------------------------whiteBoard---------------------------------*/
-	let drawing = false;
-	let strokeStyle = 'black';
-	let lineWidth = 10;
-	socket.on('mousedown', (x, y, _strokeStyle, _lineWidth) => {
-		drawing = true;
-		strokeStyle = _strokeStyle;
-		lineWidth = _lineWidth;
-		io.emit('_mousedown', drawing, x, y, strokeStyle, lineWidth);
-	});
-	socket.on('mouseup', () => {
-		drawing = false;
-		io.emit('_mouseup', drawing);
-	});
-	socket.on('mousemove', (x, y) => {
-		if (drawing) {
-			io.emit('_mousemove', x, y);
-		}
+	socket.on('canvas-data', (data) => {
+		socket.broadcast.emit('canvas-data', data);
 	});
 
 	/*--------------------------Code_Challenge_Part-----------------------------*/
