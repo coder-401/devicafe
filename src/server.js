@@ -64,6 +64,7 @@ io.on('connection', (socket) => {
 		socketToRoom[socket.id] = roomID;
 		const usersInThisRoom = users[roomID].filter((id) => id !== socket.id);
 
+		socket.join(roomID);
 		socket.emit('all users', usersInThisRoom);
 	});
 
@@ -91,9 +92,9 @@ io.on('connection', (socket) => {
 	});
 	/*------------------------------Chat---------------------------------*/
 
-	socket.on('join_room', (data) => {
-		socket.join(data);
-	});
+	// socket.on('join_room', (data) => {
+	// 	socket.join(data);
+	// });
 
 	socket.on('send_message', (data) => {
 		socket.to(data.room).emit('receive_message', data.content);
