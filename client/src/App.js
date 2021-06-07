@@ -10,21 +10,20 @@ import Login from './components/auth/login';
 import Profile from './components/profile';
 import Home from './components/home';
 
-import Navigation from './components/navigation';
+// import Navigation from './components/navigation';
 import Questions from './components/questions';
 import Posts from './components/posts';
 import Entrance from './components/entrance';
 import Cafe from './components/cafe';
 
-import Footer from './components/footer';
+// import Footer from './components/footer';
 
 const App = () => {
 	return (
 		<div>
 			<Router>
 				<Header />
-				<br />
-				<Navigation />
+				{/* <Navigation /> */}
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route exact path="/login" component={Login} />
@@ -35,8 +34,8 @@ const App = () => {
 					<Route exact path="/BookTable" component={Entrance} />
 					<Route exact path="/cafe/:meetingId" component={Cafe} />
 				</Switch>
+				{/* <Footer/> */}
 			</Router>
-			<Footer />
 		</div>
 	);
 };
