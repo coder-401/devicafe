@@ -15,7 +15,7 @@ const signIn = (state = intialState, action) => {
 			return { user, token };
 
 		case 'LOGOUT':
-			cookie.save('auth', null);
+			cookie.remove('auth');
 			return { user: payload.user, token: payload.token };
 
 		default:

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { If, Then } from 'react-if';
+import { If, Then, Else } from 'react-if';
 import Video from './../videoCall';
 import Chat from './../chat';
 import WhiteBoard from './../whiteBoard';
 import Questions from './../questions';
+import cookie from 'react-cookies';
+
 // import './cafe.css';
 
 const Cafe = () => {
@@ -21,6 +23,8 @@ const Cafe = () => {
 		};
 	});
 
+	const history = useHistory();
+
 	const handleCall = () => {
 		setStart(!start);
 	};
@@ -29,19 +33,23 @@ const Cafe = () => {
 		setShow(!show);
 	};
 
+	console.log(cookie.load('auth'));
+
+	const handleLogin = () => {
+		history.push('/login');
+	};
+
 	return (
-		<If condition={state.token}>
-			<Then>
-				<button onClick={handleCall}>start videoCall</button>
-				{start && <Video meetingId={meetingId} />}
-				<Chat meetingId={meetingId} />
-				<button style={{ zIndex: 10 }} onClick={handleBoard}>
-					{!show ? `open whiteBoard` : `close whiteBoard`}
-				</button>
-				{show && <WhiteBoard />}
-				<Questions />
-			</Then>
-		</If>
+		<React.Fragment>
+			<button onClick={handleCall}>start videoCall</button>
+			{start && <Video meetingId={meetingId} />}
+			<Chat meetingId={meetingId} />
+			<button onClick={handleBoard}>
+				{!show ? `open whiteBoard` : `close whiteBoard`}
+			</button>
+			{show && <WhiteBoard />}
+			<Questions />
+		</React.Fragment>
 	);
 };
 

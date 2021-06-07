@@ -2,6 +2,9 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { If, Then, Else } from 'react-if';
+import { ToastContainer, toast } from 'react-toastify';
+import cookie from 'react-cookies';
 
 const Entrance = () => {
 	const history = useHistory();
@@ -12,6 +15,10 @@ const Entrance = () => {
 			user: state.signIn.user,
 		};
 	});
+
+	const handleLogin = () => {
+		history.push('/login');
+	};
 
 	const newTable = async (e) => {
 		try {
@@ -38,7 +45,10 @@ const Entrance = () => {
 				state: data,
 			});
 		} catch (error) {
-			console.log(error);
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
 		}
 	};
 
@@ -65,31 +75,37 @@ const Entrance = () => {
 
 	return (
 		<React.Fragment>
-			<form onSubmit={newTable}>
-				<select name="topic">
-					<option value="">none</option>
-					<option value="javascript">JavaScript</option>
-					<option value="node">NodeJS</option>
-					<option value="react">ReactJS</option>
-				</select>
-				<select name="role">
-					<option value="">none</option>
-					<option value="interviewer">Interviewer</option>
-					<option value="interviewee">Interviewee</option>
-				</select>
-				<select name="difficulty">
-					<option value="">none</option>
-					<option value="beginner">Still Fresh</option>
-					<option value="intermidate">Joniur Developer</option>
-					<option value="advance">Senior Developer</option>
-				</select>
-				<button>Get your Table</button>
-			</form>
+			<If condition={cookie.load('auth')}>
+				<Then>
+					<form onSubmit={newTable}>
+						<select name="topic">
+							<option value="">none</option>
+							<option value="javascript">JavaScript</option>
+							<option value="node">NodeJS</option>
+							<option value="react">ReactJS</option>
+						</select>
+						<select name="role">
+							<option value="">none</option>
+							<option value="interviewer">Interviewer</option>
+							<option value="interviewee">Interviewee</option>
+						</select>
+						<select name="difficulty">
+							<option value="">none</option>
+							<option value="beginner">Still Fresh</option>
+							<option value="intermidate">Joniur Developer</option>
+							<option value="advance">Senior Developer</option>
+						</select>
+						<button>Get your Table</button>
+					</form>
 
-			<form onSubmit={getTable}>
-				<input type="text" placeholder="table Id" name="tableId" />
-				<button>Get your Table</button>
-			</form>
+					<form onSubmit={getTable}>
+						<input type="text" placeholder="table Id" name="tableId" />
+						<button>Get your Table</button>
+					</form>
+				</Then>
+				<Else>{handleLogin}</Else>
+			</If>
+			<ToastContainer />
 		</React.Fragment>
 	);
 };
