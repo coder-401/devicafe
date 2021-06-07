@@ -5,10 +5,10 @@ const Question = ({ Question }) => {
 
 	return (
 		<div>
-			<p>question: {question}</p>
-			<p>answer: {answer}</p>
-			<p>difficulty: {difficulty}</p>
-			<p>category: {category}</p>
+			<p className="qu">{question}</p>
+			<p className="answer">{answer}</p>
+			<p className="category">{category}</p>
+			<p className="difficulty">{difficulty}</p>
 		</div>
 	);
 };

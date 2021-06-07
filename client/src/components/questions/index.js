@@ -70,10 +70,8 @@ const Questions = () => {
 			<If condition={state.questions.length && state.token}>
 				<Then>
 					{questions.map((question) => (
-						<div key={question.id}>
-							<hr />
+						<div key={question.id} className="question">
 							<Question Question={question} />
-							<hr />
 						</div>
 					))}
 				</Then>
