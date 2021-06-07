@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import socketIOClient from 'socket.io-client';
-import { Editor } from 'monaco-editor';
+import Editor from '@monaco-editor/react';
 import { FaRegLightbulb } from 'react-icons/fa';
 import { RiSunLine } from 'react-icons/ri';
 

@@ -12,7 +12,7 @@ import Home from './components/home';
 
 import Navigation from './components/navigation';
 import Questions from './components/questions';
-import Community from './components/community';
+import Posts from './components/posts';
 import Entrance from './components/entrance';
 import Cafe from './components/cafe';
 
@@ -31,7 +31,7 @@ const App = () => {
 					<Route exact path="/register" component={Register} />
 					<Route exact path="/profile" component={Profile} />
 					<Route exact path="/questions" component={Questions} />
-					<Route exact path="/community" component={Community} />
+					<Route exact path="/community" component={Posts} />
 					<Route exact path="/BookTable" component={Entrance} />
 					<Route exact path="/cafe/:meetingId" component={Cafe} />
 				</Switch>

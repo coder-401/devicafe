@@ -14,15 +14,13 @@ const posts = (state = intialState, action) => {
 
 		case 'UPDATE_POST':
 			return {
-				posts: state.posts
-					.map((post) => {
-						if (post._id === payload._id) {
-							return payload;
-						} else {
-							return post;
-						}
-					})
-					.reverse(),
+				posts: state.posts.map((post) => {
+					if (post._id === payload._id) {
+						return payload;
+					} else {
+						return post;
+					}
+				}),
 			};
 
 		case 'DELETE_POST':
