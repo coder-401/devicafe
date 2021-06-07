@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { If, Then } from 'react-if';
+import { useHistory } from 'react-router-dom';
+
+import { Else, If, Then } from 'react-if';
 import axios from 'axios';
 import Post from './../post';
 import { Button, Form, Modal } from 'react-bootstrap';
 import '../post/post.css';
 import { getPost, createPost } from './../../reducers/posts';
 import Switch from 'react-switch';
+import { ToastContainer, toast } from 'react-toastify';
+import cookie from 'react-cookies';
 
 const Posts = () => {
 	const [modalShow, setModalShow] = useState(false);
@@ -22,38 +26,64 @@ const Posts = () => {
 		};
 	});
 
-	useEffect(async () => {
-		const response = await axios.get('http://localhost:5000/posts', {
-			headers: {
-				Authorization: `Bearer ${state.token}`,
-			},
-		});
+	const history = useHistory();
 
-		dispatch(getPost(response.data.reverse()));
+	useEffect(async () => {
+		try {
+			const response = await axios.get('http://localhost:5000/posts', {
+				headers: {
+					Authorization: `Bearer ${state.token}`,
+				},
+			});
+
+			dispatch(getPost(response.data.reverse()));
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
 	}, []);
+
+	const handleLogin = () => {
+		history.push('/login');
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const newPost = {
-			description: e.target.description.value,
-			owner: state.user._id,
-			time: new Date().toString(),
-		};
+		try {
+			const newPost = {
+				description: e.target.description.value,
+				owner: state.user._id,
+				time: new Date().toString(),
+			};
 
-		const response = await axios.post(`http://localhost:5000/post`, newPost, {
-			headers: {
-				Authorization: `Bearer ${state.token}`,
-			},
-		});
-		setModalShow(false);
-		dispatch(createPost(response.data));
+			const response = await axios.post(`http://localhost:5000/post`, newPost, {
+				headers: {
+					Authorization: `Bearer ${state.token}`,
+				},
+			});
+			setModalShow(false);
+			dispatch(createPost(response.data));
+			toast.info('Post Created successfully', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
 	};
+
 	const toggleTheme = () => {
 		theme ? setTheme(false) : setTheme(true);
 	};
+
 	return (
-		<If condition={state.token}>
+		<If condition={cookie.load('auth')}>
 			<Then>
 				<div className={theme + 'Theme'}>
 					<Switch
@@ -108,8 +138,10 @@ const Posts = () => {
 							</Then>
 						</If>
 					</div>
+					<ToastContainer />
 				</div>
 			</Then>
+			<Else>{handleLogin}</Else>
 		</If>
 	);
 };

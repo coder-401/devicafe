@@ -26,6 +26,7 @@
 		"react-router-dom": "^5.2.0",
 		"react-scripts": "^1.1.5",
 		"react-switch": "^6.0.0",
+		"react-toastify": "^7.0.4",
 		"redux": "^4.1.0",
 		"redux-devtools-extension": "^2.13.9",
 		"simple-peer": "^9.11.0",
