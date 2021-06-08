@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { If, Then } from "react-if";
-import { Card, Badge, Button } from "react-bootstrap";
+import { Card, Badge, Button, Accordion } from "react-bootstrap";
 import "./question.css";
 
 const Question = ({ Question }) => {
   const { question, answer, difficulty, category } = Question;
-  const [show, setShow] = useState(false);
 
-  const handleShow = () => {
-    setShow(!show);
-  };
-  const getBadge = (difficulty) => {
+  const getBadge = (difficulty, category) => {
     //
     // <Badge variant="success">Success</Badge>{' '}
     // <Badge variant="danger">Danger</Badge>{' '}
@@ -26,29 +22,29 @@ const Question = ({ Question }) => {
         variant = "danger";
         break;
     }
-    return <Badge variant={"variant"}>{difficulty}</Badge>;
+    return (
+      <React.Fragment>
+        <Badge variant={variant}>{difficulty}</Badge>{" "}
+        <Badge variant="secondary">{category}</Badge>{" "}
+      </React.Fragment>
+    );
   };
   return (
     <div className="question">
       <Card>
-        <Card.Header>{getBadge(difficulty)}</Card.Header>
+        <Card.Header>{getBadge(difficulty, category)}</Card.Header>
         <Card.Body>
           <Card.Title>{question}</Card.Title>
-          <Card.Text>{answer}</Card.Text>
-          <Button variant="primary">answer</Button>
+          <Accordion>
+            <Accordion.Toggle className="show-answer" as={Button} variant="secondary" eventKey="0">
+              View Answer
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body className="answer">{answer}</Card.Body>
+            </Accordion.Collapse>
+          </Accordion>
         </Card.Body>
       </Card>
-      {/* <p className="qu">{question}</p>
-      <div onClick={handleShow} style={{ cursor: "pointer" }}>
-        Show Answer
-      </div>
-      <If condition={show}>
-        <Then>
-          <p className="answer">{answer}</p>
-        </Then>
-      </If>
-      <p className="category">{category}</p>
-      <p className="difficulty">{difficulty}</p> */}
     </div>
   );
 };

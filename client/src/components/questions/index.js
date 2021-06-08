@@ -7,6 +7,7 @@ import Question from "./../question";
 import { ToastContainer, toast } from "react-toastify";
 import { getQuestion } from "./../../reducers/questions";
 import cookie from "react-cookies";
+import "./questions.css";
 
 const Questions = () => {
   const dispatch = useDispatch();
@@ -85,7 +86,7 @@ const Questions = () => {
           </form>
           <If condition={state.questions.length}>
             <Then>
-              <div className="question-container">				  
+              <div className="question-container">
                 {questions.map((question) => (
                   <div key={question.id} className="question">
                     <Question Question={question} />
