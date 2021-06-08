@@ -13,7 +13,7 @@ const Register = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await axios.post('http://localhost:5000/register', {
+			await axios.post('https://backenders-devecafe.herokuapp.com/register', {
 				username: e.target.username.value,
 				email: e.target.email.value,
 				password: e.target.password.value,

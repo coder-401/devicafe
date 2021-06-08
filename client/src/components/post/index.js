@@ -28,11 +28,14 @@ const Post = ({ Post, Theme }) => {
 
 	const handleDelete = async (id) => {
 		try {
-			const response = await axios.delete(`http://localhost:5000/post/${id}`, {
-				headers: {
-					Authorization: `Bearer ${state.token}`,
+			const response = await axios.delete(
+				`https://backenders-devecafe.herokuapp.com/post/${id}`,
+				{
+					headers: {
+						Authorization: `Bearer ${state.token}`,
+					},
 				},
-			});
+			);
 
 			dispatch(deletePost(response.data));
 			toast.info('Post Deleted successfully', {
@@ -58,7 +61,7 @@ const Post = ({ Post, Theme }) => {
 			const newData = { description: e.target.description.value };
 
 			const response = await axios.put(
-				`http://localhost:5000/post/${postId}`,
+				`https://backenders-devecafe.herokuapp.com/post/${postId}`,
 				newData,
 				{
 					headers: {

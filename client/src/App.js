@@ -17,7 +17,7 @@ import Posts from './components/posts';
 import Entrance from './components/entrance';
 import Cafe from './components/cafe';
 
-import Footer from './components/footer';
+// import Footer from './components/footer';
 
 const App = () => {
 	return (

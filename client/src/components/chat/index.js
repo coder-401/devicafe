@@ -5,7 +5,7 @@ import { SiMessenger } from 'react-icons/si';
 import { RiSendPlane2Fill } from 'react-icons/ri';
 import './chat.css';
 
-const socket = io.connect('http://localhost:5000');
+const socket = io.connect('https://backenders-devecafe.herokuapp.com');
 
 const Chat = ({ meetingId }) => {
 	const [messageList, setMessageList] = useState([]);

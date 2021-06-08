@@ -29,7 +29,11 @@ const WhiteBoard = () => {
 
 		var sketch = document.querySelector('#sketch');
 		var sketch_style = getComputedStyle(sketch);
+
+		// eslint-disable-next-line
 		canvas.width = parseInt(sketch_style.getPropertyValue('width'));
+
+		// eslint-disable-next-line
 		canvas.height = parseInt(sketch_style.getPropertyValue('height'));
 
 		var mouse = { x: 0, y: 0 };
@@ -76,7 +80,7 @@ const WhiteBoard = () => {
 			ctx.lineTo(mouse.x, mouse.y);
 			ctx.closePath();
 			ctx.stroke();
-			if (timeout != undefined) clearTimeout(timeout);
+			if (timeout !== undefined) clearTimeout(timeout);
 			timeout = setTimeout(() => {
 				let base64ImageData = canvas.toDataURL('image/png');
 				socket.emit('canvas-data', base64ImageData);

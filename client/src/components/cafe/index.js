@@ -28,7 +28,7 @@ const Cafe = () => {
 	useEffect(async () => {
 		try {
 			const { data } = await axios.get(
-				`http://localhost:5000/table/${meetingId}`,
+				`https://backenders-devecafe.herokuapp.com/table/${meetingId}`,
 				{
 					headers: {
 						Authorization: `Bearer ${cookie.load('auth')}`,

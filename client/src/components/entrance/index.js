@@ -36,7 +36,7 @@ const Entrance = () => {
 			};
 
 			const { data } = await axios.post(
-				'http://localhost:5000/table',
+				'https://backenders-devecafe.herokuapp.com/table',
 				tabelData,
 				{
 					headers: {
@@ -63,11 +63,14 @@ const Entrance = () => {
 
 			const id = e.target.tableId.value;
 
-			const { data } = await axios.get(`http://localhost:5000/table/${id}`, {
-				headers: {
-					Authorization: `Bearer ${cookie.load('auth')}`,
+			const { data } = await axios.get(
+				`https://backenders-devecafe.herokuapp.com/table/${id}`,
+				{
+					headers: {
+						Authorization: `Bearer ${cookie.load('auth')}`,
+					},
 				},
-			});
+			);
 
 			history.push({
 				pathname: `/cafe/${data._id}`,

@@ -22,11 +22,14 @@ const Comments = ({ postId }) => {
 
 	useEffect(async () => {
 		try {
-			const response = await axios.get('http://localhost:5000/comments', {
-				headers: {
-					Authorization: `Bearer ${state.token}`,
+			const response = await axios.get(
+				'https://backenders-devecafe.herokuapp.com/comments',
+				{
+					headers: {
+						Authorization: `Bearer ${state.token}`,
+					},
 				},
-			});
+			);
 
 			dispatch(getComment(response.data));
 		} catch (error) {
@@ -48,7 +51,7 @@ const Comments = ({ postId }) => {
 			};
 
 			const response = await axios.post(
-				`http://localhost:5000/comment`,
+				`https://backenders-devecafe.herokuapp.com/comment`,
 				newComment,
 				{
 					headers: {
