@@ -60,7 +60,6 @@ const Posts = () => {
 			const newPost = {
 				description: e.target.description.value,
 				owner: state.user._id,
-				time: new Date().toString(),
 			};
 
 			const response = await axios.post(`http://localhost:5000/post`, newPost, {
