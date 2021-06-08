@@ -45,10 +45,10 @@ const Login = () => {
             <Card.Title>Login</Card.Title>
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>Username</Form.Label>
                 <Form.Control
-                  type="email"
-                  placeholder="Enter email"
+                  type="text"
+                  placeholder="Enter username"
                   name="username"
                 />
                 <Form.Text className="text-muted">
