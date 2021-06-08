@@ -4,4 +4,13 @@
   width: 20%;
   height: 50%;
   margin-left: 20px;
+  padding: 0.5rem;
+}
+.button {
+  margin-bottom: 1rem !important;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }

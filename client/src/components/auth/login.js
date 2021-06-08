@@ -5,7 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 import { login } from "./../../reducers/login";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button, Card, Nav } from "react-bootstrap";
 import "./login.css";
 
 const Login = () => {
@@ -65,7 +65,7 @@ const Login = () => {
                 />
               </Form.Group>
 
-              <Button variant="primary" type="submit">
+              <Button className="button" variant="info" type="submit">
                 Login
               </Button>
             </Form>
@@ -76,6 +76,10 @@ const Login = () => {
             {/* <Button variant="primary">Go somewhere</Button> */}
           </Card.Body>
         </Card>
+        <div className="nav">
+          Don't have an account ?<Nav.Link href="/register">register </Nav.Link>
+        </div>
+
         <ToastContainer />
       </div>
     </React.Fragment>

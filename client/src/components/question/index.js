@@ -31,12 +31,17 @@ const Question = ({ Question }) => {
   };
   return (
     <div className="question">
-      <Card>
-        <Card.Header>{getBadge(difficulty, category)}</Card.Header>
+      <Card className="card">
+        <Card.Header className="question-header">{getBadge(difficulty, category)}</Card.Header>
         <Card.Body>
-          <Card.Title>{question}</Card.Title>
+          <Card.Title className="question-title">{question}</Card.Title>
           <Accordion>
-            <Accordion.Toggle className="show-answer" as={Button} variant="secondary" eventKey="0">
+            <Accordion.Toggle
+              className="show-answer"
+              as={Button}
+              variant="link"
+              eventKey="0"
+            >
               View Answer
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="0">

@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button, Card, Nav } from "react-bootstrap";
 import "./login.css";
 
 const Register = () => {
@@ -68,12 +68,17 @@ const Register = () => {
                 />
               </Form.Group>
 
-              <Button variant="primary" type="submit">
+              <Button className="button" variant="info" type="submit">
                 Register
               </Button>
             </Form>
           </Card.Body>
         </Card>
+        <div className="nav">
+          I already have an account
+          <Nav.Link href="/login">Sign-in</Nav.Link>
+        </div>
+
         <ToastContainer />
       </div>
     </React.Fragment>
