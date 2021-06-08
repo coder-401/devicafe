@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { If, Then, Else } from 'react-if';
 import { ToastContainer, toast } from 'react-toastify';
+import { Form, Button } from 'react-bootstrap';
 import cookie from 'react-cookies';
+import './entrance.css'
+import { IoMdArrowRoundBack } from 'react-icons/io';
 
 const Entrance = () => {
+	const [tablee, setTablee] = useState(false);
 	const history = useHistory();
 
 	const state = useSelector((state) => {
@@ -29,7 +33,6 @@ const Entrance = () => {
 				role: e.target.role.value,
 				difficulty: e.target.difficulty.value,
 			};
-
 			const { data } = await axios.post(
 				'http://localhost:5000/table',
 				tabelData,
@@ -75,37 +78,56 @@ const Entrance = () => {
 
 	return (
 		<React.Fragment>
-			<If condition={cookie.load('auth')}>
-				<Then>
-					<form onSubmit={newTable}>
-						<select name="topic">
-							<option value="">none</option>
-							<option value="javascript">JavaScript</option>
-							<option value="node">NodeJS</option>
-							<option value="react">ReactJS</option>
-						</select>
-						<select name="role">
-							<option value="">none</option>
-							<option value="interviewer">Interviewer</option>
-							<option value="interviewee">Interviewee</option>
-						</select>
-						<select name="difficulty">
-							<option value="">none</option>
-							<option value="beginner">Still Fresh</option>
-							<option value="intermidate">Joniur Developer</option>
-							<option value="advance">Senior Developer</option>
-						</select>
-						<button>Get your Table</button>
-					</form>
+			<div className="tableContainer">
+				{!tablee ?
+					<If condition={cookie.load('auth')}>
+						<Then>
+							<React.Fragment>
+								<Form className="entranceTable" onSubmit={newTable}>
+									<legend>Reserve a Table</legend>
+									<Form.Label>Topic</Form.Label>
+									<Form.Control as="select" name="topic">
+										<option value="">none</option>
+										<option value="javascript">JavaScript</option>
+										<option value="node">NodeJS</option>
+										<option value="react">ReactJS</option>
+									</Form.Control>
+									<Form.Label>Role</Form.Label>
 
-					<form onSubmit={getTable}>
-						<input type="text" placeholder="table Id" name="tableId" />
-						<button>Get your Table</button>
-					</form>
-				</Then>
-				<Else>{handleLogin}</Else>
-			</If>
-			<ToastContainer />
+									<Form.Control as="select" name="role">
+										<option value="">none</option>
+										<option value="interviewer">Interviewer</option>
+										<option value="interviewee">Interviewee</option>
+									</Form.Control>
+									<Form.Label>Difficulty</Form.Label>
+
+									<Form.Control as="select" name="difficulty">
+										<option value="">none</option>
+										<option value="beginner">Still Fresh</option>
+										<option value="intermidate">Joniur Developer</option>
+										<option value="advance">Senior Developer</option>
+									</Form.Control>
+									<Button type="submit">Get your Table</Button>
+
+								</Form>
+								<a onClick={()=>{setTablee(true)}}>Already have table ID ?</a>
+
+							</React.Fragment>
+						</Then>
+						<Else>{handleLogin}</Else>
+					</If>
+					:
+					// <If condition={cookie.load('auth')}>
+					<Form className="haveTable" onSubmit={getTable}>
+					<IoMdArrowRoundBack style={{cursor:"pointer",margin:"1% 0 0 1%",position:"absolute",fontSize:"2rem"}} onClick={()=>setTablee(false)}/>
+						<Form.Label>Table Id</Form.Label>
+						<Form.Control placeholder="table Id" name="tableId" />
+						<Button type="submit" >Go to your table</Button>
+					</Form>
+					// </If>
+				}
+				<ToastContainer />
+			</div>
 		</React.Fragment>
 	);
 };

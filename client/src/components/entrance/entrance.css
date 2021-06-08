@@ -1,0 +1,95 @@
+.tableContainer{
+    background: lightsteelblue;
+    height: 90vh;
+    padding: 5% 0 0 0;
+}
+.tableContainer a{
+    font-size: 1.1rem;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    color: mediumblue !important;
+    text-decoration: underline !important;
+}
+.tableContainer a:hover{
+    color: black !important;
+}
+.entranceTable{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    border: 1px solid black;
+    margin: 0 auto 0 auto;
+    background-color: cadetblue;
+    border-radius: 5px;
+}
+.entranceTable label{
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+.entranceTable legend{
+    font-size: 1.6rem;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-decoration: underline !important;
+}
+.entranceTable select{
+    width: 80% !important;
+    font-size: 1.1rem;
+    margin: auto;
+    margin-bottom: 3%;
+}
+.entranceTable button{
+    width: 30% !important;
+    margin: 5% auto 5% auto;
+    background-color: darkslategray;
+    padding: 2% 0 2% 0;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    border: 0;
+}
+.entranceTable button:hover{
+    background-color: rgb(19, 41, 41);
+    font-size: 1.1rem;
+
+}
+
+/*===================================== Have_Table =====================================*/
+
+.haveTable{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    border: 1px solid black;
+    margin: 8% auto 0 auto;
+    background-color: cadetblue;
+    border-radius: 5px;
+}
+.haveTable input{
+    width: 80% !important;
+    margin: 0 auto 5% auto;
+    font-size: 1.1rem;
+}
+.haveTable label{
+    margin: 3% 0 3% 0;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 1.4rem;
+}
+.haveTable button{
+    width: 30% !important;
+    margin: 0 auto 5% auto;
+    background-color: darkslategray;
+    padding: 2% 0 2% 0;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    border: 0;
+}
+.haveTable button:hover{
+    background-color: rgb(19, 41, 41);
+    font-size: 1.1rem;
+
+}

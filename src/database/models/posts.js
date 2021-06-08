@@ -9,7 +9,7 @@ let Posts = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Users',
 	},
-	time: { type: Date, default: Date.now },
+	time: { type: String, default: new Date().toDateString() },
 });
 
 module.exports = mongoose.model('Posts', Posts);

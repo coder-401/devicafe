@@ -45,7 +45,6 @@ const Comments = ({ postId }) => {
 				description: e.target.description.value,
 				owner: state.user._id,
 				post: postId,
-				time: new Date(),
 			};
 
 			const response = await axios.post(
