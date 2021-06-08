@@ -60,7 +60,7 @@ const Entrance = () => {
 
 			const { data } = await axios.get(`http://localhost:5000/table/${id}`, {
 				headers: {
-					Authorization: `Bearer ${state.token}`,
+					Authorization: `Bearer ${cookie.load('auth')}`,
 				},
 			});
 
@@ -69,7 +69,10 @@ const Entrance = () => {
 				state: data,
 			});
 		} catch (error) {
-			console.log(error);
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
 		}
 	};
 
