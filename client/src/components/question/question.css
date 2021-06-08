@@ -1,12 +1,24 @@
 .question {
-  text-align: center;
   font-size: large;
   margin-bottom: 2rem;
 }
+.card {
+  background-color: #02333c !important;
+  color: white;
+}
 .answer {
-  margin: 8px;
+  margin-bottom: 16px;
+
+  padding-top: 0 !important;
+  padding-left: 0 !important;
 }
 .show-answer {
+  color: #99bcc4 !important;
   font-size: 1rem !important;
   padding: 0 !important;
+  margin: 0 !important;
+  margin-bottom: 16px !important;
+}
+.question-header {
+  background-color: #08535d !important;
 }
