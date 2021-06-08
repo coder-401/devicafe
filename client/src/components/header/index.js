@@ -66,7 +66,10 @@ const Header = () => {
 									<Nav.Link href="/questions">Questions</Nav.Link>
 									<Nav.Link href="/BookTable">Get Table</Nav.Link>
 									<Nav.Link href="/community">Community</Nav.Link>
-									<NavDropdown title="ACCOUNT" id="collasible-nav-dropdown">
+									<NavDropdown
+										title={state.user.username}
+										id="collasible-nav-dropdown"
+									>
 										<NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
 										<NavDropdown.Divider />
 										<NavDropdown.Item href="/" onClick={logoutHandle}>

@@ -10,7 +10,6 @@ import TextEditor from './../textEditor';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
-
 // import './cafe.css';
 
 const Cafe = () => {
@@ -61,7 +60,7 @@ const Cafe = () => {
 
 	return (
 		<React.Fragment>
-			<TextEditor/>
+			<TextEditor />
 			<button onClick={handleCall}>start videoCall</button>
 			{start && <Video meetingId={meetingId} />}
 			<Chat meetingId={meetingId} />
