@@ -7,7 +7,7 @@ import Chat from './../chat';
 import WhiteBoard from './../whiteBoard';
 import Questions from './../questions';
 import cookie from 'react-cookies';
-
+import TextEditor from './../textEditor';
 // import './cafe.css';
 
 const Cafe = () => {
@@ -41,6 +41,7 @@ const Cafe = () => {
 
 	return (
 		<React.Fragment>
+			<TextEditor/>
 			<button onClick={handleCall}>start videoCall</button>
 			{start && <Video meetingId={meetingId} />}
 			<Chat meetingId={meetingId} />

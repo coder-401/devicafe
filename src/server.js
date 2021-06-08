@@ -107,16 +107,17 @@ io.on('connection', (socket) => {
 
 	/*--------------------------Code_Challenge_Part-----------------------------*/
 	socket.on('codeText', (code) => {
-		socket.broadcast.emit('code-update', code);
-	});
+        io.emit('code-update', code)
+    })
 
-	socket.on('themeChange', (theme) => {
-		io.emit('theme-update', theme);
-	});
+    socket.on("themeChange", (theme) => {
+		console.log(theme)
+        io.emit('theme-update', theme)
+    })
 
-	socket.on('languageChange', (language) => {
-		io.emit('language-update', language);
-	});
+    socket.on('languageChange', (language) => {
+        io.emit('language-update', language)
+    })
 });
 
 module.exports = {
