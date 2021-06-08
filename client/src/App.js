@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -34,7 +35,7 @@ const App = () => {
 					<Route exact path="/BookTable" component={Entrance} />
 					<Route exact path="/cafe/:meetingId" component={Cafe} />
 				</Switch>
-				{/* <Footer/> */}
+				{/* <Footer /> */}
 			</Router>
 		</div>
 	);

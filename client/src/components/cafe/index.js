@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { If, Then, Else } from 'react-if';
 import Video from './../videoCall';
 import Chat from './../chat';
 import WhiteBoard from './../whiteBoard';
 import Questions from './../questions';
 import cookie from 'react-cookies';
 import TextEditor from './../textEditor';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+
+
 // import './cafe.css';
 
 const Cafe = () => {
 	const { meetingId } = useParams();
 	const [show, setShow] = useState(false);
 	const [start, setStart] = useState(false);
+	const [table, setTable] = useState(false);
 
 	const state = useSelector((state) => {
 		return {
@@ -23,7 +27,25 @@ const Cafe = () => {
 		};
 	});
 
-	const history = useHistory();
+	useEffect(async () => {
+		try {
+			const { data } = await axios.get(
+				`https://backenders-devecafe.herokuapp.com/table/${meetingId}`,
+				{
+					headers: {
+						Authorization: `Bearer ${cookie.load('auth')}`,
+					},
+				},
+			);
+
+			setTable(data);
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
+	}, []);
 
 	const handleCall = () => {
 		setStart(!start);
@@ -33,11 +55,9 @@ const Cafe = () => {
 		setShow(!show);
 	};
 
-	console.log(cookie.load('auth'));
-
-	const handleLogin = () => {
-		history.push('/login');
-	};
+	// const handleLogin = () => {
+	// 	history.push('/login');
+	// };
 
 	return (
 		<React.Fragment>
@@ -49,7 +69,18 @@ const Cafe = () => {
 				{!show ? `open whiteBoard` : `close whiteBoard`}
 			</button>
 			{show && <WhiteBoard />}
-			<Questions />
+			{state.user._id === table.owner && table.role === 'interviewer' ? (
+				<Questions />
+			) : (
+				<div></div>
+			)}
+
+			{state.user._id !== table.owner && table.role !== 'interviewer' ? (
+				<Questions />
+			) : (
+				<div></div>
+			)}
+			<ToastContainer />
 		</React.Fragment>
 	);
 };

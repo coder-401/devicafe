@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import cookie from 'react-cookies';
 import { Button, Form, Card } from 'react-bootstrap';
 import Avatar from 'react-avatar';
-import './profile.css'
+import './profile.css';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
 const Profile = () => {
@@ -25,7 +25,7 @@ const Profile = () => {
 		e.preventDefault();
 		try {
 			await axios.put(
-				`http://localhost:5000/profile/${state.user._id}`,
+				`https://backenders-devecafe.herokuapp.com/profile/${state.user._id}`,
 				{
 					username: e.target.username.value,
 					email: e.target.email.value,
@@ -56,7 +56,7 @@ const Profile = () => {
 
 	const toggleShow = () => {
 		show ? setShow(false) : setShow(true);
-	}
+	};
 
 	return (
 		<If condition={cookie.load('auth')}>
@@ -73,9 +73,7 @@ const Profile = () => {
 						<h4>{state.user.username}</h4>
 						<AiOutlineArrowRight onClick={toggleShow} />
 					</Card.Body>
-					<Card.Footer className="profileFooter">
-						Username
-				</Card.Footer>
+					<Card.Footer className="profileFooter">Username</Card.Footer>
 				</Card>
 				<Card className="profileCard Card2">
 					<Card.Body className="profileCardBody">
@@ -89,12 +87,9 @@ const Profile = () => {
 							<p id="emailCard">{state.user.email}</p>
 						</div>
 					</Card.Body>
-					<Card.Footer className="profileFooter">
-						Email
-				</Card.Footer>
+					<Card.Footer className="profileFooter">Email</Card.Footer>
 				</Card>
-				{show ?
-
+				{show ? (
 					<Form className="profileForm" onSubmit={handleSubmit}>
 						<legend>User Information</legend>
 						<Form.Label>Username</Form.Label>
@@ -119,8 +114,7 @@ const Profile = () => {
 						/>
 						<Button type="submit">Update</Button>
 					</Form>
-					: null
-				}
+				) : null}
 				<ToastContainer />
 			</Then>
 			<Else>{handleLogin}</Else>

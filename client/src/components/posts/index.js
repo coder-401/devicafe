@@ -34,11 +34,14 @@ const Posts = () => {
 
 	useEffect(async () => {
 		try {
-			const response = await axios.get('http://localhost:5000/posts', {
-				headers: {
-					Authorization: `Bearer ${state.token}`,
+			const response = await axios.get(
+				'https://backenders-devecafe.herokuapp.com/posts',
+				{
+					headers: {
+						Authorization: `Bearer ${state.token}`,
+					},
 				},
-			});
+			);
 
 			dispatch(getPost(response.data.reverse()));
 		} catch (error) {
@@ -62,11 +65,15 @@ const Posts = () => {
 				owner: state.user._id,
 			};
 
-			const response = await axios.post(`http://localhost:5000/post`, newPost, {
-				headers: {
-					Authorization: `Bearer ${state.token}`,
+			const response = await axios.post(
+				`https://backenders-devecafe.herokuapp.com/post`,
+				newPost,
+				{
+					headers: {
+						Authorization: `Bearer ${state.token}`,
+					},
 				},
-			});
+			);
 			setModalShow(false);
 			dispatch(createPost(response.data));
 			toast.info('Post Created successfully', {
@@ -87,11 +94,14 @@ const Posts = () => {
 
 	const searchSubmit = async (e) => {
 		e.preventDefault();
-		const response = await axios.get('http://localhost:5000/posts', {
-			headers: {
-				Authorization: `Bearer ${state.token}`,
+		const response = await axios.get(
+			'https://backenders-devecafe.herokuapp.com/posts',
+			{
+				headers: {
+					Authorization: `Bearer ${state.token}`,
+				},
 			},
-		});
+		);
 
 		let reg = `\\b(\\w*${e.target.search.value}\\w*)\\b`;
 		let regex = new RegExp(reg, 'g');
@@ -102,11 +112,14 @@ const Posts = () => {
 	};
 	const searchChange = async (e) => {
 		e.preventDefault();
-		const response = await axios.get('http://localhost:5000/posts', {
-			headers: {
-				Authorization: `Bearer ${state.token}`,
+		const response = await axios.get(
+			'https://backenders-devecafe.herokuapp.com/posts',
+			{
+				headers: {
+					Authorization: `Bearer ${state.token}`,
+				},
 			},
-		});
+		);
 
 		let reg = `\\b(\\w*${e.target.value}\\w*)\\b`;
 		let regex = new RegExp(reg, 'g');

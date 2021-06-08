@@ -37,23 +37,41 @@ const Header = () => {
 	}
 
 	return (
-
 		<React.Fragment>
 			<If condition={state.user}>
 				<Then>
-					<Navbar expand="lg" style={{background:"transparent",borderBlockColor:"transparent", zIndex:"3"}} class="float-right">
-						<Navbar.Brand href="/" style={{ marginRight: '70%', fontSize:"150%", fontWeight:"bold" }}>Mocky</Navbar.Brand>
+					<Navbar
+						expand="lg"
+						style={{
+							background: 'transparent',
+							borderBlockColor: 'transparent',
+							zIndex: '3',
+						}}
+						class="float-right"
+					>
+						<Navbar.Brand
+							href="/"
+							style={{
+								marginRight: '70%',
+								fontSize: '150%',
+								fontWeight: 'bold',
+							}}
+						>
+							Mocky
+						</Navbar.Brand>
 						<Container>
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 							<Navbar.Collapse id="responsive-navbar-nav">
-
 								<Nav>
-									<Nav.Link href="/questions">QUESTIONS</Nav.Link>
-									<Nav.Link href="/BookTable">GET TABLE</Nav.Link>
+									<Nav.Link href="/questions">Questions</Nav.Link>
+									<Nav.Link href="/BookTable">Get Table</Nav.Link>
+									<Nav.Link href="/community">Community</Nav.Link>
 									<NavDropdown title="ACCOUNT" id="collasible-nav-dropdown">
 										<NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
 										<NavDropdown.Divider />
-										<NavDropdown.Item href="/" onClick={logoutHandle}>logout</NavDropdown.Item>
+										<NavDropdown.Item href="/" onClick={logoutHandle}>
+											logout
+										</NavDropdown.Item>
 									</NavDropdown>
 								</Nav>
 							</Navbar.Collapse>
@@ -61,15 +79,24 @@ const Header = () => {
 					</Navbar>
 				</Then>
 				<Else>
-				<Navbar expand="lg" style={{background:"transparent",borderBlockColor:"transparent"}} class="float-right">
-						<Navbar.Brand href="/" style={{ marginRight: '70%' }}>DeveCafe</Navbar.Brand>
+					<Navbar
+						expand="lg"
+						style={{
+							background: 'rgba(25,25,25,0.6)',
+							borderBlockColor: 'transparent',
+							zIndex: '3',
+						}}
+						class="float-right"
+					>
+						<Navbar.Brand href="/" style={{ marginRight: '70%' }}>
+							DeveCafe
+						</Navbar.Brand>
 						<Container>
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 							<Navbar.Collapse id="responsive-navbar-nav">
-
 								<Nav>
-									<Nav.Link href="/login">LOGIN</Nav.Link>
-									<Nav.Link href="/register">REGISTER</Nav.Link>
+									<Nav.Link href="/login">Login</Nav.Link>
+									<Nav.Link href="/register">Register</Nav.Link>
 								</Nav>
 							</Navbar.Collapse>
 						</Container>
