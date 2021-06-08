@@ -197,6 +197,7 @@ const Home = () => {
 					<Row>
 						<Col style={{ marginRight: '0' }}>
 							<img
+								alt="img"
 								data-aos="fade-right"
 								data-aos-delay="300"
 								src="https://careeradvisor.asia/wp-content/uploads/2020/03/119_Header_How-To-Prepare-For-An-Online-Job-Interview-1200x800.jpg"
@@ -256,6 +257,7 @@ const Home = () => {
 
 						<Col style={{ marginRight: '0' }}>
 							<img
+								alt="img"
 								data-aos="fade-down"
 								data-aos-delay="300"
 								src="https://s3media.freemalaysiatoday.com/wp-content/uploads/2020/05/online-interview_lifestyle-16052020.jpg"
@@ -273,6 +275,7 @@ const Home = () => {
 					<Row>
 						<Col style={{ marginRight: '0' }}>
 							<img
+								alt="img"
 								data-aos="fade-right"
 								data-aos-delay="300"
 								src="https://careeradvisor.asia/wp-content/uploads/2020/03/119_Header_How-To-Prepare-For-An-Online-Job-Interview-1200x800.jpg"
