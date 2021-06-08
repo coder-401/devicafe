@@ -15,8 +15,8 @@ const Container = styled.div`
 `;
 
 const StyledVideo = styled.video`
-	height: 40%;
-	width: 50%;
+	height: 10rem;
+	width: 10rem;
 `;
 
 const Video = (props) => {
