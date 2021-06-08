@@ -23,8 +23,6 @@ const Cafe = () => {
 		};
 	});
 
-	const history = useHistory();
-
 	const handleCall = () => {
 		setStart(!start);
 	};
@@ -33,11 +31,9 @@ const Cafe = () => {
 		setShow(!show);
 	};
 
-	console.log(cookie.load('auth'));
-
-	const handleLogin = () => {
-		history.push('/login');
-	};
+	// const handleLogin = () => {
+	// 	history.push('/login');
+	// };
 
 	return (
 		<React.Fragment>

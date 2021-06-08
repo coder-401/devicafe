@@ -10,61 +10,62 @@ import cookie from "react-cookies";
 import "./questions.css";
 import { Form, Col, Button } from "react-bootstrap";
 
+
 const Questions = () => {
-  const dispatch = useDispatch();
-  const [questions, setQuestions] = useState([]);
-  const history = useHistory();
+	const dispatch = useDispatch();
+	const [questions, setQuestions] = useState([]);
+	const history = useHistory();
 
-  const state = useSelector((state) => {
-    return {
-      questions: state.questions.questions,
-      token: state.signIn.token,
-    };
-  });
+	const state = useSelector((state) => {
+		return {
+			questions: state.questions.questions,
+			token: state.signIn.token,
+		};
+	});
 
-  const handleLogin = () => {
-    history.push("/login");
-  };
+	const handleLogin = () => {
+		history.push('/login');
+	};
 
-  useEffect(async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/questions");
+	useEffect(async () => {
+		try {
+			const response = await axios.get('http://localhost:5000/questions');
 
-      setQuestions([...response.data]);
-      dispatch(getQuestion(response.data));
-    } catch (error) {
-      toast.error("Something Wrong!!!!", {
-        autoClose: 2000,
-        pauseOnHover: false,
-      });
-    }
-  }, []);
+			setQuestions([...response.data]);
+			dispatch(getQuestion(response.data));
+		} catch (error) {
+			toast.error('Something Wrong!!!!', {
+				autoClose: 2000,
+				pauseOnHover: false,
+			});
+		}
+	}, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let filterQuestions;
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		let filterQuestions;
 
-    if (e.target.topic.value)
-      filterQuestions = state.questions.filter(
-        (question) => question.category === e.target.topic.value
-      );
+		if (e.target.topic.value)
+			filterQuestions = state.questions.filter(
+				(question) => question.category === e.target.topic.value,
+			);
 
-    if (e.target.difficulty.value)
-      filterQuestions = state.questions.filter(
-        (question) => question.difficulty === e.target.difficulty.value
-      );
+		if (e.target.difficulty.value)
+			filterQuestions = state.questions.filter(
+				(question) => question.difficulty === e.target.difficulty.value,
+			);
 
-    if (e.target.difficulty.value && e.target.topic.value)
-      filterQuestions = state.questions.filter(
-        (question) =>
-          question.difficulty === e.target.difficulty.value &&
-          question.category === e.target.topic.value
-      );
+		if (e.target.difficulty.value && e.target.topic.value)
+			filterQuestions = state.questions.filter(
+				(question) =>
+					question.difficulty === e.target.difficulty.value &&
+					question.category === e.target.topic.value,
+			);
 
-    if (!e.target.topic.value && !e.target.difficulty.value)
-      setQuestions([...state.questions]);
-    else setQuestions([...filterQuestions]);
-  };
+		if (!e.target.topic.value && !e.target.difficulty.value)
+			setQuestions([...state.questions]);
+		else setQuestions([...filterQuestions]);
+	};
 
   return (
     <React.Fragment>
@@ -122,21 +123,6 @@ const Questions = () => {
               </Col>
             </Form.Row>
           </Form>
-          {/* <Form onSubmit={handleSubmit}>
-            <select name="topic">
-              <option value="">none</option>
-              <option value="javascript">JavaScript</option>
-              <option value="node">NodeJS</option>
-              <option value="react">ReactJS</option>
-            </select>
-            <select name="difficulty">
-              <option value="">none</option>
-              <option value="beginner">Still Fresh</option>
-              <option value="intermidate">Joniur Developer</option>
-              <option value="advance">Senior Developer</option>
-            </select>
-            <button>Get your Questions</button>
-          </Form> */}
           <If condition={state.questions.length}>
             <Then>
               <div className="question-container">
@@ -154,6 +140,7 @@ const Questions = () => {
       <ToastContainer />
     </React.Fragment>
   );
+
 };
 
 export default Questions;
