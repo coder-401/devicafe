@@ -34,7 +34,7 @@ const App = () => {
 					<Route exact path="/BookTable" component={Entrance} />
 					<Route exact path="/cafe/:meetingId" component={Cafe} />
 				</Switch>
-				<Footer />
+				{/* <Footer /> */}
 			</Router>
 		</div>
 	);
