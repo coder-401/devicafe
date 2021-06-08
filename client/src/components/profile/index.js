@@ -25,7 +25,7 @@ const Profile = () => {
 		e.preventDefault();
 		try {
 			await axios.put(
-				`https://backenders-devecafe.herokuapp.com/${state.user._id}`,
+				`https://backenders-devecafe.herokuapp.com/profile/${state.user._id}`,
 				{
 					username: e.target.username.value,
 					email: e.target.email.value,
