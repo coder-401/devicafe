@@ -14,7 +14,10 @@ const WhiteBoard = () => {
 			let ctx = canvas.getContext('2d');
 
 			image.src = data;
-			ctx.drawImage(image, 0, 0);
+
+			image.onload = () => {
+				ctx.drawImage(image, 0, 0);
+			};
 		});
 	});
 
