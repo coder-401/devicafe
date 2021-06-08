@@ -82,8 +82,9 @@ const Header = () => {
 					<Navbar
 						expand="lg"
 						style={{
-							background: 'transparent',
+							background: 'rgba(25,25,25,0.6)',
 							borderBlockColor: 'transparent',
+							zIndex: '3',
 						}}
 						class="float-right"
 					>

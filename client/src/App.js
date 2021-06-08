@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
