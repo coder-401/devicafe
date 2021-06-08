@@ -16,7 +16,7 @@ import Posts from './components/posts';
 import Entrance from './components/entrance';
 import Cafe from './components/cafe';
 
-// import Footer from './components/footer';
+import Footer from './components/footer';
 
 const App = () => {
 	return (
@@ -34,7 +34,7 @@ const App = () => {
 					<Route exact path="/BookTable" component={Entrance} />
 					<Route exact path="/cafe/:meetingId" component={Cafe} />
 				</Switch>
-				{/* <Footer/> */}
+				<Footer />
 			</Router>
 		</div>
 	);

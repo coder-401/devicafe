@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { If, Then, Else } from 'react-if';
@@ -22,16 +22,6 @@ const Cafe = () => {
 			questions: state.questions.questions,
 		};
 	});
-
-	console.log('token', cookie.load('auth'));
-
-	console.log(meetingId);
-
-	// useEffect(() => {
-	// 	cookie.load('auth');
-	// 	setTriger(!triger);
-	// }, []);
-	// const history = useHistory();
 
 	const handleCall = () => {
 		setStart(!start);
