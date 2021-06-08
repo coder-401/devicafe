@@ -3,7 +3,7 @@ import Peer from 'simple-peer';
 import io from 'socket.io-client';
 import styled from 'styled-components';
 
-const socket = io.connect('http://localhost:5000');
+const socket = io.connect('https://backenders-devecafe.herokuapp.com');
 
 const Container = styled.div`
 	padding: 20px;

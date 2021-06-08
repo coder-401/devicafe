@@ -26,7 +26,7 @@ const Comment = ({ Comment }) => {
 	const handleDelete = async (id) => {
 		try {
 			const response = await axios.delete(
-				`http://localhost:5000/comment/${id}`,
+				`https://backenders-devecafe.herokuapp.com/comment/${id}`,
 				{
 					headers: {
 						Authorization: `Bearer ${state.token}`,
@@ -58,7 +58,7 @@ const Comment = ({ Comment }) => {
 			const newData = { description: e.target.description.value };
 
 			const response = await axios.put(
-				`http://localhost:5000/comment/${commentId}`,
+				`https://backenders-devecafe.herokuapp.com/comment/${commentId}`,
 				newData,
 				{
 					headers: {
