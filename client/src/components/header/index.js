@@ -63,8 +63,8 @@ const Header = () => {
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 							<Navbar.Collapse id="responsive-navbar-nav">
 								<Nav>
-									<Nav.Link href="/questions">QUESTIONS</Nav.Link>
-									<Nav.Link href="/BookTable">GET TABLE</Nav.Link>
+									<Nav.Link href="/questions">Questions</Nav.Link>
+									<Nav.Link href="/BookTable">Get Table</Nav.Link>
 									<Nav.Link href="/community">Community</Nav.Link>
 									<NavDropdown title="ACCOUNT" id="collasible-nav-dropdown">
 										<NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
@@ -95,8 +95,8 @@ const Header = () => {
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 							<Navbar.Collapse id="responsive-navbar-nav">
 								<Nav>
-									<Nav.Link href="/login">LOGIN</Nav.Link>
-									<Nav.Link href="/register">REGISTER</Nav.Link>
+									<Nav.Link href="/login">Login</Nav.Link>
+									<Nav.Link href="/register">Register</Nav.Link>
 								</Nav>
 							</Navbar.Collapse>
 						</Container>
