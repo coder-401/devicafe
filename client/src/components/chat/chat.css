@@ -1,5 +1,37 @@
 .chatContainer {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 2%;
+  left: 1%;
+  z-index: 1996;
+}
+.Chat{
+  border: 1px solid #0003;
+  width: 150%;
+  background-color: gainsboro;
+  border-radius: 15px;
+}
+.messages{
+  overflow-y: scroll;
+  height: 400px;
+  background: #eee;
+  border-radius: 10px;
+}
+.messageInputs{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3%;
+}
+.messageInputs input{
+  width: 85%;
+}
+.messageInputs button svg{
+  font-size: 1.4rem;
+}
+.list-group>* {
+  margin: 3% 3% 0 3%;
+}
+.messageIndividual{
+  border-radius: 10px;
+
 }

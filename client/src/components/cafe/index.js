@@ -9,8 +9,12 @@ import cookie from 'react-cookies';
 import TextEditor from './../textEditor';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import { BsFillCameraVideoFill } from 'react-icons/bs';
+import { FaVideoSlash } from 'react-icons/fa';
+import './cafe.css';
+import { Button } from 'react-bootstrap';
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
-// import './cafe.css';
 
 const Cafe = () => {
 	const { meetingId } = useParams();
@@ -54,23 +58,51 @@ const Cafe = () => {
 		setShow(!show);
 	};
 
-	// const handleLogin = () => {
-	// 	history.push('/login');
-	// };
-
 	return (
 		<React.Fragment>
-			<TextEditor />
-			<button onClick={handleCall}>start videoCall</button>
-			{start && <Video meetingId={meetingId} />}
-			<Chat meetingId={meetingId} />
+			<div className="cafeContainer">
+
+				<div className="sideBar">
+					<h4>username role.......</h4>
+					<Button>Questions</Button>
+					<Button>WhiteBoard</Button>
+					<Button>Code Editor</Button>
+					<CopyToClipboard text={meetingId}>
+						<span style={{ padding: "2%", border: "1px solid", background: "#eee", borderRadius: "5px", cursor: "pointer" }}>Copy to clipboard table Id</span>
+					</CopyToClipboard>
+				</div>
+
+
+				<div className="leftSide">
+
+					{/* {start ? <BsFillCameraVideoFill className="viedoOnIcon" onClick={handleCall} /> : <FaVideoSlash className="viedoOffIcon" onClick={handleCall} />}
+					{start && <Video meetingId={meetingId} />} */}
+
+
+					<TextEditor />
+
+					{/* <div className="shamounWB">
+						<WhiteBoard />
+					</div> */}
+
+					<Chat meetingId={meetingId} />
+
+					{/* <div className="shamounQU">
+						<Questions />
+					</div> */}
+
+				</div>
+
+
+
+
+				{/* 
 			<button onClick={handleBoard}>
 				{!show ? `open whiteBoard` : `close whiteBoard`}
 			</button>
-			{show && <WhiteBoard />}
+
 			{state.user._id === table.owner && table.role === 'interviewer' ? (
 				<div>
-					{/* <Questions /> */}
 				</div>
 			) : (
 				<div></div>
@@ -80,8 +112,12 @@ const Cafe = () => {
 				<Questions />
 			) : (
 				<div></div>
-			)}
-			<ToastContainer />
+			)} */}
+
+
+
+				<ToastContainer />
+			</div>
 		</React.Fragment>
 	);
 };

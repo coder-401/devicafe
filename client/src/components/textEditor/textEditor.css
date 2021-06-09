@@ -1,0 +1,41 @@
+.originCodeContainer {
+  height: 100%;
+}
+.originCodeContainer h3 {
+  text-align: center;
+}
+.codeOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+  padding: 0.5% 0 0.5% 0;
+  width: 100%;
+  background-color: rgba(71, 61, 139, 0.24);
+  border: 2.5px solid;
+  border-bottom: 0;
+}
+.codeOptions select {
+  width: 20%;
+  margin: 0.1% -9% 0 -13%;
+}
+.codeOptions button {
+  height: 40%;
+  margin: 0.1% 2% 0 0;
+}
+.codeOptions svg {
+  font-size: 1.9rem;
+  margin: 0.4% -13% 0 2%;
+}
+#blah2 {
+  border: 2.5px solid black;
+  height: 91.2%;
+}
+.codeValueBtn {
+  position: fixed;
+  bottom: 2%;
+  right: 18%;
+}
+.codeOutput{
+    
+}
