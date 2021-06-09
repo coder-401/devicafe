@@ -1,57 +1,39 @@
 .originCodeContainer {
-  height: 100%;
+	height: 100%;
 }
 .originCodeContainer h3 {
-  text-align: center;
+	text-align: center;
 }
 .codeOptions {
-  display: flex;
-  flex-direction: row;
-<<<<<<< HEAD
-  justify-content: space-between;
-=======
-  justify-content: space-around;
->>>>>>> 7b1df972be283c2616816b86e67907b6fb5a9e16
-  margin: auto;
-  padding: 0.5% 0 0.5% 0;
-  width: 100%;
-  background-color: rgba(71, 61, 139, 0.24);
-  border: 2.5px solid;
-  border-bottom: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	margin: auto;
+	padding: 0.5% 0 0.5% 0;
+	width: 100%;
+	background-color: rgba(71, 61, 139, 0.24);
+	border: 2.5px solid;
+	border-bottom: 0;
 }
 .codeOptions select {
-  width: 20%;
-<<<<<<< HEAD
-  margin: 0.1% -9% 0 -13%;
+	width: 20%;
+	margin: 0.1% -9% 0 -13%;
 }
 .codeOptions button {
-  height: 40%;
-  margin: 0.1% 2% 0 0;
+	height: 40%;
+	margin: 0.1% 2% 0 0;
 }
 .codeOptions svg {
-  font-size: 1.9rem;
-  margin: 0.4% -13% 0 2%;
+	font-size: 1.9rem;
+	margin: 0.4% -13% 0 2%;
 }
 #blah2 {
-  border: 2.5px solid black;
-  height: 91.2%;
-=======
-  margin: 0 -5% 0 5%;
-}
-.codeOptions svg {
-  font-size: 1.9rem;
-  margin: 0.4% 25% 0 -6%;
-}
-#blah2 {
-  border: 2.5px solid black;
-  height: 90%;
->>>>>>> 7b1df972be283c2616816b86e67907b6fb5a9e16
+	border: 2.5px solid black;
+	height: 91.2%;
 }
 .codeValueBtn {
-  position: fixed;
-  bottom: 2%;
-  right: 18%;
-}
-.codeOutput{
-    
+	position: fixed;
+	bottom: 2%;
+	right: 18%;
 }

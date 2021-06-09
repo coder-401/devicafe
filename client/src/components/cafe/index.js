@@ -13,14 +13,15 @@ import { BsFillCameraVideoFill } from 'react-icons/bs';
 import { FaVideoSlash } from 'react-icons/fa';
 import './cafe.css';
 import { Button } from 'react-bootstrap';
-import { CopyToClipboard } from 'react-copy-to-clipboard'
-
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const Cafe = () => {
 	const { meetingId } = useParams();
-	const [show, setShow] = useState(false);
-	const [start, setStart] = useState(false);
-	const [table, setTable] = useState(false);
+	const [board, setBoard] = useState(false);
+	const [code, setCode] = useState(false);
+	const [ques, setQues] = useState(false);
+	const [video, setVideo] = useState(false);
+	const [table, setTable] = useState({});
 
 	const state = useSelector((state) => {
 		return {
@@ -50,71 +51,106 @@ const Cafe = () => {
 		}
 	}, []);
 
-	const handleCall = () => {
-		setStart(!start);
+	const handleQuestions = () => {
+		setQues(!ques);
+		setBoard(false);
+		setCode(false);
 	};
 
 	const handleBoard = () => {
-		setShow(!show);
+		setBoard(!board);
+		setQues(false);
+		setCode(false);
+	};
+
+	const handleEditor = () => {
+		setCode(!code);
+		setQues(false);
+		setBoard(false);
+	};
+
+	const handleVideo = () => {
+		setVideo(!video);
 	};
 
 	return (
 		<React.Fragment>
 			<div className="cafeContainer">
-
 				<div className="sideBar">
-					<h4>username role.......</h4>
-					<Button>Questions</Button>
-					<Button>WhiteBoard</Button>
-					<Button>Code Editor</Button>
+					{table.role === 'interviewer' ? (
+						state.user._id === table.owner && table.role === 'interviewer' ? (
+							<h4>
+								{state.user.username} the {table.role}
+							</h4>
+						) : (
+							<h4>{state.user.username} the interviewee</h4>
+						)
+					) : state.user._id !== table.owner && table.role === 'interviewee' ? (
+						<h4>{state.user.username} the interviewer</h4>
+					) : (
+						<h4>
+							{state.user.username} the {table.role}
+						</h4>
+					)}
+
+					{state.user._id === table.owner && table.role === 'interviewer' && (
+						<React.Fragment>
+							<Button onClick={handleQuestions}>Questions</Button>
+						</React.Fragment>
+					)}
+					{state.user._id !== table.owner && table.role !== 'interviewer' && (
+						<React.Fragment>
+							<Button onClick={handleQuestions}>Questions</Button>
+						</React.Fragment>
+					)}
+					<Button onClick={handleBoard}>WhiteBoard</Button>
+					<Button onClick={handleEditor}>Code Editor</Button>
 					<CopyToClipboard text={meetingId}>
-						<span style={{ padding: "2%", border: "1px solid", background: "#eee", borderRadius: "5px", cursor: "pointer" }}>Copy to clipboard table Id</span>
+						<span
+							style={{
+								padding: '2%',
+								border: '1px solid',
+								background: '#eee',
+								borderRadius: '5px',
+								cursor: 'pointer',
+							}}
+						>
+							Click to Copy Room Id
+						</span>
 					</CopyToClipboard>
 				</div>
 
-
 				<div className="leftSide">
-
-					{/* {start ? <BsFillCameraVideoFill className="viedoOnIcon" onClick={handleCall} /> : <FaVideoSlash className="viedoOffIcon" onClick={handleCall} />}
-					{start && <Video meetingId={meetingId} />} */}
-
-
-					<TextEditor />
-
-					{/* <div className="shamounWB">
-						<WhiteBoard />
-					</div> */}
+					{video ? (
+						<BsFillCameraVideoFill
+							className="viedoOnIcon"
+							onClick={handleVideo}
+						/>
+					) : (
+						<FaVideoSlash className="viedoOffIcon" onClick={handleVideo} />
+					)}
+					{video && <Video meetingId={meetingId} />}
+					{code && <TextEditor />}
+					{board && (
+						<div className="shamounWB">
+							<WhiteBoard />
+						</div>
+					)}
 
 					<Chat meetingId={meetingId} />
 
-					{/* <div className="shamounQU">
-						<Questions />
-					</div> */}
+					{ques && (
+						<div className="shamounQU">
+							<Questions />
+						</div>
+					)}
 
+					{ques && (
+						<div className="shamounQU">
+							<Questions />
+						</div>
+					)}
 				</div>
-
-
-
-
-				{/* 
-			<button onClick={handleBoard}>
-				{!show ? `open whiteBoard` : `close whiteBoard`}
-			</button>
-
-			{state.user._id === table.owner && table.role === 'interviewer' ? (
-				<div>
-				</div>
-			) : (
-				<div></div>
-			)}
-
-			{state.user._id !== table.owner && table.role !== 'interviewer' ? (
-				<Questions />
-			) : (
-				<div></div>
-			)} */}
-
-
 
 				<ToastContainer />
 			</div>
