@@ -11,7 +11,8 @@ const app = express();
 const server = http.createServer(app);
 const io = require('socket.io')(server, {
 	cors: {
-		origin: 'http://localhost:3000',
+		origin: 'https://entervu.netlify.app',
+		// origin: 'http://localhost:3000',
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 	},
 });
@@ -107,17 +108,17 @@ io.on('connection', (socket) => {
 
 	/*--------------------------Code_Challenge_Part-----------------------------*/
 	socket.on('codeText', (code) => {
-        io.emit('code-update', code)
-    })
+		io.emit('code-update', code);
+	});
 
-    socket.on("themeChange", (theme) => {
-		console.log(theme)
-        io.emit('theme-update', theme)
-    })
+	socket.on('themeChange', (theme) => {
+		console.log(theme);
+		io.emit('theme-update', theme);
+	});
 
-    socket.on('languageChange', (language) => {
-        io.emit('language-update', language)
-    })
+	socket.on('languageChange', (language) => {
+		io.emit('language-update', language);
+	});
 });
 
 module.exports = {
