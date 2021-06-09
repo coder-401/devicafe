@@ -63,7 +63,8 @@
 	font-weight: 0 !important;
 	position: absolute;
 	top: 30px;
-	left: 40.5%;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .card-body {
@@ -131,9 +132,9 @@ button[class^='grow']:hover::after {
 .grow_spin {
 	border-radius: 20px;
 	font-size: 1.3em;
-	background: #3498db;
+	background: #17a2b8;
 	color: #fff;
-	border: 0.25rem solid #3498db;
+	border: 0.25rem solid #17a2b8;
 	padding: 0.85em 0.75em;
 	margin: 1rem;
 	position: relative;
@@ -142,8 +143,9 @@ button[class^='grow']:hover::after {
 }
 .grow_spin:hover {
 	transition: all 0.5 ease-in-out;
-	color: #3498db;
+	color: #17a2b8;
 }
+
 .grow_spin::after {
 	content: '';
 	background: #ecf0f1;
@@ -152,6 +154,7 @@ button[class^='grow']:hover::after {
 	padding: 0.85em 0.75em;
 	display: block;
 }
+
 .grow_spin::after {
 	left: 0 !important;
 	right: 0 !important;
@@ -159,6 +162,7 @@ button[class^='grow']:hover::after {
 	bottom: 0 !important;
 	transform: scale(0, 0) rotate(-180deg) !important;
 }
+
 .grow_spin:hover::after {
 	transition: all 0.3 ease-in-out;
 	transform: scale(1, 1) rotate(0deg) !important;
@@ -230,7 +234,7 @@ button[class^='grow']:hover::after {
 	box-shadow: 1px 1px 1px #f0c14b;
 }
 .postEditForm button {
-	color: #202020;
+	color: #05464e;
 	background-color: #f0c14b;
 	border-color: #c99616;
 }
@@ -239,4 +243,14 @@ button[class^='grow']:hover::after {
 	color: #eee;
 	background-color: #9e7100;
 	border-color: #c99616;
+}
+
+.bgKh1 {
+	background-color: #05464e !important;
+	color: white;
+}
+
+.bgKh2 {
+	background-color: #fff !important;
+	color: black;
 }

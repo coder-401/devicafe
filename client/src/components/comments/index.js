@@ -8,7 +8,7 @@ import { getComment, createComment } from './../../reducers/comments';
 import { Button, Form, Accordion, Card } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 
-const Comments = ({ postId }) => {
+const Comments = ({ postId, Theme }) => {
 	const dispatch = useDispatch();
 
 	const state = useSelector((state) => {
@@ -80,7 +80,11 @@ const Comments = ({ postId }) => {
 	return (
 		<div className="commentsContainer">
 			<Accordion>
-				<Accordion.Toggle as={Button} variant="dark" eventKey="0">
+				<Accordion.Toggle
+					as={Button}
+					eventKey="0"
+					style={{ backgroundColor: '#0b6c79' }}
+				>
 					View {comments.length} Comments
 				</Accordion.Toggle>
 				<Accordion.Collapse eventKey="0">
@@ -89,7 +93,7 @@ const Comments = ({ postId }) => {
 							<Then>
 								{comments.map((comment) => (
 									<div key={comment._id}>
-										<Comment Comment={comment} />
+										<Comment Comment={comment} Theme={Theme} />
 										<hr />
 									</div>
 								))}
@@ -97,7 +101,9 @@ const Comments = ({ postId }) => {
 						</If>
 						<Form className="commentForm" onSubmit={handleSubmit}>
 							<Form.Control name="description" />
-							<Button type="submit">Comment</Button>
+							<Button type="submit" style={{ backgroundColor: '#0b6c79' }}>
+								Comment
+							</Button>
 						</Form>
 					</Card.Body>
 				</Accordion.Collapse>
