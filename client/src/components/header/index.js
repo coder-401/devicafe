@@ -93,7 +93,7 @@ const Header = () => {
 										Questions
 									</Link>
 									<Link
-										to="/BookTable"
+										to="/BookRoom"
 										style={{
 											top: '5%',
 											color: 'rgb(242, 246, 247)',
@@ -115,20 +115,28 @@ const Header = () => {
 									>
 										Community
 									</Link>
-									<NavDropdown style={{marginTop:"0.5%"}} title={state.user.username} id="nav-dropdown">
-										<NavDropdown.Item eventKey="4.1">
-										<Link style={{color:"#000"}} to="/profile">
-											Profile
-										</Link>
+									<NavDropdown
+										style={{ marginTop: '0.5%' }}
+										title={state.user.username}
+										id="nav-dropdown"
+									>
+										<NavDropdown.Item
+											style={{ backgroundColor: '#fff' }}
+											eventKey="4.1"
+										>
+											<Link style={{ color: '#000' }} to="/profile">
+												Profile
+											</Link>
 										</NavDropdown.Item>
 										<NavDropdown.Divider />
 										<NavDropdown.Item
+											style={{ backgroundColor: '#fff' }}
 											onClick={logoutHandle}
 											eventKey="4.1"
 										>
-										<Link style={{color:"#000"}} to="/">
-										logout
-										</Link>
+											<Link style={{ color: '#000' }} to="/">
+												logout
+											</Link>
 										</NavDropdown.Item>
 									</NavDropdown>
 								</Nav>
@@ -164,7 +172,7 @@ const Header = () => {
 						<Container>
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 							<Navbar.Collapse id="responsive-navbar-nav">
-								<Nav style={{width:"100%",justifyContent:"center"}}>
+								<Nav style={{ width: '100%', justifyContent: 'center' }}>
 									<Link
 										to="/login"
 										style={{

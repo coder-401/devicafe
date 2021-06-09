@@ -14,6 +14,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const Post = ({ Post, Theme }) => {
 	const [postId, setPostId] = useState('');
 	const [dot, setDot] = useState(false);
+	// eslint-disable-next-line
 	const [cardBg, setCardBg] = useState('light');
 	const [cardText, setCardText] = useState('dark');
 
@@ -93,7 +94,7 @@ const Post = ({ Post, Theme }) => {
 	}, [Theme]);
 
 	return (
-		<Card bg={cardBg} text={cardText}>
+		<Card text={cardText} className={Theme ? 'bgKh2' : 'bgKh1'}>
 			<Card.Body>
 				<Dropdown>
 					<Dropdown.Toggle id="dropdown-basic">
@@ -150,7 +151,7 @@ const Post = ({ Post, Theme }) => {
 					</Form>
 				) : null}
 			</Card.Body>
-			<Comments postId={_id} />
+			<Comments postId={_id} Theme={Theme} />
 			<ToastContainer />
 		</Card>
 	);

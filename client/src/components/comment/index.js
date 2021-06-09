@@ -9,7 +9,7 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import { BiEditAlt } from 'react-icons/bi';
 import { ToastContainer, toast } from 'react-toastify';
 
-const Comment = ({ Comment }) => {
+const Comment = ({ Comment, Theme }) => {
 	const [commentId, setCommentId] = useState('');
 	const [update, setUpdate] = useState(false);
 
@@ -86,7 +86,7 @@ const Comment = ({ Comment }) => {
 
 	return (
 		<div>
-			<Card text="dark">
+			<Card className={Theme ? 'bgKh1' : 'bgKh2'}>
 				<Card.Body>
 					<Avatar
 						textMarginRatio={0.2}

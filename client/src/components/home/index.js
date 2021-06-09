@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import pic2 from './../../pics/2.jpg';
 import pic3 from './../../pics/3.jpg';
@@ -9,9 +10,16 @@ import { Card, Container, Row, Col } from 'react-bootstrap';
 import './home.css';
 
 const Home = () => {
+	const history = useHistory();
+
+	// eslint-disable-next-line
 	useEffect(() => {
 		Aos.init({ duration: 2000 });
 	}, []);
+
+	const handleClick = (route) => {
+		history.push(`/${route}`);
+	};
 
 	return (
 		<React.Fragment>
@@ -118,6 +126,7 @@ const Home = () => {
 					style={{ display: 'flex', flexDirection: 'row', textAlign: 'center' }}
 				>
 					<Card
+						onClick={() => handleClick('questions')}
 						data-aos="fade-zoom-in"
 						data-aos-easing="ease-in-back"
 						data-aos-delay="100"
@@ -129,6 +138,7 @@ const Home = () => {
 							padding: '1%',
 							marginLeft: '8%',
 							backgroundColor: 'rgb(10, 103, 117)',
+							cursor: 'pointer',
 						}}
 					>
 						<Card.Img
@@ -141,6 +151,7 @@ const Home = () => {
 						</Card.Body>
 					</Card>
 					<Card
+						onClick={() => handleClick('BookRoom')}
 						data-aos="fade-zoom-in"
 						data-aos-easing="ease-in-back"
 						data-aos-delay="150"
@@ -152,6 +163,7 @@ const Home = () => {
 							padding: '1%',
 							marginLeft: '3%',
 							backgroundColor: 'rgb(10, 103, 117)',
+							cursor: 'pointer',
 						}}
 					>
 						<Card.Img
@@ -164,6 +176,7 @@ const Home = () => {
 						</Card.Body>
 					</Card>
 					<Card
+						onClick={() => handleClick('BookRoom')}
 						data-aos="fade-zoom-in"
 						data-aos-easing="ease-in-back"
 						data-aos-delay="200"
@@ -175,18 +188,20 @@ const Home = () => {
 							padding: '1%',
 							marginLeft: '3%',
 							backgroundColor: 'rgb(10, 103, 117)',
+							cursor: 'pointer',
 						}}
 					>
 						<Card.Img
 							style={{ width: '100%', height: '200px' }}
 							variant="top"
-							src="https://static.wixstatic.com/media/58e2ce_dff2ace432734e549f36aba465bbe931~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01/LOGO.webp"
+							src="https://st4.depositphotos.com/30046358/40806/v/450/depositphotos_408065860-stock-illustration-workplace-design-flat-color-vector.jpg"
 						/>
 						<Card.Body>
-							<Card.Title style={{ color: 'white' }}>Get table</Card.Title>
+							<Card.Title style={{ color: 'white' }}>Get Room</Card.Title>
 						</Card.Body>
 					</Card>
 					<Card
+						onClick={() => handleClick('community')}
 						data-aos="fade-zoom-in"
 						data-aos-easing="ease-in-back"
 						data-aos-delay="250"
@@ -198,6 +213,7 @@ const Home = () => {
 							padding: '1%',
 							marginLeft: '3%',
 							backgroundColor: 'rgb(10, 103, 117)',
+							cursor: 'pointer',
 						}}
 					>
 						<Card.Img
@@ -248,12 +264,12 @@ const Home = () => {
 								<h3>We Care About You</h3>
 								<p>Do your research, Practice your answers and Stay calm.</p>
 								<p>
-									Mocky provide you a solid software interview questions that
+									EnterVU provide you a solid software interview questions that
 									you can review and study
 								</p>
 
 								<br />
-								<a href="/questions">Learn more</a>
+								<Link to="/questions">Learn more</Link>
 							</div>
 						</Col>
 					</Row>
@@ -275,7 +291,7 @@ const Home = () => {
 								<p>You can Navigate to the link below</p>
 
 								<br />
-								<a href="/bookTable">Learn more</a>
+								<Link to="/bookTable">Learn more</Link>
 							</div>
 						</Col>
 
@@ -320,12 +336,12 @@ const Home = () => {
 									marginTop: '25%',
 								}}
 							>
-								<h3>Enter act with our community</h3>
-								<p>ask questions , answer others</p>
+								<h3>Interact with our community</h3>
+								<p>ask questions, answer others</p>
 								<p>we provide THE problem and THE solution.</p>
 
 								<br />
-								<a href="/community">Learn more</a>
+								<Link to="/community">Learn more</Link>
 							</div>
 						</Col>
 					</Row>

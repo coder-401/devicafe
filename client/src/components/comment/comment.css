@@ -27,7 +27,8 @@
 	font-weight: 0 !important;
 	position: absolute;
 	top: 25px;
-	left: 40%;
+	left: 50%;
+	transform: translateX(-50%);
 }
 /*================================== COMMENT_FORM ===============================*/
 

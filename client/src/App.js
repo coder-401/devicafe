@@ -32,7 +32,7 @@ const App = () => {
 					<Route exact path="/profile" component={Profile} />
 					<Route exact path="/questions" component={Questions} />
 					<Route exact path="/community" component={Posts} />
-					<Route exact path="/BookTable" component={Entrance} />
+					<Route exact path="/BookRoom" component={Entrance} />
 					<Route exact path="/cafe/:meetingId" component={Cafe} />
 				</Switch>
 				{/* <Footer /> */}
