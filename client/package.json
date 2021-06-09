@@ -20,6 +20,7 @@
 		"node-sass": "^6.0.0",
 		"popper.js": "^1.16.1-lts",
 		"react": "^17.0.2",
+		"react-ace": "^9.4.1",
 		"react-avatar": "^3.10.0",
 		"react-bootstrap": "^1.6.1",
 		"react-bootstrap-icons": "^1.5.0",
