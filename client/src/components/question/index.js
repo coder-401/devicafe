@@ -29,7 +29,7 @@ const Question = ({ Question }) => {
 	};
 	return (
 		<div className="question">
-			<Card className="card">
+			<Card className="card1">
 				<Card.Header className="question-header">
 					{getBadge(difficulty, category)}
 				</Card.Header>
