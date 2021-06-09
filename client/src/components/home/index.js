@@ -6,6 +6,7 @@ import pic4 from './../../pics/4.jpg';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { Card, Container, Row, Col } from 'react-bootstrap';
+import './home.css';
 
 const Home = () => {
 	useEffect(() => {
