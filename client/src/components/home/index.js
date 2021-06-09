@@ -14,7 +14,7 @@ const Home = () => {
 
 	return (
 		<React.Fragment>
-			<Carousel
+			<Carousel 
 				style={{
 					position: 'absolute',
 					top: '0',
@@ -24,7 +24,7 @@ const Home = () => {
 				}}
 			>
 				<Carousel.Item
-					interval={500}
+					interval={2000}
 					style={{ height: '800px', width: '100%' }}
 				>
 					<img
@@ -33,7 +33,7 @@ const Home = () => {
 						alt="Second slide"
 						style={{ height: '800px', width: '100%' }}
 					/>
-					<Carousel.Caption>
+					<Carousel.Caption style={{marginBottom:"20%", backgroundColor:"rgb(0,0,0,0.4)",width:"auto" }}>
 						<p>
 							Only those who dare to fail greatly can ever achieve greatly.{' '}
 						</p>
@@ -41,7 +41,7 @@ const Home = () => {
 					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item
-					interval={800}
+					interval={2000}
 					style={{ height: '800px', width: '100%' }}
 				>
 					<img
@@ -50,7 +50,7 @@ const Home = () => {
 						alt="Third slide"
 						style={{ height: '800px', width: '100%' }}
 					/>
-					<Carousel.Caption>
+					<Carousel.Caption style={{marginBottom:"20%", backgroundColor:"rgb(0,0,0,0.4)",width:"auto"}}>
 						<h3>Your interview, made simple.</h3>
 						<p>
 							Do your interview, ask, help others and review your
@@ -60,7 +60,7 @@ const Home = () => {
 					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item
-					interval={1100}
+					interval={2000}
 					style={{ height: '800px', width: '100%' }}
 				>
 					<img
@@ -69,7 +69,7 @@ const Home = () => {
 						alt="Third slide"
 						style={{ height: '800px', width: '100%' }}
 					/>
-					<Carousel.Caption>
+					<Carousel.Caption style={{marginBottom:"20%", backgroundColor:"rgb(0,0,0,0.4)",width:"auto"}}>
 						<h3>Practice your interview</h3>
 						<p>
 							Mocky offers a safe connection , easy to use right over your home{' '}
@@ -97,7 +97,7 @@ const Home = () => {
 					<Card
 						data-aos="fade-zoom-in"
 						data-aos-easing="ease-in-back"
-						data-aos-delay="200"
+						data-aos-delay="100"
 						data-aos-offset="0"
 						style={{
 							width: '18%',
@@ -105,6 +105,7 @@ const Home = () => {
 							margin: '1%',
 							padding: '1%',
 							marginLeft: '8%',
+							backgroundColor:"rgb(10, 103, 117)"
 						}}
 					>
 						<Card.Img
@@ -119,7 +120,7 @@ const Home = () => {
 					<Card
 						data-aos="fade-zoom-in"
 						data-aos-easing="ease-in-back"
-						data-aos-delay="300"
+						data-aos-delay="150"
 						data-aos-offset="0"
 						style={{
 							width: '18%',
@@ -127,6 +128,7 @@ const Home = () => {
 							margin: '1%',
 							padding: '1%',
 							marginLeft: '3%',
+							backgroundColor:"rgb(10, 103, 117)"
 						}}
 					>
 						<Card.Img
@@ -141,7 +143,7 @@ const Home = () => {
 					<Card
 						data-aos="fade-zoom-in"
 						data-aos-easing="ease-in-back"
-						data-aos-delay="250"
+						data-aos-delay="200"
 						data-aos-offset="0"
 						style={{
 							width: '18%',
@@ -149,6 +151,7 @@ const Home = () => {
 							margin: '1%',
 							padding: '1%',
 							marginLeft: '3%',
+							backgroundColor:"rgb(10, 103, 117)"
 						}}
 					>
 						<Card.Img
@@ -163,7 +166,7 @@ const Home = () => {
 					<Card
 						data-aos="fade-zoom-in"
 						data-aos-easing="ease-in-back"
-						data-aos-delay="350"
+						data-aos-delay="250"
 						data-aos-offset="0"
 						style={{
 							width: '18%',
@@ -171,6 +174,7 @@ const Home = () => {
 							margin: '1%',
 							padding: '1%',
 							marginLeft: '3%',
+							backgroundColor:"rgb(10, 103, 117)"
 						}}
 					>
 						<Card.Img
@@ -193,7 +197,7 @@ const Home = () => {
 					people across our world.
 				</h1>
 
-				<Container style={{ margin: '0', marginTop: '3%' }}>
+				<Container style={{ margin: '0', marginTop: '3%',marginBottom:"5%" }}>
 					<Row>
 						<Col style={{ marginRight: '0' }}>
 							<img
@@ -204,7 +208,7 @@ const Home = () => {
 								style={{
 									width: '150%',
 									zIndex: '3',
-									height: '600px',
+									height: '500px',
 									marginRight: '0',
 									marginLeft: '0',
 								}}
@@ -215,7 +219,6 @@ const Home = () => {
 								style={{
 									width: '100%',
 									zIndex: '3',
-									height: '600px',
 									marginLeft: '50%',
 									marginTop: '25%',
 								}}
@@ -233,14 +236,13 @@ const Home = () => {
 						</Col>
 					</Row>
 					<Row>
-						<Col data-aos="fade-up" data-aos-delay="300">
+						<Col data-aos="fade-down" data-aos-delay="300">
 							<div
 								style={{
 									width: '100%',
 									zIndex: '3',
-									height: '600px',
 									marginRight: '50%',
-									marginTop: '25%',
+									marginTop: '50%',
 								}}
 							>
 								<h3>Manage Your Interview from home</h3>
@@ -258,31 +260,30 @@ const Home = () => {
 						<Col style={{ marginRight: '0' }}>
 							<img
 								alt="img"
-								data-aos="fade-down"
+								data-aos="fade-up"
 								data-aos-delay="300"
 								src="https://s3media.freemalaysiatoday.com/wp-content/uploads/2020/05/online-interview_lifestyle-16052020.jpg"
 								style={{
-									width: '150%',
+									width: '170%',
 									zIndex: '3',
-									height: '600px',
-									marginLeft: '20%',
-									marginTop: '25%',
-									marginBottom: '25%',
+									height: '500px',
+									marginLeft: '0',
+									marginTop: '5%',
 								}}
 							/>
 						</Col>
 					</Row>
-					<Row>
+					<Row style={{ marginTop: '5%' }}>
 						<Col style={{ marginRight: '0' }}>
 							<img
 								alt="img"
 								data-aos="fade-right"
 								data-aos-delay="300"
-								src="https://careeradvisor.asia/wp-content/uploads/2020/03/119_Header_How-To-Prepare-For-An-Online-Job-Interview-1200x800.jpg"
+								src="https://bloximages.newyork1.vip.townnews.com/yakimaherald.com/content/tncms/assets/v3/editorial/2/57/2579a488-94db-5b37-ae7d-5c5297390cc9/5f08a30661a16.image.jpg?crop=1858%2C1045%2C0%2C35&resize=1858%2C1045&order=crop%2Cresize"
 								style={{
 									width: '150%',
 									zIndex: '3',
-									height: '600px',
+									height: '500px',
 									marginRight: '0',
 									marginLeft: '0',
 								}}
@@ -293,20 +294,18 @@ const Home = () => {
 								style={{
 									width: '100%',
 									zIndex: '3',
-									height: '600px',
 									marginLeft: '50%',
 									marginTop: '25%',
 								}}
 							>
-								<h3>We Care About You</h3>
-								<p>Do your research, Practice your answers and Stay calm.</p>
+								<h3>Enter act with our community</h3>
+								<p>ask questions , answer others</p>
 								<p>
-									Mocky provide you a solid software interview questions that
-									you can review and study
+									we provide THE problem and THE solution.
 								</p>
 
 								<br />
-								<a href="/questions">Learn more</a>
+								<a href="/community">Learn more</a>
 							</div>
 						</Col>
 					</Row>

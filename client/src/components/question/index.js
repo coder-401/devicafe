@@ -29,7 +29,11 @@ const Question = ({ Question }) => {
 	};
 	return (
 		<div className="question">
+<<<<<<< HEAD
 			<Card className="card1">
+=======
+			<Card className="card" style={{border:"2px solid #02333c",zIndex:"497"}}>
+>>>>>>> b36e974247e049396733396885973e188217292d
 				<Card.Header className="question-header">
 					{getBadge(difficulty, category)}
 				</Card.Header>
@@ -39,13 +43,19 @@ const Question = ({ Question }) => {
 						<Accordion.Toggle
 							className="show-answer"
 							as={Button}
-							variant="link"
 							eventKey="0"
+							style={{
+								background:"transparent",
+								color:"#02333c",
+								border:"1px solid rgb(10, 103, 117)",
+								TextDecoration:"underline"
+
+							}}
 						>
 							View Answer
 						</Accordion.Toggle>
-						<Accordion.Collapse eventKey="0">
-							<Card.Body className="answer">{answer}</Card.Body>
+						<Accordion.Collapse eventKey="0" >
+							<Card.Body className="answer" >{answer}</Card.Body>
 						</Accordion.Collapse>
 					</Accordion>
 				</Card.Body>

@@ -1,10 +1,17 @@
 .question {
   font-size: large;
   margin-bottom: 2rem;
+  
 }
+<<<<<<< HEAD
 .card1 {
   background-color: #02333c !important;
   color: white;
+=======
+.card {
+  background-color: #02333c ;
+  color:#02333c;
+>>>>>>> b36e974247e049396733396885973e188217292d
 }
 .answer {
   margin-bottom: 16px;
@@ -13,7 +20,7 @@
   padding-left: 0 !important;
 }
 .show-answer {
-  color: #99bcc4 !important;
+  color: #02333c;
   font-size: 1rem !important;
   padding: 0 !important;
   margin: 0 !important;

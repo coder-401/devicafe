@@ -3,6 +3,12 @@
   width: 50%;
   height: 100%;
 }
+
+.questions-div{
+  background-image: url("../../pics/pic2.jpg");
+  
+  background-size:contain;
+}
 .filter-form {
   margin-left: 2rem;
   width: 50%;
@@ -11,6 +17,6 @@
 }
 
 .form-select {
-  background: #08535d !important;
-  color: white !important;
+  background: #5d0856 ;
+  color: white ;
 }
