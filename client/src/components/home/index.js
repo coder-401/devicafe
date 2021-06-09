@@ -54,7 +54,7 @@ const Home = () => {
 						<h3>Your interview, made simple.</h3>
 						<p>
 							Do your interview, ask, help others and review your
-							information.Mocky is a hassle-free, one stop solution for your
+							information. EnterVU is a hassle-free, one stop solution for your
 							need.
 						</p>
 					</Carousel.Caption>
@@ -72,7 +72,7 @@ const Home = () => {
 					<Carousel.Caption style={{marginBottom:"20%", backgroundColor:"rgb(0,0,0,0.4)",width:"auto"}}>
 						<h3>Practice your interview</h3>
 						<p>
-							Mocky offers a safe connection , easy to use right over your home{' '}
+							EnterVU offers a safe connection , easy to use right from your home.
 						</p>
 					</Carousel.Caption>
 				</Carousel.Item>
