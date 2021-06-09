@@ -69,7 +69,9 @@ const Cafe = () => {
 			</button>
 			{show && <WhiteBoard />}
 			{state.user._id === table.owner && table.role === 'interviewer' ? (
-				<Questions />
+				<div>
+					{/* <Questions /> */}
+				</div>
 			) : (
 				<div></div>
 			)}

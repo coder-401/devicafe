@@ -43,15 +43,13 @@ const Header = () => {
 					<Navbar
 						expand="lg"
 						style={{
-							background: "rgba(8, 83, 93,0.7)",
-							borderBlockColor: "transparent",
-							zIndex: "7000",
-							fontWeight: "bold",
-							position: "fixed",
-							top: "0",
-							width: "100%",
+							background: 'rgba(8, 83, 93,0.7)',
 							borderBlockColor: 'transparent',
-							
+							zIndex: '7000',
+							fontWeight: 'bold',
+							position: 'fixed',
+							top: '0',
+							width: '100%',
 						}}
 						class="float-right"
 					>
@@ -61,28 +59,35 @@ const Header = () => {
 								marginRight: '60%',
 								fontSize: '150%',
 								fontWeight: 'bold',
-								color:"#f2f6f7"
-
+								color: '#f2f6f7',
 							}}
 						>
 							EnterVU
 						</Navbar.Brand>
-						<Container >
+						<Container>
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-							<Navbar.Collapse id="responsive-navbar-nav" >
+							<Navbar.Collapse id="responsive-navbar-nav">
 								<Nav>
-									<Nav.Link href="/" style={{color:"#f2f6f7"}}>Home</Nav.Link>
-									<Nav.Link href="/questions" style={{color:"#f2f6f7"}}>Questions</Nav.Link>
-									<Nav.Link href="/BookTable" style={{color:"#f2f6f7"}}>Get Table</Nav.Link>
-									<Nav.Link href="/community" style={{color:"#f2f6f7"}}>Community</Nav.Link>
-									<NavDropdown 
+									<Nav.Link href="/" style={{ color: '#f2f6f7' }}>
+										Home
+									</Nav.Link>
+									<Nav.Link href="/questions" style={{ color: '#f2f6f7' }}>
+										Questions
+									</Nav.Link>
+									<Nav.Link href="/BookTable" style={{ color: '#f2f6f7' }}>
+										Get Table
+									</Nav.Link>
+									<Nav.Link href="/community" style={{ color: '#f2f6f7' }}>
+										Community
+									</Nav.Link>
+									<NavDropdown
 										title={state.user.username}
 										id="collasible-nav-dropdown"
-										style={{color:"#f2f6f7"}}
+										style={{ color: '#f2f6f7' }}
 									>
-										<NavDropdown.Item href="/profile" >Profile</NavDropdown.Item>
+										<NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
 										<NavDropdown.Divider />
-										<NavDropdown.Item href="/" onClick={logoutHandle} >
+										<NavDropdown.Item href="/" onClick={logoutHandle}>
 											logout
 										</NavDropdown.Item>
 									</NavDropdown>
@@ -95,31 +100,40 @@ const Header = () => {
 					<Navbar
 						expand="lg"
 						style={{
-							background: "rgba(8, 83, 93,0.7)",
-							borderBlockColor: "transparent",
-							zIndex: "7000",
-							fontWeight: "bold",
-							position: "fixed",
-							top: "0",
-							width: "100%",
+							background: 'rgba(8, 83, 93,0.7)',
 							borderBlockColor: 'transparent',
+							zIndex: '7000',
+							fontWeight: 'bold',
+							position: 'fixed',
+							top: '0',
+							width: '100%',
 						}}
 						class="float-right"
 					>
-						<Navbar.Brand href="/" style={{
+						<Navbar.Brand
+							href="/"
+							style={{
 								marginRight: '75%',
 								fontSize: '150%',
 								fontWeight: 'bold',
-								color:"#f2f6f7"
-							}}>
-						EnterVU
+								color: '#f2f6f7',
+							}}
+						>
+							EnterVU
 						</Navbar.Brand>
 						<Container>
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 							<Navbar.Collapse id="responsive-navbar-nav">
 								<Nav>
-									<Nav.Link href="/login" style={{color:"#f2f6f7",marginRight:"3%"}}>Login</Nav.Link>
-									<Nav.Link href="/register" style={{color:"#f2f6f7"}}>Register</Nav.Link>
+									<Nav.Link
+										href="/login"
+										style={{ color: '#f2f6f7', marginRight: '3%' }}
+									>
+										Login
+									</Nav.Link>
+									<Nav.Link href="/register" style={{ color: '#f2f6f7' }}>
+										Register
+									</Nav.Link>
 								</Nav>
 							</Navbar.Collapse>
 						</Container>
