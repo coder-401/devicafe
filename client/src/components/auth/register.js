@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { Form, Button, Card, Nav } from 'react-bootstrap';
 import './login.css';
@@ -26,24 +25,24 @@ const Register = () => {
 	};
 
 	return (
-		<React.Fragment >
+		<React.Fragment>
 			<div className="reg-div">
-
 				<div className="login-form">
-					<Card style=
-								{{
-									color:"white",
-									fontWeight:"bold",
-									width: '30rem',
-									padding: '3%',
-									height: "500px",
-									borderRadius: "15px 15px 15px 15px",
-									zIndex: "3",
-									boxShadow: "5px 10px 18px #99BCC4",
-									right: "15%",
-									bottom:"10%",
-									backgroundColor:"rgb(10, 103, 117,0.7)"
-								}}>
+					<Card
+						style={{
+							color: 'white',
+							fontWeight: 'bold',
+							width: '30rem',
+							padding: '3%',
+							height: '500px',
+							borderRadius: '15px 15px 15px 15px',
+							zIndex: '3',
+							boxShadow: '5px 10px 18px #99BCC4',
+							right: '15%',
+							bottom: '10%',
+							backgroundColor: 'rgb(10, 103, 117,0.7)',
+						}}
+					>
 						<Card.Body>
 							<Card.Title>Register</Card.Title>
 							<Form onSubmit={handleSubmit}>
@@ -62,7 +61,7 @@ const Register = () => {
 										placeholder="Enter email"
 										name="email"
 									/>
-									<Form.Text  style={{color:"white"}}>
+									<Form.Text style={{ color: 'white' }}>
 										We'll never share your email with anyone else.
 									</Form.Text>
 								</Form.Group>
@@ -82,7 +81,12 @@ const Register = () => {
 							</Form>
 							<div className="nav">
 								I already have an account
-								<Nav.Link href="/login" style={{color:"white",textDecoration:"underline"}}>Sign-in</Nav.Link>
+								<Nav.Link
+									href="/login"
+									style={{ color: 'white', textDecoration: 'underline' }}
+								>
+									Sign-in
+								</Nav.Link>
 							</div>
 						</Card.Body>
 					</Card>
