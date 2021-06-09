@@ -43,21 +43,27 @@ const Header = () => {
 					<Navbar
 						expand="lg"
 						style={{
-							background: 'transparent',
+							background: "transparent",
+							borderBlockColor: "transparent",
+							zIndex: "3",
+							fontWeight: "bold",
+							position: "fixed",
+							top: "0",
+							width: "100%",
 							borderBlockColor: 'transparent',
-							zIndex: '3',
+							
 						}}
 						class="float-right"
 					>
 						<Navbar.Brand
 							href="/"
 							style={{
-								marginRight: '70%',
+								marginRight: '65%',
 								fontSize: '150%',
 								fontWeight: 'bold',
 							}}
 						>
-							Mocky
+							EnterVU
 						</Navbar.Brand>
 						<Container>
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -85,14 +91,23 @@ const Header = () => {
 					<Navbar
 						expand="lg"
 						style={{
-							background: 'rgba(25,25,25,0.6)',
+							background: "transparent",
+							borderBlockColor: "transparent",
+							zIndex: "3",
+							fontWeight: "bold",
+							position: "fixed",
+							top: "0",
+							width: "100%",
 							borderBlockColor: 'transparent',
-							zIndex: '3',
 						}}
 						class="float-right"
 					>
-						<Navbar.Brand href="/" style={{ marginRight: '70%' }}>
-							DeveCafe
+						<Navbar.Brand href="/" style={{
+								marginRight: '65%',
+								fontSize: '150%',
+								fontWeight: 'bold',
+							}}>
+						EnterVU
 						</Navbar.Brand>
 						<Container>
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />

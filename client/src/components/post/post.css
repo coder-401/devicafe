@@ -43,17 +43,17 @@
 }
 
 .falseTheme {
-  background: #eee;
+  background: #cee7ec;
 }
 .trueTheme {
-  background: #202020;
+  background: #08535d;
 }
 
 .falseCard {
-  background: #202020;
+  background: #0c707e;
 }
 .trueCard {
-  background: #eee;
+  background: #cee7ec;
 }
 .postTime{
     font-size: 0.9rem;

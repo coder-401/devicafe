@@ -93,7 +93,7 @@ const Entrance = () => {
 							<Then>
 								<React.Fragment>
 									<Form className="entranceTable" onSubmit={newTable}>
-										<legend>Reserve a Table</legend>
+										<legend>Book Your Table</legend>
 										<Form.Label>Topic</Form.Label>
 										<Form.Control as="select" name="topic">
 											<option value="">none</option>
@@ -117,14 +117,16 @@ const Entrance = () => {
 											<option value="advance">Senior Developer</option>
 										</Form.Control>
 										<Button type="submit">Get your Table</Button>
+										<a
+											onClick={() => {
+												setTablee(true);
+											}}
+
+											style={{marginBottom:"5%"}}
+										>
+											Already have table ID ?
+										</a>
 									</Form>
-									<a
-										onClick={() => {
-											setTablee(true);
-										}}
-									>
-										Already have table ID ?
-									</a>
 								</React.Fragment>
 							</Then>
 							<Else>{handleLogin}</Else>

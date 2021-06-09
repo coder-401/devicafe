@@ -26,53 +26,67 @@ const Register = () => {
 	};
 
 	return (
-		<React.Fragment>
-			<div className="login-form">
-				<Card style={{ width: '18rem', paddingBottom: '8px' }}>
-					<Card.Body>
-						<Card.Title>Register</Card.Title>
-						<Form onSubmit={handleSubmit}>
-							<Form.Group controlId="formBasicName">
-								<Form.Label>Name</Form.Label>
-								<Form.Control
-									type="text"
-									placeholder="Username"
-									name="username"
-								/>
-							</Form.Group>
-							<Form.Group controlId="formBasicEmail">
-								<Form.Label>Email address</Form.Label>
-								<Form.Control
-									type="email"
-									placeholder="Enter email"
-									name="email"
-								/>
-								<Form.Text className="text-muted">
-									We'll never share your email with anyone else.
-								</Form.Text>
-							</Form.Group>
+		<React.Fragment >
+			<div className="reg-div">
 
-							<Form.Group controlId="formBasicPassword">
-								<Form.Label>Password</Form.Label>
-								<Form.Control
-									type="password"
-									placeholder="Password"
-									name="password"
-								/>
-							</Form.Group>
+				<div className="login-form">
+					<Card style=
+								{{
+									width: '30rem',
+									padding: '3%',
+									height: "500px",
+									borderRadius: "15px 15px 15px 15px",
+									zIndex: "3",
+									boxShadow: "5px 10px 18px #99BCC4",
+									right: "15%",
+									bottom:"10%",
+									backgroundColor:"rgb(10, 103, 117,0.7)"
+								}}>
+						<Card.Body>
+							<Card.Title>Register</Card.Title>
+							<Form onSubmit={handleSubmit}>
+								<Form.Group controlId="formBasicName">
+									<Form.Label>Name</Form.Label>
+									<Form.Control
+										type="text"
+										placeholder="Username"
+										name="username"
+									/>
+								</Form.Group>
+								<Form.Group controlId="formBasicEmail">
+									<Form.Label>Email address</Form.Label>
+									<Form.Control
+										type="email"
+										placeholder="Enter email"
+										name="email"
+									/>
+									<Form.Text  style={{color:"white"}}>
+										We'll never share your email with anyone else.
+									</Form.Text>
+								</Form.Group>
 
-							<Button className="button" variant="info" type="submit">
-								Register
-							</Button>
-						</Form>
-					</Card.Body>
-				</Card>
-				<div className="nav">
-					I already have an account
-					<Nav.Link href="/login">Sign-in</Nav.Link>
+								<Form.Group controlId="formBasicPassword">
+									<Form.Label>Password</Form.Label>
+									<Form.Control
+										type="password"
+										placeholder="Password"
+										name="password"
+									/>
+								</Form.Group>
+
+								<Button className="button" variant="info" type="submit">
+									Register
+								</Button>
+							</Form>
+							<div className="nav">
+								I already have an account
+								<Nav.Link href="/login" style={{color:"white",textDecoration:"underline"}}>Sign-in</Nav.Link>
+							</div>
+						</Card.Body>
+					</Card>
 				</div>
+				<ToastContainer />
 			</div>
-			<ToastContainer />
 		</React.Fragment>
 	);
 };
