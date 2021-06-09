@@ -23,6 +23,7 @@ const Chat = ({ meetingId }) => {
 
 	useEffect(() => {
 		socket.emit('join room', meetingId);
+		// eslint-disable-next-line
 	}, []);
 
 	useEffect(() => {

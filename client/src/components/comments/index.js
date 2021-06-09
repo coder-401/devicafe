@@ -20,24 +20,31 @@ const Comments = ({ postId }) => {
 		};
 	});
 
-	useEffect(async () => {
+	useEffect(() => {
 		try {
-			const response = await axios.get(
-				'https://backenders-devecafe.herokuapp.com/comments',
-				{
-					headers: {
-						Authorization: `Bearer ${state.token}`,
+			async function fetchData() {
+				const { data } = await axios.get(
+					'https://backenders-devecafe.herokuapp.com/comments',
+					{
+						headers: {
+							Authorization: `Bearer ${state.token}`,
+						},
 					},
-				},
-			);
+				);
 
-			dispatch(getComment(response.data));
+				return data;
+			}
+
+			let data = fetchData();
+
+			dispatch(getComment(data));
 		} catch (error) {
 			toast.error('Something Wrong!!!!', {
 				autoClose: 2000,
 				pauseOnHover: false,
 			});
 		}
+		// eslint-disable-next-line
 	}, []);
 
 	const handleSubmit = async (e) => {
