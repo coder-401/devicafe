@@ -70,75 +70,78 @@ const Questions = () => {
 
 	return (
 		<React.Fragment>
-			<If condition={cookie.load('auth')}>
-				<Then>
-					<Form onSubmit={handleSubmit} className="filter-form">
-						<Form.Row className="align-items-center">
-							<Col xs="auto" className="my-1">
-								<Form.Label
-									className="mr-sm-2"
-									htmlFor="inlineFormCustomSelect"
-									srOnly
-								>
-									Preference
-								</Form.Label>
-								<Form.Control
-									as="select"
-									className="mr-sm-2 form-select"
-									id="inlineFormCustomSelect"
-									name="topic"
-									custom
-								>
-									<option value="">Topic</option>
-									<option value="javascript">JavaScript</option>
-									<option value="node">NodeJS</option>
-									<option value="react">ReactJS</option>
-								</Form.Control>
-							</Col>
-							<Col xs="auto" className="my-1">
-								<Form.Label
-									className="mr-sm-2"
-									htmlFor="inlineFormCustomSelect"
-									srOnly
-								>
-									Preference
-								</Form.Label>
-								<Form.Control
-									as="select"
-									className="mr-sm-2 form-select"
-									id="inlineFormCustomSelect"
-									name="difficulty"
-									custom
-								>
-									<option value="">Difficulty</option>
-									<option value="beginner">Still Fresh</option>
-									<option value="intermidate">Joniur Developer</option>
-									<option value="advance">Senior Developer</option>
-								</Form.Control>
-							</Col>
+			<div className="questions-div" style={{top:"0", position:"absolute",width:"100%"}}>
 
-							<Col xs="auto" className="my-1">
-								<Button variant="outline-dark" type="submit">
-									Get your Questions
-								</Button>
-							</Col>
-						</Form.Row>
-					</Form>
-					<If condition={state.questions.length}>
-						<Then>
-							<div className="question-container">
-								{questions.map((question) => (
-									<div key={question.id} className="question">
-										<Question Question={question} />
-									</div>
-								))}
-							</div>
-						</Then>
-					</If>
-				</Then>
-				<Else>{handleLogin}</Else>
-			</If>
-			<ToastContainer />
+				<If condition={cookie.load('auth')}>
+					<Then>
+						<Form onSubmit={handleSubmit} className="filter-form" style={{marginTop:"7%"}}>
+							<Form.Row className="align-items-center">
+								<Col xs="auto" className="my-1">
+									<Form.Label
+										className="mr-sm-2"
+										htmlFor="inlineFormCustomSelect"
+										srOnly
+									>
+										Preference
+									</Form.Label>
+									<Form.Control
+										as="select"
+										className="mr-sm-2 form-select"
+										id="inlineFormCustomSelect"
+										name="topic"
+										custom
+									>
+										<option value="">Topic</option>
+										<option value="javascript">JavaScript</option>
+										<option value="node">NodeJS</option>
+										<option value="react">ReactJS</option>
+									</Form.Control>
+								</Col>
+								<Col xs="auto" className="my-1">
+									<Form.Label
+										className="mr-sm-2"
+										htmlFor="inlineFormCustomSelect"
+										srOnly
+									>
+										Preference
+									</Form.Label>
+									<Form.Control
+										as="select"
+										className="mr-sm-2 form-select"
+										id="inlineFormCustomSelect"
+										name="difficulty"
+										custom
+									>
+										<option value="">Difficulty</option>
+										<option value="beginner">Still Fresh</option>
+										<option value="intermidate">Joniur Developer</option>
+										<option value="advance">Senior Developer</option>
+									</Form.Control>
+								</Col>
+
+								<Col xs="auto" className="my-1">
+									<Button variant="outline-dark" type="submit">
+										Get your Questions
+									</Button>
+								</Col>
+							</Form.Row>
+						</Form>
+						<If condition={state.questions.length}>
+							<Then>
+								<div className="question-container">
+									{questions.map((question) => (
+										<div key={question.id} className="question">
+											<Question Question={question} />
+										</div>
+									))}
+								</div>
+							</Then>
+						</If>
+					</Then>
+					<Else>{handleLogin}</Else>
+				</If>
+				<ToastContainer />
+			</div>
 		</React.Fragment>
 	);
 };

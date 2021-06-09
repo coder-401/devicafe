@@ -1,3 +1,13 @@
+.login-div, .reg-div{
+	background-image: url("https://www.fairfaxcountyeda.org/wp-content/uploads/Fairfax-County-EDA-worked-with-131-firms-adding-10000-jobs-to-local-economy.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+    overflow: hidden;
+	height: 100vh;
+	top: 0;
+	margin:0;
+}
+
 .login-form {
 	position: absolute;
 	top: 50%;
@@ -5,7 +15,8 @@
 	transform: translate(-25%, -50%);
 	width: 50%;
 	height: 50%;
-	padding: 0.5rem;
+	padding: 1.5rem;
+	margin-bottom: 3%;
 }
 .button {
 	margin-bottom: 1rem !important;
