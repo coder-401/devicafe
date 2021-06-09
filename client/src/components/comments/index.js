@@ -20,22 +20,17 @@ const Comments = ({ postId }) => {
 		};
 	});
 
-	useEffect(() => {
+	// eslint-disable-next-line
+	useEffect(async () => {
 		try {
-			async function fetchData() {
-				const { data } = await axios.get(
-					'https://backenders-devecafe.herokuapp.com/comments',
-					{
-						headers: {
-							Authorization: `Bearer ${state.token}`,
-						},
+			const { data } = await axios.get(
+				'https://backenders-devecafe.herokuapp.com/comments',
+				{
+					headers: {
+						Authorization: `Bearer ${state.token}`,
 					},
-				);
-
-				return data;
-			}
-
-			let data = fetchData();
+				},
+			);
 
 			dispatch(getComment(data));
 		} catch (error) {

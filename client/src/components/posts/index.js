@@ -32,22 +32,18 @@ const Posts = () => {
 
 	const history = useHistory();
 
-	useEffect(() => {
+	// eslint-disable-next-line
+	useEffect(async () => {
 		try {
-			async function fetchData() {
-				const { data } = await axios.get(
-					'https://backenders-devecafe.herokuapp.com/posts',
-					{
-						headers: {
-							Authorization: `Bearer ${state.token}`,
-						},
+			// eslint-disable-next-line
+			const { data } = await axios.get(
+				'https://backenders-devecafe.herokuapp.com/posts',
+				{
+					headers: {
+						Authorization: `Bearer ${state.token}`,
 					},
-				);
-
-				return data;
-			}
-
-			let data = fetchData();
+				},
+			);
 
 			dispatch(getPost(data.reverse()));
 		} catch (error) {
