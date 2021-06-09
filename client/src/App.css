@@ -3,3 +3,11 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+#nav-dropdown {
+	color: white;
+}
+
+.dropdown-menu {
+	margin-left: 11rem !important;
+}

@@ -80,14 +80,16 @@ const Header = () => {
 									<Nav.Link href="/community" style={{ color: '#f2f6f7' }}>
 										Community
 									</Nav.Link>
-									<NavDropdown
-										title={state.user.username}
-										id="collasible-nav-dropdown"
-										style={{ color: '#f2f6f7' }}
-									>
-										<NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+									<NavDropdown title={state.user.username} id="nav-dropdown">
+										<NavDropdown.Item href="/profile" eventKey="4.1">
+											Profile
+										</NavDropdown.Item>
 										<NavDropdown.Divider />
-										<NavDropdown.Item href="/" onClick={logoutHandle}>
+										<NavDropdown.Item
+											href="/"
+											onClick={logoutHandle}
+											eventKey="4.1"
+										>
 											logout
 										</NavDropdown.Item>
 									</NavDropdown>
