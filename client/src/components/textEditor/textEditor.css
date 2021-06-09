@@ -7,7 +7,11 @@
 .codeOptions {
   display: flex;
   flex-direction: row;
+<<<<<<< HEAD
   justify-content: space-between;
+=======
+  justify-content: space-around;
+>>>>>>> 7b1df972be283c2616816b86e67907b6fb5a9e16
   margin: auto;
   padding: 0.5% 0 0.5% 0;
   width: 100%;
@@ -17,6 +21,7 @@
 }
 .codeOptions select {
   width: 20%;
+<<<<<<< HEAD
   margin: 0.1% -9% 0 -13%;
 }
 .codeOptions button {
@@ -30,6 +35,17 @@
 #blah2 {
   border: 2.5px solid black;
   height: 91.2%;
+=======
+  margin: 0 -5% 0 5%;
+}
+.codeOptions svg {
+  font-size: 1.9rem;
+  margin: 0.4% 25% 0 -6%;
+}
+#blah2 {
+  border: 2.5px solid black;
+  height: 90%;
+>>>>>>> 7b1df972be283c2616816b86e67907b6fb5a9e16
 }
 .codeValueBtn {
   position: fixed;

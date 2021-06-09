@@ -6,6 +6,7 @@ import pic4 from './../../pics/4.jpg';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { Card, Container, Row, Col } from 'react-bootstrap';
+import './home.css';
 
 const Home = () => {
 	useEffect(() => {
@@ -14,7 +15,7 @@ const Home = () => {
 
 	return (
 		<React.Fragment>
-			<Carousel 
+			<Carousel
 				style={{
 					position: 'absolute',
 					top: '0',
@@ -33,11 +34,18 @@ const Home = () => {
 						alt="Second slide"
 						style={{ height: '800px', width: '100%' }}
 					/>
-					<Carousel.Caption style={{marginBottom:"20%", backgroundColor:"rgb(0,0,0,0.4)",width:"auto" }}>
-						<p>
+					<Carousel.Caption
+						style={{
+							marginBottom: '16%',
+							backgroundColor: 'rgb(0,0,0,0.4)',
+							width: 'auto',
+							fontSize: '1.5rem',
+						}}
+					>
+						<h1>
 							Only those who dare to fail greatly can ever achieve greatly.{' '}
-						</p>
-						<h6>—Robert F. Kennedy</h6>
+						</h1>
+						<h6>— Robert F. Kennedy</h6>
 					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item
@@ -50,12 +58,18 @@ const Home = () => {
 						alt="Third slide"
 						style={{ height: '800px', width: '100%' }}
 					/>
-					<Carousel.Caption style={{marginBottom:"20%", backgroundColor:"rgb(0,0,0,0.4)",width:"auto"}}>
-						<h3>Your interview, made simple.</h3>
+					<Carousel.Caption
+						style={{
+							marginBottom: '16%',
+							backgroundColor: 'rgb(0,0,0,0.4)',
+							width: 'auto',
+							fontSize: '1.5rem',
+						}}
+					>
+						<h1>Your interview, made simple.</h1>
 						<p>
-							Do your interview, ask, help others and review your
-							information. EnterVU is a hassle-free, one stop solution for your
-							need.
+							Do your interview, ask, help others and review your information.
+							EnterVU is a hassle-free, one stop solution for your need.
 						</p>
 					</Carousel.Caption>
 				</Carousel.Item>
@@ -69,10 +83,18 @@ const Home = () => {
 						alt="Third slide"
 						style={{ height: '800px', width: '100%' }}
 					/>
-					<Carousel.Caption style={{marginBottom:"20%", backgroundColor:"rgb(0,0,0,0.4)",width:"auto"}}>
-						<h3>Practice your interview</h3>
+					<Carousel.Caption
+						style={{
+							marginBottom: '16%',
+							backgroundColor: 'rgb(0,0,0,0.4)',
+							width: 'auto',
+							fontSize: '1.5rem',
+						}}
+					>
+						<h1>Practice your interview</h1>
 						<p>
-							EnterVU offers a safe connection , easy to use right from your home.
+							EnterVU offers a safe connection , easy to use right from your
+							home.
 						</p>
 					</Carousel.Caption>
 				</Carousel.Item>
@@ -81,14 +103,14 @@ const Home = () => {
 			<div
 				className="1st-sec"
 				data-aos="fade-down"
-				style={{ marginTop: '810px', textAlign: 'center' }}
+				style={{ marginTop: '850px', textAlign: 'center' }}
 			>
 				<h3
 					data-aos-easing="ease-in-back"
 					data-aos-delay="300"
 					data-aos-offset="0"
 				>
-					One site for <br /> a perfect interview
+					One site for a perfect interview
 				</h3>
 				<div
 					data-aos="fade-right"
@@ -105,7 +127,7 @@ const Home = () => {
 							margin: '1%',
 							padding: '1%',
 							marginLeft: '8%',
-							backgroundColor:"rgb(10, 103, 117)"
+							backgroundColor: 'rgb(10, 103, 117)',
 						}}
 					>
 						<Card.Img
@@ -114,7 +136,7 @@ const Home = () => {
 							src="https://e3arabi.com/wp-content/uploads/2020/06/question-4105529_1920.jpg"
 						/>
 						<Card.Body>
-							<Card.Title>Questions</Card.Title>
+							<Card.Title style={{ color: 'white' }}>Questions</Card.Title>
 						</Card.Body>
 					</Card>
 					<Card
@@ -128,7 +150,7 @@ const Home = () => {
 							margin: '1%',
 							padding: '1%',
 							marginLeft: '3%',
-							backgroundColor:"rgb(10, 103, 117)"
+							backgroundColor: 'rgb(10, 103, 117)',
 						}}
 					>
 						<Card.Img
@@ -137,7 +159,7 @@ const Home = () => {
 							src="https://www.glassdoor.com/employers/app/uploads/sites/2/2021/02/GoogleDrive_640X469_Oddball-Interview-Questions-Recruiters-Should-Ask-02.png"
 						/>
 						<Card.Body>
-							<Card.Title>Interview</Card.Title>
+							<Card.Title style={{ color: 'white' }}>Interview</Card.Title>
 						</Card.Body>
 					</Card>
 					<Card
@@ -151,7 +173,7 @@ const Home = () => {
 							margin: '1%',
 							padding: '1%',
 							marginLeft: '3%',
-							backgroundColor:"rgb(10, 103, 117)"
+							backgroundColor: 'rgb(10, 103, 117)',
 						}}
 					>
 						<Card.Img
@@ -160,7 +182,7 @@ const Home = () => {
 							src="https://static.wixstatic.com/media/58e2ce_dff2ace432734e549f36aba465bbe931~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01/LOGO.webp"
 						/>
 						<Card.Body>
-							<Card.Title>Get table</Card.Title>
+							<Card.Title style={{ color: 'white' }}>Get table</Card.Title>
 						</Card.Body>
 					</Card>
 					<Card
@@ -174,7 +196,7 @@ const Home = () => {
 							margin: '1%',
 							padding: '1%',
 							marginLeft: '3%',
-							backgroundColor:"rgb(10, 103, 117)"
+							backgroundColor: 'rgb(10, 103, 117)',
 						}}
 					>
 						<Card.Img
@@ -183,7 +205,7 @@ const Home = () => {
 							src="https://ampjar.com/wp-content/uploads/2020/01/HERO-brand-community@2x-970x577.png"
 						/>
 						<Card.Body>
-							<Card.Title>Ask and Answer</Card.Title>
+							<Card.Title style={{ color: 'white' }}>Ask and Answer</Card.Title>
 						</Card.Body>
 					</Card>
 				</div>
@@ -193,11 +215,10 @@ const Home = () => {
 				style={{ textAlign: 'center', margin: '0', marginTop: '5%' }}
 			>
 				<h1 data-aos="fade-up">
-					Simplifying and improving the lives <br /> of <br />
-					people across our world.
+					Simplifying and improving the lives of people across our world.
 				</h1>
 
-				<Container style={{ margin: '0', marginTop: '3%',marginBottom:"5%" }}>
+				<Container style={{ margin: '0', marginTop: '3%', marginBottom: '5%' }}>
 					<Row>
 						<Col style={{ marginRight: '0' }}>
 							<img
@@ -300,9 +321,7 @@ const Home = () => {
 							>
 								<h3>Enter act with our community</h3>
 								<p>ask questions , answer others</p>
-								<p>
-									we provide THE problem and THE solution.
-								</p>
+								<p>we provide THE problem and THE solution.</p>
 
 								<br />
 								<a href="/community">Learn more</a>
