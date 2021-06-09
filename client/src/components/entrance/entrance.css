@@ -1,102 +1,118 @@
-.tableContainer{
-    /* background-image: url("https://www.careeraddict.com/uploads/article/56955/interview-modern-office.jpg"); */
-    background-image: url("https://cms-assets.themuse.com/media/lead/_1200x630_crop_center-center_82_none/38dbcd07-a729-411e-b008-9f6dc58cd967.jpg?mtime=1586984602");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    padding: 5% 0 0 0;
+.tableContainer {
+	background-image: url('https://cms-assets.themuse.com/media/lead/_1200x630_crop_center-center_82_none/38dbcd07-a729-411e-b008-9f6dc58cd967.jpg?mtime=1586984602');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	padding: 5% 0 0 0;
 }
-.tableContainer a{
-    font-size: 1.1rem;
-    text-align: center;
-    display: block;
-    cursor: pointer;
-    color: rgb(255, 255, 255) !important;
-    text-decoration: underline !important;
+.tableContainer a {
+	font-size: 1.1rem;
+	text-align: center;
+	display: block;
+	cursor: pointer;
+	color: rgb(255, 255, 255) !important;
+	text-decoration: underline !important;
 }
-.tableContainer a:hover{
-    color: black !important;
-}
-.entranceTable{
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-    border: 1px solid black;
-    margin: 0 auto 0 auto;
-    margin-top: 5%;
-    background-color: #243b469d;
-    border-radius: 5px;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    z-index: 88;
-}
-.entranceTable label{
-    text-align: center;
-    font-size: 1.3rem;
-    font-family: 'Times New Roman', Times, serif;
-}
-.entranceTable legend{
-    font-size: 2rem;
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    /* text-decoration: underline !important; */
-}
-.entranceTable select{
-    width: 80% !important;
-    font-size: 1.1rem;
-    margin: auto;
-    margin-bottom: 3%;
-}
-.entranceTable button{
-    width: 30% !important;
-    margin: 5% auto 5% auto;
-    border:2px solid rgb(22, 58, 58);
-    padding: 2% 0 2% 0;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    border: 0;
-}
-.entranceTable button:hover{
-    background-color: rgb(13, 59, 59);
-    font-size: 1.1rem;
 
+.tableContainer a:hover {
+	transition: all 0.3 ease-in-out;
+	color: black !important;
+}
+
+.entranceTable {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	border: 1px solid black;
+	margin: 0 auto 0 auto;
+	margin-top: 5%;
+	background-color: #243b469d;
+	border-radius: 5px;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+}
+
+.entranceTable label {
+	text-align: center;
+	font-size: 1.3rem;
+	font-family: 'Times New Roman', Times, serif;
+}
+
+.entranceTable legend {
+	font-size: 2rem;
+	font-family: 'Times New Roman', Times, serif;
+	text-align: center;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.entranceTable select {
+	width: 80% !important;
+	font-size: 1.1rem;
+	margin: auto;
+	margin-bottom: 3%;
+}
+
+.entranceTable button {
+	width: 30% !important;
+	margin: 5% auto 5% auto;
+	border: 2px solid rgb(22, 58, 58);
+	padding: 2% 0 2% 0;
+	border-radius: 10px;
+	font-size: 1.1rem;
+	border: 0;
+}
+
+.entranceTable button:hover {
+	transition: all 0.3 ease-in-out;
+	background-color: rgb(13, 59, 59);
+	font-size: 1.1rem;
 }
 
 /*===================================== Have_Table =====================================*/
 
-.haveTable{
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-    border: 1px solid black;
-    margin: 8% auto 0 auto;
-    background-color: cadetblue;
-    border-radius: 5px;
+.haveTable {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	border: 1px solid black;
+	margin: 8% auto 0 auto;
+	background-color: #243b469d;
+	border-radius: 5px;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
 }
-.haveTable input{
-    width: 80% !important;
-    margin: 0 auto 5% auto;
-    font-size: 1.1rem;
-}
-.haveTable label{
-    margin: 3% 0 3% 0;
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-    font-size: 1.4rem;
-}
-.haveTable button{
-    width: 30% !important;
-    margin: 0 auto 5% auto;
-    background-color: darkslategray;
-    padding: 2% 0 2% 0;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    border: 0;
-}
-.haveTable button:hover{
-    background-color: rgb(19, 41, 41);
-    font-size: 1.1rem;
 
+.haveTable input {
+	width: 80% !important;
+	margin: 0 auto 5% auto;
+	font-size: 1.1rem;
+}
+
+.haveTable label {
+	margin: 3% 0 3% 0;
+	font-size: 1.3rem;
+	font-family: 'Times New Roman', Times, serif;
+	text-align: center;
+}
+
+.haveTable button {
+	width: 30% !important;
+	margin: 5% auto 5% auto;
+	border: 2px solid rgb(22, 58, 58);
+	padding: 2% 0 2% 0;
+	border-radius: 10px;
+	font-size: 1.1rem;
+	border: 0;
+}
+
+.haveTable button:hover {
+	transition: all 0.3 ease-in-out;
+	background-color: rgb(19, 41, 41);
+	font-size: 1.1rem;
+}
+
+.arrow:hover {
+	transition: all 0.3 ease-in-out;
+	color: black;
 }

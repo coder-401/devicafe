@@ -132,8 +132,11 @@ const Posts = () => {
 	return (
 		<If condition={cookie.load('auth')}>
 			<Then>
-				<div className={theme + 'Theme'} style={{top:"0", position:"absolute",width:"100%"}}>
-					<div className="searchDiv" style={{marginTop:"7%"}}>
+				<div
+					className={theme + 'Theme'}
+					style={{ top: '0', position: 'absolute', width: '100%' }}
+				>
+					<div className="searchDiv" style={{ marginTop: '7%' }}>
 						<div style={{ display: 'flex', flexDirection: 'row' }}>
 							{theme ? (
 								<BsMoon style={moonStyle} />
@@ -145,7 +148,6 @@ const Posts = () => {
 								handleDiameter={25}
 								uncheckedIcon={false}
 								checkedIcon={false}
-								// offColor="red"
 								onColor="#3498db"
 								checked={theme}
 								height={25}
