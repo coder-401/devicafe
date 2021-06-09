@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 import { SiMessenger } from 'react-icons/si';
 import { RiSendPlane2Fill } from 'react-icons/ri';
 import './chat.css';
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, Form, Button } from 'react-bootstrap';
 import Fab from '@material-ui/core/Fab';
 
 const socket = io.connect('https://backenders-devecafe.herokuapp.com');
@@ -72,13 +72,13 @@ const Chat = ({ meetingId }) => {
 							})}
 						</ListGroup>
 					</div>
-					<form className="messageInputs" onSubmit={sendMessage}>
-						<input name="message" type="text" placeholder="Message..." />
-						<button>
+					<Form className="messageInputs" onSubmit={sendMessage}>
+						<Form.Control name="message" placeholder="Message..." />
+						<Button type="submit">
 							{' '}
 							<RiSendPlane2Fill />
-						</button>
-					</form>
+						</Button>
+					</Form>
 				</div>
 			)}
 			<br />

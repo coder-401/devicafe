@@ -28,6 +28,8 @@ import io from 'socket.io-client';
 import { FaRegLightbulb } from 'react-icons/fa';
 import { RiSunLine } from 'react-icons/ri';
 import axios from 'axios';
+import { Form, Button, Modal } from 'react-bootstrap';
+import './textEditor.css'
 
 const socket = io.connect('https://backenders-devecafe.herokuapp.com');
 
@@ -40,6 +42,7 @@ class TextEditor extends Component {
 			theme: 'twilight',
 			language: 'javascript',
 			output: '',
+			modalShow: false,
 		};
 		this.onChange = this.onChange.bind(this);
 		this.themeToggle = this.themeToggle.bind(this);
@@ -64,10 +67,16 @@ class TextEditor extends Component {
 	}
 	showValue() {
 		const Api = `https://emkc.org/api/v2/piston/execute`;
+		let ver;
 
+		if(this.state.language === "javascript") ver = "15.10.0"
+		if(this.state.language === "python") ver = "3.9.4"
+		if(this.state.language === "java") ver = "15.0.2"
+		if(this.state.language === "csharp") ver = "5.0.201"
+		
 		let obj = {
-			language: 'js',
-			version: '15.10.0',
+			language: this.state.language,
+			version: ver,
 			files: [
 				{
 					content: this.state.code,
@@ -76,6 +85,7 @@ class TextEditor extends Component {
 		};
 		axios.post(Api, obj).then((data) => {
 			this.setState({ output: data.data.run.output });
+			this.setState({modalShow:true})
 		});
 	}
 
@@ -96,24 +106,25 @@ class TextEditor extends Component {
 
 	render() {
 		return (
-			<div>
-				{this.state.theme === 'kuroir' ? (
-					<FaRegLightbulb className="themeIcons" onClick={this.themeToggle} />
-				) : (
-					<RiSunLine className="themeIcons" onClick={this.themeToggle} />
-				)}
-				<button onClick={this.showValue}>Show Value</button>
-				<select onChange={this.changeLanguage} value="language">
-					<option>Language</option>
-					<option value="javascript">Javascript</option>
-					<option value="python">Python</option>
-					<option value="c">C</option>
-					<option value="java">Java</option>
-					<option value="ruby">Ruby</option>
-					<option value="csharp">Csharp</option>
-				</select>
-				<h1>{this.state.language}</h1>
-
+			<div className="originCodeContainer">
+				<div className="codeOptions">
+					{this.state.theme === 'kuroir' ? (
+						<FaRegLightbulb className="themeIcons" onClick={this.themeToggle} />
+					) : (
+						<RiSunLine className="themeIcons" onClick={this.themeToggle} />
+					)}
+					<Form.Control as="select" onChange={this.changeLanguage} value="language">
+						<option>Language</option>
+						<option value="javascript">Javascript</option>
+						<option value="python">Python</option>
+						<option value="c">C</option>
+						<option value="java">Java</option>
+						<option value="ruby">Ruby</option>
+						<option value="csharp">Csharp</option>
+					</Form.Control>
+					<h3>{this.state.language.toUpperCase()}</h3>
+					<Button onClick={this.showValue}>Run Code</Button>
+				</div>
 				<AceEditor
 					placeholder="Start Coding ...."
 					mode={this.state.language}
@@ -121,15 +132,34 @@ class TextEditor extends Component {
 					name="blah2"
 					onLoad={this.onLoad}
 					onChange={this.onChange}
-					fontSize={14}
+					fontSize={16}
 					showPrintMargin={true}
 					showGutter={true}
 					highlightActiveLine={true}
 					value={this.state.code}
 					enableBasicAutocompletion={true}
 					enableLiveAutocompletion={true}
+					height= "91.2%"
+					width="100%"
 				/>
-				<div>{this.state.output}</div>
+
+
+				<Modal
+					show={this.state.modalShow}
+					onHide={()=>(this.setState({modalShow:false}))}
+					size="lg"
+					aria-labelledby="contained-modal-title-vcenter"
+					centered
+				>
+					<Modal.Header className="modalHeader" closeButton>
+						<Modal.Title id="contained-modal-title-vcenter">
+							Code Output
+						</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+					{this.state.output}
+					</Modal.Body>
+				</Modal>
 			</div>
 		);
 	}

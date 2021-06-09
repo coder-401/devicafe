@@ -1,43 +1,115 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #root {
-	background-color: rgb(228, 222, 222);
-	width: 100%;
-}
-
-.question {
-	border: 3px solid black;
-	position: relative;
-	padding: 3.5rem 3.5rem 0.5rem;
-	border-radius: 4rem;
-	width: 30rem;
-	text-align: center;
-	margin: 0 auto 1rem;
-	background-color: rgb(250, 249, 249);
+  background-color: rgb(228, 222, 222);
+  width: 100%;
 }
 
 .category {
-	position: absolute;
-	top: 0.5rem;
-	left: 3rem;
-	background-color: green;
-	padding: 0.2rem 1rem;
-	border-radius: 6rem;
+  position: absolute;
+  top: 0.5rem;
+  left: 3rem;
+  background-color: green;
+  padding: 0.2rem 1rem;
+  border-radius: 6rem;
 }
 
 .difficulty {
-	position: absolute;
-	top: 0.5rem;
-	left: 10rem;
-	background-color: green;
-	padding: 0.2rem 1rem;
-	border-radius: 6rem;
+  position: absolute;
+  top: 0.5rem;
+  left: 10rem;
+  background-color: green;
+  padding: 0.2rem 1rem;
+  border-radius: 6rem;
 }
 
 .answer {
-	margin-top: 1rem;
+  margin-top: 1rem;
+}
+/*============================================================================================================*/
+
+.cafeContainer {
+  display: grid;
+  grid-template-columns: 3fr 0.8fr;
+  grid-template-rows: 1fr;
+  margin: 4% 0 0 0;
+  height: 91.3vh;
+  background: #fff;
+}
+.sideBar {
+  grid-column: 2/-1;
+  grid-row: 1/-1;
+  background: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.sideBar button {
+  width: 60%;
+}
+.leftSide {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+}
+/*=====================================================_VIEDO_======================================================*/
+
+.viedoOnIcon {
+  position: fixed;
+  cursor: pointer;
+  font-size: 2.5rem;
+  bottom: 1.5%;
+  left: 38%;
+}
+.viedoOffIcon {
+  position: fixed;
+  cursor: pointer;
+  font-size: 2.5rem;
+  bottom: 1.5%;
+  left: 38%;
+  color:darkred;
+}
+.dfgPVa{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+.dfgPVa video:first-child{
+	position: absolute;
+    top: 10%;
+    left: 2.5%;
+    height: 512px;
+    width: 1114px;
+    border: 1px solid;
+}
+.dfgPVa video:last-child{
+	position: absolute;
+    top: 10%;
+    left: 2.5%;
+    height: 159px;
+    width: 345px;
+    border: 1px solid;
+}
+
+/*=============================================_WHITE_BOARD_============================================*/
+
+.shamounWB{
+	background: #fff;
+    width: 64%;
+    margin: 0 0% 0 1.5%;
+}
+/*=================================================QUESTIONS===========================================*/
+.shamounQU .questions-div{
+	width: 79% !important;
+}
+.shamounQU .questions-div .question-container{
+	width: 100%;
+    height: 76vh;
+    overflow-y: scroll;
+    padding: 0px 10% 0 10%;
 }
