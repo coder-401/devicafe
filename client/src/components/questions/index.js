@@ -26,20 +26,27 @@ const Questions = () => {
 		history.push('/login');
 	};
 
-	useEffect(async () => {
+	useEffect(() => {
 		try {
-			const response = await axios.get(
-				'https://backenders-devecafe.herokuapp.com/questions',
-			);
+			async function fetchData() {
+				const { data } = await axios.get(
+					'https://backenders-devecafe.herokuapp.com/questions',
+				);
 
-			setQuestions([...response.data]);
-			dispatch(getQuestion(response.data));
+				return data;
+			}
+
+			let data = fetchData();
+
+			setQuestions([...data]);
+			dispatch(getQuestion(data));
 		} catch (error) {
 			toast.error('Something Wrong!!!!', {
 				autoClose: 2000,
 				pauseOnHover: false,
 			});
 		}
+		// eslint-disable-next-line
 	}, []);
 
 	const handleSubmit = (e) => {
@@ -70,11 +77,17 @@ const Questions = () => {
 
 	return (
 		<React.Fragment>
-			<div className="questions-div" style={{top:"0", position:"absolute",width:"100%"}}>
-
+			<div
+				className="questions-div"
+				style={{ top: '0', position: 'absolute', width: '100%' }}
+			>
 				<If condition={cookie.load('auth')}>
 					<Then>
-						<Form onSubmit={handleSubmit} className="filter-form" style={{marginTop:"7%"}}>
+						<Form
+							onSubmit={handleSubmit}
+							className="filter-form"
+							style={{ marginTop: '7%' }}
+						>
 							<Form.Row className="align-items-center">
 								<Col xs="auto" className="my-1">
 									<Form.Label

@@ -116,14 +116,14 @@ const Entrance = () => {
 										<option value="advance">Senior Developer</option>
 									</Form.Control>
 									<Button type="submit">Get your Table</Button>
-									<a
+									<p
 										onClick={() => {
 											setTablee(true);
 										}}
 										style={{ marginBottom: '5%' }}
 									>
 										Already have table ID ?
-									</a>
+									</p>
 								</Form>
 							</React.Fragment>
 						</Then>

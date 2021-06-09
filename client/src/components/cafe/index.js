@@ -31,16 +31,21 @@ const Cafe = () => {
 		};
 	});
 
-	useEffect(async () => {
+	useEffect(() => {
 		try {
-			const { data } = await axios.get(
-				`https://backenders-devecafe.herokuapp.com/table/${meetingId}`,
-				{
-					headers: {
-						Authorization: `Bearer ${cookie.load('auth')}`,
+			async function fetchData() {
+				const { data } = await axios.get(
+					`https://backenders-devecafe.herokuapp.com/table/${meetingId}`,
+					{
+						headers: {
+							Authorization: `Bearer ${cookie.load('auth')}`,
+						},
 					},
-				},
-			);
+				);
+				return data;
+			}
+
+			let data = fetchData();
 
 			setTable(data);
 		} catch (error) {
@@ -49,6 +54,7 @@ const Cafe = () => {
 				pauseOnHover: false,
 			});
 		}
+		// eslint-disable-next-line
 	}, []);
 
 	const handleQuestions = () => {

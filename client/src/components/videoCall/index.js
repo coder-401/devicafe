@@ -26,6 +26,7 @@ const Video = (props) => {
 		props.peer.on('stream', (stream) => {
 			ref.current.srcObject = stream;
 		});
+		// eslint-disable-next-line
 	}, []);
 
 	return <StyledVideo playsInline autoPlay ref={ref} />;
@@ -76,6 +77,7 @@ const Room = ({ meetingId }) => {
 					item.peer.signal(payload.signal);
 				});
 			});
+		// eslint-disable-next-line
 	}, []);
 
 	function createPeer(userToSignal, callerID, stream) {

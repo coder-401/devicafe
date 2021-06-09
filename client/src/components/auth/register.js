@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { useHistory,Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
-import { Form, Button, Card, Nav } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 import './login.css';
 
 const Register = () => {
@@ -27,7 +27,7 @@ const Register = () => {
 	return (
 		<React.Fragment>
 			<div className="reg-div">
-				<div className="login-form">
+				<div className="reg-form">
 					<Card
 						style={{
 							color: 'white',

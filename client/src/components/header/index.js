@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { If, Else, Then } from 'react-if';
 import cookie from 'react-cookies';
@@ -20,6 +20,7 @@ const Header = () => {
 	useEffect(() => {
 		const token = cookie.load('auth');
 		validateToken(token);
+		// eslint-disable-next-line
 	}, []);
 
 	function validateToken(token) {
@@ -52,7 +53,7 @@ const Header = () => {
 							top: '0',
 							width: '100%',
 						}}
-						class="float-right"
+						className="float-right"
 					>
 						<Navbar.Brand
 							href="/"
@@ -69,33 +70,49 @@ const Header = () => {
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 							<Navbar.Collapse id="responsive-navbar-nav">
 								<Nav>
-									<Link to="/" style={{ color: '#f2f6f7',
-									top: "5%",
-									color: "rgb(242, 246, 247)",
-									margin: "2%",
-									padding:" 1%", }}>
+									<Link
+										to="/"
+										style={{
+											top: '5%',
+											color: 'rgb(242, 246, 247)',
+											margin: '2%',
+											padding: ' 1%',
+										}}
+									>
 										Home
 									</Link>
-									<Link to="/questions" style={{ color: '#f2f6f7',
-									top: "5%",
-									color: "rgb(242, 246, 247)",
-									margin: "2%",
-									padding:" 1%", }}>
+									<Link
+										to="/questions"
+										style={{
+											top: '5%',
+											color: 'rgb(242, 246, 247)',
+											margin: '2%',
+											padding: ' 1%',
+										}}
+									>
 										Questions
 									</Link>
-									<Link to="/BookTable" style={{ color: '#f2f6f7',
-									top: "5%",
-									color: "rgb(242, 246, 247)",
-									margin: "2%",
-									marginRight:"2%",
-									padding:" 1%", }}>
+									<Link
+										to="/BookTable"
+										style={{
+											top: '5%',
+											color: 'rgb(242, 246, 247)',
+											margin: '2%',
+											marginRight: '2%',
+											padding: ' 1%',
+										}}
+									>
 										BookRoom
 									</Link>
-									<Link to="/community" style={{ color: '#f2f6f7',
-									top: "5%",
-									color: "rgb(242, 246, 247)",
-									margin: "2%",
-									padding:" 1%", }}>
+									<Link
+										to="/community"
+										style={{
+											top: '5%',
+											color: 'rgb(242, 246, 247)',
+											margin: '2%',
+											padding: ' 1%',
+										}}
+									>
 										Community
 									</Link>
 									<NavDropdown title={state.user.username} id="nav-dropdown">
@@ -128,7 +145,7 @@ const Header = () => {
 							top: '0',
 							width: '100%',
 						}}
-						class="float-right"
+						className="float-right"
 					>
 						<Navbar.Brand
 							href="/"
@@ -147,19 +164,24 @@ const Header = () => {
 								<Nav>
 									<Link
 										to="/login"
-										style={{ color: '#f2f6f7',
-									top: "5%",
-									color: "rgb(242, 246, 247)",
-									margin: "2%",
-									padding:" 1%", }}
+										style={{
+											top: '5%',
+											color: 'rgb(242, 246, 247)',
+											margin: '2%',
+											padding: ' 1%',
+										}}
 									>
 										Login
 									</Link>
-									<Link to="/register" style={{ color: '#f2f6f7',
-									top: "5%",
-									color: "rgb(242, 246, 247)",
-									margin: "2%",
-									padding:" 1%", }}>
+									<Link
+										to="/register"
+										style={{
+											top: '5%',
+											color: 'rgb(242, 246, 247)',
+											margin: '2%',
+											padding: ' 1%',
+										}}
+									>
 										Register
 									</Link>
 								</Nav>

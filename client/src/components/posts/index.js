@@ -32,24 +32,31 @@ const Posts = () => {
 
 	const history = useHistory();
 
-	useEffect(async () => {
+	useEffect(() => {
 		try {
-			const response = await axios.get(
-				'https://backenders-devecafe.herokuapp.com/posts',
-				{
-					headers: {
-						Authorization: `Bearer ${state.token}`,
+			async function fetchData() {
+				const { data } = await axios.get(
+					'https://backenders-devecafe.herokuapp.com/posts',
+					{
+						headers: {
+							Authorization: `Bearer ${state.token}`,
+						},
 					},
-				},
-			);
+				);
 
-			dispatch(getPost(response.data.reverse()));
+				return data;
+			}
+
+			let data = fetchData();
+
+			dispatch(getPost(data.reverse()));
 		} catch (error) {
 			toast.error('Something Wrong!!!!', {
 				autoClose: 2000,
 				pauseOnHover: false,
 			});
 		}
+		// eslint-disable-next-line
 	}, []);
 
 	const handleLogin = () => {
