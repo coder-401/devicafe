@@ -51,17 +51,22 @@ const Login = () => {
 							height: '400px',
 							borderRadius: '15px 15px 15px 15px',
 							zIndex: '3',
-							boxShadow: '5px 10px 18px #99BCC4',
+							boxShadow: '0px 0px 3px 2px #99BCC4',
 							right: '30%',
 							bottom: '13%',
-							backgroundColor: 'rgb(10, 103, 117,0.9)',
+							backgroundColor: 'rgb(10, 103, 117,0.75)',
 							color: 'white',
 							fontWeight: 'bold',
 						}}
 					>
 						<Card.Body>
-							<Card.Title>Login</Card.Title>
-							<Form onSubmit={handleSubmit}>
+							<Card.Title style={{ textAlign: "center" }}>Login</Card.Title>
+							<Form style={{
+								height: "78%",
+								display: "flex",
+								flexDirection: "column",
+								justifyContent:"space-evenly"
+							}} onSubmit={handleSubmit}>
 								<Form.Group controlId="formBasicEmail">
 									<Form.Label>Username</Form.Label>
 									<Form.Control
@@ -84,13 +89,13 @@ const Login = () => {
 									className="button"
 									variant="info"
 									type="submit"
-									style={{ color: 'white', margin: '0 auto' }}
+									style={{ display: "block", color: 'white', margin: '0 auto' }}
 								>
 									Login
 								</Button>
 							</Form>
-							<div className="nav">
-								Don't have an account ?
+							<div className="nav" style={{justifyContent:"center"}}>
+								Don't have an account ? &nbsp;
 								<Link
 									style={{ color: 'white', textDecoration: 'underline' }}
 									to="/register"
@@ -103,7 +108,7 @@ const Login = () => {
 				</div>
 				<ToastContainer />
 			</div>
-		</React.Fragment>
+		</React.Fragment >
 	);
 };
 

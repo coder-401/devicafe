@@ -1,86 +1,134 @@
-.profileCard{
-    width: 60%;
-    margin: 15%;
-    margin-bottom: 5%;
-    margin-top: 7%;
-    border-radius: 20px !important;
-    background-color: #eee !important;
+#root{
+    background:#fff !important;
 }
-.profileAvatar{
-    margin: 20% !important;
+.profileCard {
+  width: 35%;
+  margin: 15%;
+  margin-bottom: 5%;
+  margin-top: 7%;
+  border-radius: 20px !important;
+  background-color: #eee !important;
 }
-.profileCardBody{
-    display: flex !important;
-    flex-direction: row !important;
+.profileAvatar {
+  margin: 20% !important;
 }
-.profileCardBody svg{
-    position: absolute;
-    right: 5%;
-    cursor: pointer;
-    font-size: 1.7rem !important;
+.profileCardBody {
+  display: flex !important;
+  flex-direction: row !important;
 }
-.profileCardBody h4{
-    margin: 5% 0 10% 10%;
-    font-size: 2rem;
-    font-family:sans-serif !important;
+.profileCardBody svg {
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+  font-size: 1.7rem !important;
 }
-.sb-avatar__image{
-    border-radius: 0 !important;
+.profileCardBody h4 {
+  margin: 5% 0 10% 10%;
+  font-size: 2rem;
+  font-family: sans-serif !important;
 }
-#emailCard{
-    font-size: 1.5rem;
-    margin: 0 0 0 15%;
+.sb-avatar__image {
+  border-radius: 0 !important;
 }
-.emailAndText{
-    width: 80%;
-    margin-bottom: 3%;
+#emailCard {
+  font-size: 1.5rem;
+  margin: 0 0 0 15%;
 }
-.profileCardBody h5{
-    margin: 3% 0 0 15%;
-    font-size: 2rem;
-    font-family:sans-serif !important;
+.emailAndText {
+  width: 80%;
+  margin-bottom: 3%;
 }
-.Card2{
-    margin: 4% 0 0 15% !important;
+.profileCardBody h5 {
+  margin: 3% 0 0 15%;
+  font-size: 2rem;
+  font-family: sans-serif !important;
 }
-.profileFooter{
-    border-bottom-left-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
-    text-align: center !important;
-    background-color: rgb(184, 184, 184) !important;
+.Card2 {
+  margin: 4% 0 0 15% !important;
+}
+.profileFooter {
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+  text-align: center !important;
+  background-color: rgb(184, 184, 184) !important;
 }
 
-.profile{
-    background-color: #c1dddf;
-    height: 100vh;
+.profile {
+  background-color: #c1dddf;
+  height: 100vh;
 }
 
 /*================================ Profile_Form ===============================*/
 
-.profileForm{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 45%;
-    border: 1px solid black;
-    text-align: center;
-    padding: 1%;
-    border-radius: 15px;
-    background: #eee;
-    left: 23%;
-    margin-bottom: 5%;
+.profileForm {
+  font-weight: 500;
+  color: #fff;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 75%;
+  height: 92%;
+  padding: 1%;
+  border-radius: 15px 15px 15px 15px;
+  margin: 3% auto 0 auto;
+  background-color: rgb(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 3px 2px #99bcc4;
+  justify-content: space-evenly;
+  align-items: center;
 }
-.profileForm legend{
-    text-decoration: underline;
+.profileForm button {
+    color:#fff;
+    background-color: rgb(23 162 184);
+    border-color: #17a2b8;
+  width: 30%;
+  margin: 10% auto 2% auto;
 }
-.profileForm button{
-    width: 40%;
-    margin: 10% auto 2% auto;
+.profileForm button:enabled{
+    background-color: #17a2b8;
 }
-.profileForm label{
-    margin-top: 5%;
+.profileForm button:hover{
+    background-color:rgb(10, 103, 117, 1);
+    border-color: #17a2b8;
+
 }
-.profileForm input{
-    width: 85%;
-    margin: auto;
+.profileForm label {
+  margin: 5% 0 0 0;
+  text-align: left;
+}
+.profileForm input {
+  width: 85%;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#profileGrid {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  grid-template-rows: 1fr;
+  width: 800px;
+  height: 500px;
+  margin: 8% auto 0 auto;
+  border-radius: 15px;
+}
+.leftLeft {
+  grid-column: 2/-1;
+  grid-row: 1/-1;
+  width: 100%;
+  height: 100%;
+  background-color: #20646d;
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+.rightRight {
+    grid-column: 1/2;
+    grid-row: 1/-1;
+    width: 100%;
+    background-color:#dbdbdb;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top-left-radius: 35px;
+  border-bottom-left-radius: 35px;
 }
