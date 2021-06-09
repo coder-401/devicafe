@@ -30,7 +30,7 @@ const Question = ({ Question }) => {
 	return (
 		<div className="question">
 			<Card
-				className="card"
+				className="card-ques"
 				style={{ border: '2px solid #02333c', zIndex: '497' }}
 			>
 				<Card.Header className="question-header">

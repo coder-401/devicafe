@@ -113,6 +113,7 @@ const Home = () => {
 					One site for a perfect interview
 				</h3>
 				<div
+					id="cards-home"
 					data-aos="fade-right"
 					style={{ display: 'flex', flexDirection: 'row', textAlign: 'center' }}
 				>

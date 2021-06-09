@@ -90,7 +90,7 @@ const Profile = () => {
 					<Card.Footer className="profileFooter">Email</Card.Footer>
 				</Card>
 				{show ? (
-					<Form className="profileForm" onSubmit={handleSubmit}>
+					<Form className="profileForm" onSubmit={handleSubmit} style={{marginBottom:"5%"}}>
 						<legend>User Information</legend>
 						<Form.Label>Username</Form.Label>
 						<Form.Control
