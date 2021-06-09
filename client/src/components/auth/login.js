@@ -43,11 +43,10 @@ const Login = () => {
 
 	return (
 		<React.Fragment>
-			<div className="login-div">
-
+			<div className="login-div" style={{color:"#1A1A22"}}>
 				<Row style={{margin:"0",marginBottom:"5%"}}>
 					<Col >
-						<div className="login-form" style={{ margin: "0" }}>
+						<div className="login-form" style={{ margin: "0" ,color:"#1A1A22"}}>
 							<Card style=
 								{{
 									width: '23rem',
@@ -58,7 +57,9 @@ const Login = () => {
 									boxShadow: "5px 10px 18px #99BCC4",
 									right: "30%",
 									bottom:"13%",
-									backgroundColor:"rgb(10, 103, 117,0.7)"
+									backgroundColor:"rgb(10, 103, 117,0.9)",
+									color:"white",
+									fontWeight:"bold"
 								}}>
 								<Card.Body>
 									<Card.Title>Login</Card.Title>
@@ -70,9 +71,6 @@ const Login = () => {
 												placeholder="Enter username"
 												name="username"
 											/>
-											<Form.Text className="text-muted">
-												We'll never share your email with anyone else.
-											</Form.Text>
 										</Form.Group>
 
 										<Form.Group controlId="formBasicPassword">
@@ -84,7 +82,7 @@ const Login = () => {
 											/>
 										</Form.Group>
 
-										<Button className="button" variant="info" type="submit">
+										<Button className="button"  type="submit" style={{color:"white"}}>
 											Login
 										</Button>
 									</Form>

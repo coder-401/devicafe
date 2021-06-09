@@ -32,6 +32,8 @@ const Register = () => {
 				<div className="login-form">
 					<Card style=
 								{{
+									color:"white",
+									fontWeight:"bold",
 									width: '30rem',
 									padding: '3%',
 									height: "500px",
