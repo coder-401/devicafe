@@ -26,17 +26,12 @@ const Questions = () => {
 		history.push('/login');
 	};
 
-	useEffect(() => {
+	// eslint-disable-next-line
+	useEffect(async () => {
 		try {
-			async function fetchData() {
-				const { data } = await axios.get(
-					'https://backenders-devecafe.herokuapp.com/questions',
-				);
-
-				return data;
-			}
-
-			let data = fetchData();
+			const { data } = await axios.get(
+				'https://backenders-devecafe.herokuapp.com/questions',
+			);
 
 			setQuestions([...data]);
 			dispatch(getQuestion(data));

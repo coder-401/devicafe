@@ -31,21 +31,17 @@ const Cafe = () => {
 		};
 	});
 
-	useEffect(() => {
+	// eslint-disable-next-line
+	useEffect(async () => {
 		try {
-			async function fetchData() {
-				const { data } = await axios.get(
-					`https://backenders-devecafe.herokuapp.com/table/${meetingId}`,
-					{
-						headers: {
-							Authorization: `Bearer ${cookie.load('auth')}`,
-						},
+			const { data } = await axios.get(
+				`https://backenders-devecafe.herokuapp.com/table/${meetingId}`,
+				{
+					headers: {
+						Authorization: `Bearer ${cookie.load('auth')}`,
 					},
-				);
-				return data;
-			}
-
-			let data = fetchData();
+				},
+			);
 
 			setTable(data);
 		} catch (error) {
