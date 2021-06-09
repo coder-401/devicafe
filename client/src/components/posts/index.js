@@ -132,8 +132,8 @@ const Posts = () => {
 	return (
 		<If condition={cookie.load('auth')}>
 			<Then>
-				<div className={theme + 'Theme'}>
-					<div className="searchDiv">
+				<div className={theme + 'Theme'} style={{top:"0", position:"absolute",width:"100%"}}>
+					<div className="searchDiv" style={{marginTop:"7%"}}>
 						<div style={{ display: 'flex', flexDirection: 'row' }}>
 							{theme ? (
 								<BsMoon style={moonStyle} />

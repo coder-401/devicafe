@@ -43,17 +43,17 @@
 }
 
 .falseTheme {
-  background: #eee;
+  background: #cee7ec;
 }
 .trueTheme {
-  background: #202020;
+  background: #08535d;
 }
 
 .falseCard {
-  background: #202020;
+  background: #08535d;
 }
 .trueCard {
-  background: #eee;
+  background: #cee7ec;
 }
 .postTime{
     font-size: 0.9rem;
@@ -189,10 +189,10 @@ button[class^="grow"]:hover::after {
   margin-left: 15%;
 }
 .askModal{
-  background-color: rgba(47, 79, 79, 0.274);
+  background-color: rgba(47, 79, 79, 0.274)\;
 }
 .modalHeader{
-background-color: #657b8a;
+background-color: #08535d;
 color:#eee;
 }
 .modalHeader button{
@@ -202,7 +202,7 @@ color:#eee;
     color: #fff;
 }
 .modalBody{
-background-color: rgba(221, 221, 221, 0.26);
+background-color: rgba(221, 221, 221, 0.212);
 }
 
 /*===================================== Post_Edit_Form ==========================================*/

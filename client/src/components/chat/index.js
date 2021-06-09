@@ -4,6 +4,8 @@ import io from 'socket.io-client';
 import { SiMessenger } from 'react-icons/si';
 import { RiSendPlane2Fill } from 'react-icons/ri';
 import './chat.css';
+import { ListGroup } from 'react-bootstrap';
+import Fab from '@material-ui/core/Fab';
 
 const socket = io.connect('https://backenders-devecafe.herokuapp.com');
 
@@ -55,28 +57,37 @@ const Chat = ({ meetingId }) => {
 			{show && (
 				<div className="Chat">
 					<div className="messages">
-						{messageList.map((val, key) => {
-							return (
-								<div key={key}>
-									<div className="messageIndividual">
-										{val.author}: {val.message}
+						<ListGroup>
+							{messageList.map((val, key) => {
+								return (
+									<div key={key}>
+										<div className="messageIndividual">
+											<ListGroup.Item disabled>
+												{' '}
+												{val.author}: {val.message}
+											</ListGroup.Item>
+										</div>
 									</div>
-								</div>
-							);
-						})}
+								);
+							})}
+						</ListGroup>
 					</div>
 					<form className="messageInputs" onSubmit={sendMessage}>
 						<input name="message" type="text" placeholder="Message..." />
 						<button>
+							{' '}
 							<RiSendPlane2Fill />
 						</button>
 					</form>
 				</div>
 			)}
-			<SiMessenger
-				style={{ fontSize: '2rem', cursor: 'pointer' }}
-				onClick={handleClick}
-			/>
+			<br />
+			<Fab className="floating-action-button" color="primary" aria-label="add">
+				<SiMessenger
+					style={{ fontSize: '2rem', cursor: 'pointer' }}
+					onClick={handleClick}
+				/>
+			</Fab>
 		</div>
 	);
 };

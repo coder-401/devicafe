@@ -1,24 +1,24 @@
 .question {
-  font-size: large;
-  margin-bottom: 2rem;
+	font-size: large;
+	margin-bottom: 2rem;
 }
-.card {
-  background-color: #02333c !important;
-  color: white;
+.card1 {
+	background-color: #02333c !important;
+	color: white;
 }
 .answer {
-  margin-bottom: 16px;
+	margin-bottom: 16px;
 
-  padding-top: 0 !important;
-  padding-left: 0 !important;
+	padding-top: 0 !important;
+	padding-left: 0 !important;
 }
 .show-answer {
-  color: #99bcc4 !important;
-  font-size: 1rem !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  margin-bottom: 16px !important;
+	color: #02333c;
+	font-size: 1rem !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	margin-bottom: 16px !important;
 }
 .question-header {
-  background-color: #08535d !important;
+	background-color: #08535d !important;
 }
