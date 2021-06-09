@@ -286,7 +286,7 @@ const Home = () => {
 								data-aos-delay="300"
 								src="https://s3media.freemalaysiatoday.com/wp-content/uploads/2020/05/online-interview_lifestyle-16052020.jpg"
 								style={{
-									width: '170%',
+									width: '169%',
 									zIndex: '3',
 									height: '500px',
 									marginLeft: '0',

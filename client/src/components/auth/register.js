@@ -37,15 +37,15 @@ const Register = () => {
 							height: '500px',
 							borderRadius: '15px 15px 15px 15px',
 							zIndex: '3',
-							boxShadow: '5px 10px 18px #99BCC4',
+							boxShadow: '0px 0px 3px 2px #99BCC4',
 							right: '15%',
 							bottom: '10%',
-							backgroundColor: 'rgb(10, 103, 117,0.7)',
+							backgroundColor: 'rgb(10, 103, 117,0.75)',
 						}}
 					>
 						<Card.Body>
-							<Card.Title>Register</Card.Title>
-							<Form onSubmit={handleSubmit}>
+							<Card.Title style={{textAlign:"center"}}>Register</Card.Title>
+							<Form style={{display:"flex",flexDirection:"column",height:"85%",justifyContent:"space-between"}} onSubmit={handleSubmit}>
 								<Form.Group controlId="formBasicName">
 									<Form.Label>Name</Form.Label>
 									<Form.Control
@@ -75,12 +75,12 @@ const Register = () => {
 									/>
 								</Form.Group>
 
-								<Button className="button" variant="info" type="submit">
+								<Button style={{display:"block",margin:"auto"}} className="button" variant="info" type="submit">
 									Register
 								</Button>
 							</Form>
-							<div className="nav">
-								I already have an account
+							<div className="nav" style={{justifyContent:"center"}}>
+								I already have an account &nbsp;
 								<Link
 									to="/login"
 									style={{ color: 'white', textDecoration: 'underline' }}
