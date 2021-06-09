@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { Form, Button, Card, Nav } from 'react-bootstrap';
@@ -81,12 +81,12 @@ const Register = () => {
 							</Form>
 							<div className="nav">
 								I already have an account
-								<Nav.Link
-									href="/login"
+								<Link
+									to="/login"
 									style={{ color: 'white', textDecoration: 'underline' }}
 								>
 									Sign-in
-								</Nav.Link>
+								</Link>
 							</div>
 						</Card.Body>
 					</Card>

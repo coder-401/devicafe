@@ -1,6 +1,10 @@
 .question {
 	font-size: large;
 	margin-bottom: 2rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;	
+
 }
 .card1 {
 	background-color: #02333c !important;
@@ -18,7 +22,23 @@
 	padding: 0 !important;
 	margin: 0 !important;
 	margin-bottom: 16px !important;
+	
 }
 .question-header {
 	background-color: #08535d !important;
+}
+.card-ques{
+	width: 350px;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin: 5%;
 }

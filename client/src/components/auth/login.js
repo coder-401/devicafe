@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -87,7 +87,7 @@ const Login = () => {
 										</Button>
 									</Form>
 									<div className="nav">
-										Don't have an account ?<Nav.Link style={{color:"white",textDecoration:"underline"}} href="/register">register </Nav.Link>
+										Don't have an account ?<Link style={{color:"white",textDecoration:"underline"}} to="/register">register </Link>
 									</div>
 								</Card.Body>
 							</Card>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import {Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { If, Else, Then } from 'react-if';
 import cookie from 'react-cookies';
@@ -68,18 +69,35 @@ const Header = () => {
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 							<Navbar.Collapse id="responsive-navbar-nav">
 								<Nav>
-									<Nav.Link href="/" style={{ color: '#f2f6f7' }}>
+									<Link to="/" style={{ color: '#f2f6f7',
+									top: "5%",
+									color: "rgb(242, 246, 247)",
+									margin: "2%",
+									padding:" 1%", }}>
 										Home
-									</Nav.Link>
-									<Nav.Link href="/questions" style={{ color: '#f2f6f7' }}>
+									</Link>
+									<Link to="/questions" style={{ color: '#f2f6f7',
+									top: "5%",
+									color: "rgb(242, 246, 247)",
+									margin: "2%",
+									padding:" 1%", }}>
 										Questions
-									</Nav.Link>
-									<Nav.Link href="/BookTable" style={{ color: '#f2f6f7' }}>
-										Get Table
-									</Nav.Link>
-									<Nav.Link href="/community" style={{ color: '#f2f6f7' }}>
+									</Link>
+									<Link to="/BookTable" style={{ color: '#f2f6f7',
+									top: "5%",
+									color: "rgb(242, 246, 247)",
+									margin: "2%",
+									marginRight:"2%",
+									padding:" 1%", }}>
+										BookRoom
+									</Link>
+									<Link to="/community" style={{ color: '#f2f6f7',
+									top: "5%",
+									color: "rgb(242, 246, 247)",
+									margin: "2%",
+									padding:" 1%", }}>
 										Community
-									</Nav.Link>
+									</Link>
 									<NavDropdown title={state.user.username} id="nav-dropdown">
 										<NavDropdown.Item href="/profile" eventKey="4.1">
 											Profile
@@ -127,15 +145,23 @@ const Header = () => {
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 							<Navbar.Collapse id="responsive-navbar-nav">
 								<Nav>
-									<Nav.Link
-										href="/login"
-										style={{ color: '#f2f6f7', marginRight: '3%' }}
+									<Link
+										to="/login"
+										style={{ color: '#f2f6f7',
+									top: "5%",
+									color: "rgb(242, 246, 247)",
+									margin: "2%",
+									padding:" 1%", }}
 									>
 										Login
-									</Nav.Link>
-									<Nav.Link href="/register" style={{ color: '#f2f6f7' }}>
+									</Link>
+									<Link to="/register" style={{ color: '#f2f6f7',
+									top: "5%",
+									color: "rgb(242, 246, 247)",
+									margin: "2%",
+									padding:" 1%", }}>
 										Register
-									</Nav.Link>
+									</Link>
 								</Nav>
 							</Navbar.Collapse>
 						</Container>

@@ -92,7 +92,7 @@ const Entrance = () => {
 						<Then>
 							<React.Fragment>
 								<Form className="entranceTable" onSubmit={newTable}>
-									<legend>Book Your Table</legend>
+									<legend>Get an Interview room</legend>
 									<Form.Label>Topic</Form.Label>
 									<Form.Control as="select" name="topic">
 										<option value="">none</option>

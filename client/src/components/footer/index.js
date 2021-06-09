@@ -25,7 +25,7 @@ const Footer = () => {
 						</a>
 						<a href="">
 							<img
-								src="https://toppng.com/uploads/preview/twitter-icon-11549680618gtfxwkkgkr.png"
+								src="https://seeklogo.net/wp-content/uploads/2015/09/twitter-icon-circle-logo-400x400.png"
 								alt="twitter"
 							/>
 						</a>
