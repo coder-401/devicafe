@@ -92,7 +92,7 @@ const Entrance = () => {
 						<Then>
 							<React.Fragment>
 								<Form className="entranceTable" onSubmit={newTable}>
-									<legend>Get an Interview room</legend>
+									<legend>Get an Interview Room</legend>
 									<Form.Label>Topic</Form.Label>
 									<Form.Control as="select" name="topic">
 										<option value="">none</option>
@@ -115,14 +115,14 @@ const Entrance = () => {
 										<option value="intermidate">Joniur Developer</option>
 										<option value="advance">Senior Developer</option>
 									</Form.Control>
-									<Button type="submit">Get your Table</Button>
+									<Button type="submit">Get your Room</Button>
 									<p
 										onClick={() => {
 											setTablee(true);
 										}}
-										style={{ marginBottom: '5%' }}
+										style={{ cursor:"pointer",textAlign:"center",marginBottom: '5%' }}
 									>
-										Already have table ID ?
+										Already have Room ID ?
 									</p>
 								</Form>
 							</React.Fragment>
@@ -141,9 +141,9 @@ const Entrance = () => {
 							onClick={() => setTablee(false)}
 							className="arrow"
 						/>
-						<Form.Label>Table Id</Form.Label>
-						<Form.Control placeholder="table Id" name="tableId" />
-						<Button type="submit">Go to your table</Button>
+						<Form.Label>Room Id</Form.Label>
+						<Form.Control placeholder="Room Id" name="tableId" />
+						<Button type="submit">Go To Your Room</Button>
 					</Form>
 				)}
 				<ToastContainer />
