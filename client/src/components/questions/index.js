@@ -128,7 +128,7 @@ const Questions = () => {
 								</Col>
 
 								<Col xs="auto" className="my-1">
-									<Button variant="outline-dark" type="submit">
+									<Button type="submit" className="quesBtn">
 										Get your Questions
 									</Button>
 								</Col>
