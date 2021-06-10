@@ -55,17 +55,18 @@ const Header = () => {
 						}}
 						className="float-right"
 					>
-						<Navbar.Brand
-							href="/"
+						<Link
+							to="/"
 							style={{
 								marginRight: '60%',
 								fontSize: '150%',
 								fontWeight: 'bold',
 								color: '#f2f6f7',
+								textDecoration: 'none',
 							}}
 						>
 							EnterVU
-						</Navbar.Brand>
+						</Link>
 						<Container>
 							<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 							<Navbar.Collapse id="responsive-navbar-nav">

@@ -73,7 +73,7 @@ const Entrance = () => {
 			);
 
 			history.push({
-				pathname: `/cafe/${data._id}`,
+				pathname: `/room/${data._id}`,
 				state: data,
 			});
 		} catch (error) {
@@ -120,7 +120,11 @@ const Entrance = () => {
 										onClick={() => {
 											setTablee(true);
 										}}
-										style={{ cursor:"pointer",textAlign:"center",marginBottom: '5%' }}
+										style={{
+											cursor: 'pointer',
+											textAlign: 'center',
+											marginBottom: '5%',
+										}}
 									>
 										Already have Room ID ?
 									</p>
