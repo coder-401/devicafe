@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 2%;
   left: 1%;
-  z-index: 1996;
+  z-index: 1000000000;
 }
 .Chat{
   border: 1px solid #0003;

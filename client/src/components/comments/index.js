@@ -83,7 +83,7 @@ const Comments = ({ postId, Theme }) => {
 				<Accordion.Toggle
 					as={Button}
 					eventKey="0"
-					style={{ backgroundColor: '#0b6c79' }}
+					style={{ backgroundColor: '#0b6c79',borderColor:"rgb(72 148 158)" }}
 				>
 					View {comments.length} Comments
 				</Accordion.Toggle>
@@ -101,7 +101,7 @@ const Comments = ({ postId, Theme }) => {
 						</If>
 						<Form className="commentForm" onSubmit={handleSubmit}>
 							<Form.Control name="description" />
-							<Button type="submit" style={{ backgroundColor: '#0b6c79' }}>
+							<Button type="submit" style={{ backgroundColor: '#0b6c79',borderColor:"rgb(72 148 158)" }}>
 								Comment
 							</Button>
 						</Form>
