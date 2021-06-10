@@ -113,8 +113,8 @@ const Cafe = () => {
 	};
 
 	const fixVideo = () => {
-		let video1 = document.querySelector('.dfgPVa').firstChild;
-		let video2 = document.querySelector('.dfgPVa').lastChild;
+		let video1 = document.querySelector('.jvCTkj').firstChild;
+		let video2 = document.querySelector('.jvCTkj').lastChild;
 
 		video1.style.position = 'fixed';
 		video1.style.zIndex = '100000000';
@@ -131,8 +131,8 @@ const Cafe = () => {
 		video2.style.left = '81%';
 	}
 	const originVideo = () => {
-		let video1 = document.querySelector('.dfgPVa').firstChild;
-		let video2 = document.querySelector('.dfgPVa').lastChild;
+		let video1 = document.querySelector('.jvCTkj').firstChild;
+		let video2 = document.querySelector('.jvCTkj').lastChild;
 
 		video1.style.position = 'absolute';
 		video1.style.zIndex = '100000000';
