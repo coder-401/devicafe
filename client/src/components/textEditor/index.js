@@ -156,7 +156,7 @@ class TextEditor extends Component {
 							Code Output
 						</Modal.Title>
 					</Modal.Header>
-					<Modal.Body>
+					<Modal.Body style={{textAlign:"center"}}>
 					{this.state.output}
 					</Modal.Body>
 				</Modal>

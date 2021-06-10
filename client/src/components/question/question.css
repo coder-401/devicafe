@@ -41,3 +41,16 @@
 	border-radius: 0.25rem;
 	margin: 1rem 0;
 }
+.filter-form button{
+	background-color: #17a2b8;
+    border-color: #17a2b8;
+	transition: all 0.3 ease-in-out;
+}
+.filter-form button:enabled{
+	background-color: #17a2b8;
+}
+.filter-form button:hover{
+	transition: all 0.3 ease-in-out;
+	border-color: #17a2b8;
+	background-color: #0b6472;
+}

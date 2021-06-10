@@ -44,9 +44,8 @@ const Entrance = () => {
 					},
 				},
 			);
-
 			history.push({
-				pathname: `/cafe/${data._id}`,
+				pathname: `/room/${data._id}`,
 				state: data,
 			});
 		} catch (error) {

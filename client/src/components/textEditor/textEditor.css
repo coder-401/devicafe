@@ -12,7 +12,7 @@
 	margin: auto;
 	padding: 0.5% 0 0.5% 0;
 	width: 100%;
-	background-color: rgba(71, 61, 139, 0.24);
+	background-color: rgb(238 238 238);
 	border: 2.5px solid;
 	border-bottom: 0;
 }
@@ -23,6 +23,16 @@
 .codeOptions button {
 	height: 40%;
 	margin: 0.1% 2% 0 0;
+	background-color: darkred;
+	box-shadow: none;
+	border: none;
+	border-radius: 0;
+}
+.codeOptions button:hover {
+	background-color: rgb(248, 20, 20);
+}
+.codeOptions button:enabled {
+	background-color: darkred;
 }
 .codeOptions svg {
 	font-size: 1.9rem;

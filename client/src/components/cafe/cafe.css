@@ -5,7 +5,6 @@
 }
 
 #root {
-	background-color: rgb(228, 222, 222);
 	width: 100%;
 }
 
@@ -46,11 +45,24 @@
 	background: #eee;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	align-items: center;
 }
 .sideBar button {
 	width: 60%;
+	background-color: #17a2b8;
+    border-color: #17a2b8;
+	box-shadow: none;
+}
+.sideBar button:hover {
+	border-color: #17a2b8;
+	background-color: #0b6472;
+}
+.sideBar button:enabled {
+	border-color: #17a2b8;
+	background-color: #0b6472;
+	box-shadow: none;
+
 }
 .leftSide {
 	grid-column: 1/2;
@@ -59,46 +71,46 @@
 /*=====================================================_VIEDO_======================================================*/
 
 .viedoOnIcon {
-	position: fixed;
 	cursor: pointer;
 	font-size: 2.5rem;
-	bottom: 1.5%;
-	left: 38%;
 }
 .viedoOffIcon {
-	position: fixed;
 	cursor: pointer;
 	font-size: 2.5rem;
-	bottom: 1.5%;
-	left: 38%;
 	color: darkred;
 }
 .dfgPVa {
 	margin: 0;
 	padding: 0;
-	height: 100%;
+	height: 91vh !important;
 	width: 100%;
 }
 .dfgPVa video:first-child {
-	position: absolute;
+	/* position: absolute;
 	top: 10%;
 	left: 2.5%;
 	height: 512px;
-	width: 1114px;
+	width: 1114px; */
+	transition: all 2s ease-in-out;
+
 	border: 1px solid;
 }
 .dfgPVa video:last-child {
-	position: absolute;
+	/* position: absolute;
 	top: 10%;
 	left: 2.5%;
 	height: 159px;
-	width: 345px;
+	width: 345px; */
+	transition: all 2s ease-in-out;
+
 	border: 1px solid;
 }
 
 /*=============================================_WHITE_BOARD_============================================*/
 
 .shamounWB {
+	position :fixed;
+	top:7%; 
 	background: #fff;
 	width: 64%;
 	margin: 0 0% 0 1.5%;
@@ -112,4 +124,11 @@
 	height: 76vh;
 	overflow-y: scroll;
 	padding: 0px 10% 0 10%;
+}
+/*==================================================_CODE_EDITOR_================================================*/
+.shamounCE{
+    position: fixed;
+    top: 8.8%;
+    height: 92.4vh;
+    width: 79%;
 }
